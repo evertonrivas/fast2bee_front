@@ -37,7 +37,7 @@ export class SysService extends MyHttp{
   }
 
   getPostalCode(txt:string):Observable<Cep|ResponseError>{
-    return this.http.post<Cep|ResponseError>(this.sys_config.backend_cmm+'/config/',{
+    return this.http.post<Cep|ResponseError>(this.sys_config.backend_cmm+'/integration/',{
       "postal_code": txt
     },{
       headers: this.getHeader(ContentType.json)
