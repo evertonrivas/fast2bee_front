@@ -73,7 +73,7 @@
             </ng-template>
         </p-overlayPanel>
         <button class="p-link layout-topbar-button" *ngIf="level_access==levels.ADMIN || level_access==levels.REPR" pTooltip="Trocar módulo" tooltipPosition="bottom" tooltipStyleClass="text-xs"  (click)="p_module.toggle($event)">
-            <i class="material-symbols-outlined">webhook</i>
+            <i class="material-symbols-outlined">apps</i>
             <label>Trocar módulo</label>
         </button>
         <ng-container *ngIf="module==modules.B2B" >
