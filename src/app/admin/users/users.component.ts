@@ -17,6 +17,7 @@ import { Entity } from 'src/app/models/entity.model';
 import { PasswordModule } from 'primeng/password';
 import { City, StateRegion } from 'src/app/models/place.model';
 import { LocationService } from 'src/app/services/location.service';
+import { number } from 'echarts';
 
 export interface filterParams{
   level: string|undefined,
@@ -181,6 +182,19 @@ export class UsersComponent extends Common implements AfterViewInit{
     this.formRows = [];
     this.idToEdit = id;
     let fieldName:FormField = {
+      label:"Nome do usuário",
+      name: "name",
+      options: undefined,
+      placeholder: "Digite o nome...",
+      type: FieldType.INPUT,
+      value: undefined,
+      required: true,
+      case:FieldCase.LOWER,
+      disabled: false,
+      lockField:undefined
+    };
+
+    let fieldUName:FormField = {
       label:"Login do sistema",
       name: "username",
       options: undefined,
@@ -193,6 +207,19 @@ export class UsersComponent extends Common implements AfterViewInit{
       lockField:undefined
     };
 
+    let fieldEmail:FormField = {
+      label: "E-mail",
+      name: "email",
+      options: undefined,
+      placeholder: "Ex: email@email.com",
+      type: FieldType.INPUT,
+      value: undefined,
+      required: true,
+      case: FieldCase.LOWER,
+      disabled: false,
+      lockField: undefined
+    }
+
     let fLevel:FormField = {
       label: "Nível de Acesso",
       name: "type",
@@ -204,7 +231,7 @@ export class UsersComponent extends Common implements AfterViewInit{
         { value:'L', label:'Lojista',id:undefined },
         { value:'I', label:'Lojista (IA)',id:undefined },
         { value:'R', label:'Representante',id:undefined },
-        { value:'U', label:'Usuário da Empresa',id:undefined }
+        { value:'C', label:'Usuário da Empresa',id:undefined }
       ],
       required: true,
       case: FieldCase.UPPER,
@@ -244,30 +271,25 @@ export class UsersComponent extends Common implements AfterViewInit{
         next: (data) =>{
           if ("username" in data){
             this.localObject = data as User;
-            fieldName.value = this.localObject.username;
+            fieldName.value = this.localObject.name;
+            fieldUName.value = this.localObject.username;
+            fieldEmail.value = this.localObject.email;
+
             fActive.value   = this.localObject.active;
 
             switch(this.localObject.type){
-              case 'A': fLevel.value = { value:'A', label:'Administrador' }; break;
-              case 'L': fLevel.value = { value:'L', label:'Lojista' }; break;
-              case 'I': fLevel.value = { value:'I', label:'Lojista (IA)' }; break;
-              case 'R': fLevel.value = { value:'R', label:'Representante' }; break;
-              case 'U': fLevel.value = { value:'U', label:'Usuário da Empresa' }; break;
+              case 'A': fLevel.value = { value:'A', label:'Administrador',id:undefined }; break;
+              case 'L': fLevel.value = { value:'L', label:'Lojista',id:undefined }; break;
+              case 'I': fLevel.value = { value:'I', label:'Lojista (IA)',id:undefined }; break;
+              case 'R': fLevel.value = { value:'R', label:'Representante',id:undefined }; break;
+              case 'C': fLevel.value = { value:'U', label:'Usuário da Empresa',id:undefined }; break;
             }
 
             //monta as linhas do forme e exibe o mesmo
-            let row:FormRow = {
-              fields: [fieldName]
-            }
-            let row2:FormRow = {
-              fields: [fLevel,fActive]
-            }
-            let row3:FormRow = {
-              fields: [fPwd]
-            }
-            this.formRows.push(row);
-            this.formRows.push(row2);
-            this.formRows.push(row3);
+            this.formRows.push({fields: [fieldName,fieldUName]});
+            this.formRows.push({fields: [fieldEmail]});
+            this.formRows.push({fields: [fLevel,fActive]});
+            this.formRows.push({fields: [fPwd]});
             this.formVisible = true;
             
           }else{
@@ -282,18 +304,10 @@ export class UsersComponent extends Common implements AfterViewInit{
       });
     }else{
       //monta as linhas do forme e exibe o mesmo
-      let row:FormRow = {
-        fields: [fieldName]
-      }
-      let row2:FormRow = {
-        fields: [fLevel,fActive]
-      }
-      let row3:FormRow = {
-        fields: [fPwd]
-      }
-      this.formRows.push(row);
-      this.formRows.push(row2);
-      this.formRows.push(row3);
+      this.formRows.push({fields: [fieldName,fieldUName]});
+      this.formRows.push({fields: [fieldEmail]});
+      this.formRows.push({fields: [fLevel,fActive]});
+      this.formRows.push({fields: [fPwd]});
       this.formVisible = true;
     }
   }
@@ -301,7 +315,8 @@ export class UsersComponent extends Common implements AfterViewInit{
   onDataSave(data:any):void{
     this.hasSended = true;
     if (this.idToEdit == 0 ){
-      this.serviceSub[3] = this.svc.save([data]).subscribe({
+      let id_customer:string =localStorage.getItem("id_profile") as string
+      this.serviceSub[3] = this.svc.save([data],id_customer).subscribe({
         next:(data) =>{
           this.hasSended = false;
           this.formVisible = false;
