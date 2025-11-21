@@ -6,7 +6,6 @@ import { MessageService } from 'primeng/api';
 import { ChatService } from 'src/app/services/chat.service';
 import { Common } from 'src/app/classes/common';
 import { LayoutService } from 'src/app/services/layout.service';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ToastModule } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,6 +15,7 @@ import { RippleModule } from 'primeng/ripple';
 import { BadgeModule } from 'primeng/badge';
 import { IndicatorsService } from 'src/app/services/indicators.service';
 import { ModuleName } from 'src/app/models/system.enum';
+import { PopoverModule } from 'primeng/popover';
 
 @Component({
   selector: 'app-topbar',
@@ -27,7 +27,7 @@ import { ModuleName } from 'src/app/models/system.enum';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    OverlayPanelModule,
+    PopoverModule,
     ToastModule,
     RouterModule,
     TooltipModule,

@@ -9,7 +9,27 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AppComponent } from './app/app.component';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
+import Lara from '@primeng/themes/lara';
+import { definePreset } from '@primeng/themes';
+
+const F2bPreset = definePreset(Lara, {
+    semantic: {
+        primary: {
+            50: '{amber.50}',
+            100: '{amber.100}',
+            200: '{amber.200}',
+            300: '{amber.300}',
+            400: '{amber.400}',
+            500: '{amber.500}',
+            600: '{amber.600}',
+            700: '{amber.700}',
+            800: '{amber.800}',
+            900: '{amber.900}',
+            950: '{amber.950}'
+        }
+    }
+});
+
 
 
 bootstrapApplication(AppComponent, {
@@ -37,7 +57,7 @@ bootstrapApplication(AppComponent, {
         provideEnvironmentNgxMask(),
         providePrimeNG({ 
             theme: {
-                preset: Aura
+                preset: F2bPreset
             }
         })
     ]

@@ -19,6 +19,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { NgClass } from '@angular/common';
+import { SelectModule } from 'primeng/select';
 
 
 @Component({
@@ -29,13 +30,12 @@ import { NgClass } from '@angular/common';
     ToastModule,
     ConfirmDialogModule,
     PanelModule,
-    OverlayPanelModule,
     ButtonModule,
     TableModule,
     ToggleButtonModule,
     PaginatorModule,
     DialogModule,
-    DropdownModule,
+    SelectModule,
     CalendarModule,
     InputTextModule,
     NgClass

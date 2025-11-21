@@ -8,18 +8,18 @@
             <div class="flex flex-row gap-2 mb-2">
                 <div class="flex flex-column">
                     <label>Funil</label>
-                    <p-dropdown 
+                    <p-select 
                         [options]="funnels" 
                         optionLabel="name" 
                         styleClass="p-inputtext-sm w-full" 
                         (onChange)="getStagesOfFunnel($event)" 
                         [ngModel]="customerFunnel" 
                         [ngClass]="{'ng-invalid ng-dirty' : hasSended && !customerFunnel}"
-                        placeholder="Selecione..."></p-dropdown>
+                        placeholder="Selecione..."></p-select>
                 </div>
                 <div class="flex flex-column">
                     <label>Etapa</label>
-                    <p-dropdown 
+                    <p-select 
                         [options]="stages" 
                         optionLabel="name" 
                         [(ngModel)]="selectedStage" 
@@ -27,21 +27,21 @@
                         styleClass="p-inputtext-sm w-full" 
                         [ngClass]="{'ng-invalid ng-dirty' : hasSended && idStageOfCustomer==0}" 
                         (onChange)="setStage($event)"
-                        placeholder="Selecione..."></p-dropdown>
+                        placeholder="Selecione..."></p-select>
                 </div>
             </div>
             <p-divider></p-divider>
             <div class="flex flex-column">
                 <div class="flex flex-column w-full">
                     <label for="slReprsentative">Representante</label>
-                    <p-dropdown #ddRep [options]="representatives" optionLabel="name" optionValue="id" [(ngModel)]="selectedRepresentativeId" placeholder="Selecione..." styleClass="p-inputtext-sm w-full">
+                    <p-select #ddRep [options]="representatives" optionLabel="name" optionValue="id" [(ngModel)]="selectedRepresentativeId" placeholder="Selecione..." styleClass="p-inputtext-sm w-full">
                         <ng-template let-selectedItem pTemplate="selectedItem">
                             <span *ngIf="selectedItem!=undefined" [ngClass]="selectedItem.id==0?'text-red-500':''">{{selectedItem.name}}</span>
                         </ng-template>
                         <ng-template let-item pTemplate="item">
                             <span [ngClass]="item.id==0?'text-red-500':''">{{item.name}}</span>
                         </ng-template>
-                    </p-dropdown>
+                    </p-select>
                 </div>
                 <div class="flex flex-column">
                     <label class="mb-1">Nome</label>
@@ -104,7 +104,7 @@
             </div>
             <div class="flex flex-column w-full">
                 <label class="mb-1">Tipo</label>
-                <p-dropdown #dptpc [disabled]="editableCustomer.id==0" 
+                <p-select #dptpc [disabled]="editableCustomer.id==0" 
                     [options]="contact_types" 
                     [(ngModel)]="newContact.contact_type"
                     placeholder="Selecione..."
@@ -131,7 +131,7 @@
                         <i class="pi pi-cloud" *ngIf="item.value=='O'"></i>
                         {{item.label}}
                     </ng-template>
-                </p-dropdown>
+                </p-select>
             </div>
             <div class="flex flex-column w-full" *ngIf="dptpc.value=='E' || !dptpc.value">
                 <label class="mb-1">E-mail</label>

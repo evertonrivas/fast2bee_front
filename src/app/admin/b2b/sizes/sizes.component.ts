@@ -20,6 +20,8 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
     selector: 'app-sizes',
@@ -37,12 +39,13 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
-      CommonModule
+      CommonModule,
+      InputTextModule
 ]
 })
 export class SizesComponent extends Common implements AfterViewInit{

@@ -63,13 +63,13 @@
                 </div>
                 <div class="flex flex-column mb-3">
                     <label class="mb-1">Condição de Pagamento</label>
-                    <p-dropdown [options]="paymentCondition" 
+                    <p-select [options]="paymentCondition" 
                         styleClass="w-full" 
                         placeholder="Selecione..."
                         optionLabel="name"
                         emptyMessage="Nenhum registro encontrado!" 
                         [(ngModel)]="selectedPaymentCondition"
-                        [ngClass]="{'ng-invalid ng-dirty' : hasSended && selectedPaymentCondition==null}"></p-dropdown>
+                        [ngClass]="{'ng-invalid ng-dirty' : hasSended && selectedPaymentCondition==null}"></p-select>
                 </div>
                 <div class="flex flex-row mb-3 align-items-center w-full justify-content-center">
                     <div class="flex flex-column mr-1 w-full">

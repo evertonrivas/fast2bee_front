@@ -10,7 +10,6 @@ import { Moment } from 'src/app/models/moment.model';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
@@ -30,7 +29,6 @@ import { CalendarModule } from 'primeng/calendar';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,

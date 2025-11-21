@@ -24,6 +24,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DialogModule } from 'primeng/dialog';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 interface sizes{
   id_size:number,
@@ -53,7 +55,7 @@ interface localDistribution{
     ToastModule,
     ConfirmDialogModule,
     PanelModule,
-    OverlayPanelModule,
+    PopoverModule,
     ButtonModule,
     TableModule,
     ToggleButtonModule,
@@ -61,7 +63,8 @@ interface localDistribution{
     DialogModule,
     FormsModule,
     CommonModule,
-    InputNumberModule
+    InputNumberModule,
+    InputTextModule
 ]
 })
 export class ProductGridComponent extends Common implements AfterViewInit,OnDestroy{

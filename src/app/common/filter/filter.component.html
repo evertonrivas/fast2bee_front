@@ -17,7 +17,7 @@
                 [placeholder]="field.placeholder" 
                 (ngModelChange)="onDateChanged()" 
                 dateFormat="dd/mm/yyyy"></p-calendar>
-            <p-dropdown *ngIf="field.type==fieldType.COMBO" 
+            <p-select *ngIf="field.type==fieldType.COMBO" 
                 [options]="field.options" 
                 optionValue="value"
                 optionLabel="label"
@@ -27,7 +27,7 @@
                 styleClass="w-full"
                 [(ngModel)]="field.value"
                 [placeholder]="field.placeholder"
-                emptyMessage="Nenhum registro encontrado!"></p-dropdown>
+                emptyMessage="Nenhum registro encontrado!"></p-select>
             <p-multiSelect *ngIf="field.type==fieldType.MCOMBO" 
                 [options]="field.options" 
                 optionValue="value"

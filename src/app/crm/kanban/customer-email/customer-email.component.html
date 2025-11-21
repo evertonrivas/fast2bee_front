@@ -1,13 +1,13 @@
 <div class="flex flex-column w-full mt-1">
     <label for="cbEmail">Para</label>
-    <p-dropdown id="cbEmail" *ngIf="!massiveEmail" [options]="emailToList" styleClass="w-full" [(ngModel)]="selectedEmail" optionLabel="name" placeholder="Selecione um e-mail" appendTo="body" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !selectedEmail}">
+    <p-select id="cbEmail" *ngIf="!massiveEmail" [options]="emailToList" styleClass="w-full" [(ngModel)]="selectedEmail" optionLabel="name" placeholder="Selecione um e-mail" appendTo="body" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !selectedEmail}">
         <ng-template pTemplate="selectedItem">
             <div>{{selectedEmail.name}} &lt;{{selectedEmail.value}} &gt;</div>
         </ng-template>
         <ng-template let-contact pTemplate="item">
             <div>{{contact.name}} &lt;{{contact.value}} &gt;</div>
         </ng-template>
-    </p-dropdown>
+    </p-select>
     <ng-container *ngIf="emailToList.length <= 4">
         <p-chip *ngIf="massiveEmail" placeholder="Teste" [(ngModel)]="emailToList" field="value" class="p-fluid" [disabled]="true"></p-chip>
     </ng-container>

@@ -6,7 +6,7 @@ import { City } from 'src/app/models/place.model';
 import { EntitiesService } from 'src/app/services/entities.service';
 import { ConfirmationService } from 'primeng/api';
 import { LocationService } from 'src/app/services/location.service';
-import { DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
+import { DropdownChangeEvent } from 'primeng/dropdown';
 import { Funnel, FunnelStage } from 'src/app/models/crm.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { Common } from 'src/app/classes/common';
@@ -26,13 +26,14 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ContactTypePipe } from 'src/app/pipes/contact-type.pipe';
 import { InputMaskModule } from 'primeng/inputmask';
+import { SelectModule } from 'primeng/select';
 
 @Component({
   selector: 'app-customer-data',
   standalone: true,
   imports:[
     ConfirmDialogModule,
-    DropdownModule,
+    SelectModule,
     FormsModule,
     CommonModule,
     ButtonModule,

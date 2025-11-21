@@ -18,13 +18,13 @@
             </div>
             <div class="flex flex-column w-full">
                 <label class="mb-1">Sazonalidade</label>
-                <p-dropdown styleClass="w-full"
+                <p-select styleClass="w-full"
                     appendTo="body"
                     placeholder="Selecione..."
                     [options]="[{label:'Anual',value:'Y'},{label:'Trimestral',value:'Q'},{label:'Mensal',value:'M'}]"
                     (onChange)="onCheckOption($event)"
                     [(ngModel)]="selected_target"
-                    ></p-dropdown>
+                    ></p-select>
             </div>
             <div class="flex flex-column w-full" *ngIf="selected_target=='Y'">
                 <label class="mb-1">Valor</label>

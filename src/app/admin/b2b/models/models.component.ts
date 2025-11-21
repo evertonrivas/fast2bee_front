@@ -20,6 +20,8 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
     selector: 'app-models',
@@ -37,12 +39,13 @@ import { CommonModule } from '@angular/common';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
-      CommonModule
+      CommonModule,
+      InputTextModule
 ]
 })
 export class ModelsComponent extends Common implements AfterViewInit, OnDestroy{

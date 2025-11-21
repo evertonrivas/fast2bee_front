@@ -15,12 +15,13 @@ import { Color } from 'src/app/models/product.model';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PanelModule } from 'primeng/panel';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @Component({
@@ -39,13 +40,14 @@ import { CommonModule } from '@angular/common';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
       TagModule,
-      CommonModule
+      CommonModule,
+      InputTextModule
 ]
 })
 export class ColorsComponent extends Common implements AfterViewInit {

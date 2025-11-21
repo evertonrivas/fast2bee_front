@@ -14,12 +14,13 @@ import { B2bBrand } from 'src/app/models/product.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { BrandService } from 'src/app/services/brand.service';
 import { PanelModule } from 'primeng/panel';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PopoverModule } from 'primeng/popover';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-brands',
@@ -31,12 +32,13 @@ import { CommonModule } from '@angular/common';
     ToastModule,
     ConfirmDialogModule,
     PanelModule,
-    OverlayPanelModule,
+    PopoverModule,
     ButtonModule,
     TableModule,
     ToggleButtonModule,
     PaginatorModule,
-    CommonModule
+    CommonModule,
+    InputTextModule
 ],
   providers: [
     MessageService,

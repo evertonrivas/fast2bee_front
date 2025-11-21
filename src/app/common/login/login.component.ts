@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { OverlayPanel, OverlayPanelModule } from 'primeng/overlaypanel';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { SysService } from 'src/app/services/sys.service';
+import { PopoverModule } from 'primeng/popover';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,7 @@ import { SysService } from 'src/app/services/sys.service';
     PasswordModule,
     FormsModule,
     ToastModule,
-    OverlayPanelModule,
+    PopoverModule,
     CommonModule],
   providers: [MessageService]
 })

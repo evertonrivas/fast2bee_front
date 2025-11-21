@@ -21,6 +21,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { OrderStatusPipe } from 'src/app/pipes/order-status.pipe';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { SelectModule } from 'primeng/select';
 
 @Component({
   selector: 'app-orders',
@@ -37,7 +38,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ShortMoneyPipe,
     PaginatorModule,
     DialogModule,
-    DropdownModule,
+    SelectModule,
     OrderStatusPipe,
     InputNumberModule
 ],

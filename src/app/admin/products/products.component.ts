@@ -29,7 +29,6 @@ import { DividerModule } from 'primeng/divider';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -37,7 +36,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
+import { TextareaModule } from 'primeng/textarea';
 
 @Component({
     selector: 'app-products',
@@ -55,7 +55,6 @@ import { DropdownModule } from 'primeng/dropdown';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
@@ -67,7 +66,8 @@ import { DropdownModule } from 'primeng/dropdown';
       CommonModule,
       SidebarModule,
       MultiSelectModule,
-      DropdownModule
+      SelectModule,
+      TextareaModule
 ]
 })
 export class ProductsComponent extends Common implements AfterViewInit {

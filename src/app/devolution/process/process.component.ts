@@ -17,6 +17,7 @@ import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { DevolutionStatusPipe } from 'src/app/pipes/devolution-status.pipe';
+import { SelectModule } from 'primeng/select';
 
 export interface selectedStatus{
   [index:string]:string
@@ -33,7 +34,7 @@ export interface selectedStatus{
     PaginatorModule,
     DialogModule,
     FormsModule,
-    DropdownModule,
+    SelectModule,
     DevolutionStatusPipe,
     TagModule
 ],

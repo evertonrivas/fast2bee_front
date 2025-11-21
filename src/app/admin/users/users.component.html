@@ -9,11 +9,11 @@
                 <label class="p-panel-title">Usuários</label>
             </div>
             <div class="flex flex-row gap-1">
-                <p-button icon="pi pi-plus" [severity]="'success'" styleClass="p-button-sm" pTooltip="Novo registro" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onEditData()"></p-button>
-                <p-button *ngIf="!isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-inactive-user icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Desativar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(true)"></p-button>
-                <p-button *ngIf="isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-active-user icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Restaurar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(false)"></p-button>
-                <p-button icon="pi pi-add-users icon-xsmall" [severity]="'help'" styleClass="p-button-sm" pTooltip="Adição em Massa" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="addUsers()"></p-button>
-                <p-button icon="pi pi-filter" [severity]="'warn'" styleClass="p-button-sm" pTooltip="Filtro(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showFilter()"></p-button>
+                <p-button [rounded]="true" icon="pi pi-plus" [severity]="'success'" styleClass="p-button-sm" pTooltip="Novo registro" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onEditData()"></p-button>
+                <p-button [rounded]="true" *ngIf="!isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-inactive-user icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Desativar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(true)"></p-button>
+                <p-button [rounded]="true" *ngIf="isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-active-user icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Restaurar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(false)"></p-button>
+                <p-button [rounded]="true" icon="pi pi-add-users icon-xsmall" [severity]="'help'" styleClass="p-button-sm" pTooltip="Adição em Massa" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="addUsers()"></p-button>
+                <p-button [rounded]="true" icon="pi pi-filter" [severity]="'warn'" styleClass="p-button-sm" pTooltip="Filtro(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showFilter()"></p-button>
                 <p-toggleButton [onIcon]="'pi pi-deleted icon-xsmall'" [offIcon]="'pi pi-deleted icon-xsmall'" styleClass="p-button-sm" pTooltip="Listar desativado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" [(ngModel)]="isTrash" (onChange)="loadingData({page:0,pageCount:0},isTrash)"></p-toggleButton>
             </div>
         </div>
@@ -77,7 +77,7 @@
     <ng-template pTemplate="header"><h5>Adição em Massa</h5></ng-template>
     <div class="flex flex-column w-full">
         <label class="mb-1">Tipo de Entidade</label>
-        <p-dropdown
+        <p-select
             [options]="[{ value: 'C', label:'Cliente' },{ value:'R', label:'Representante' },{value:'P', label: 'Pessoa (física)'}]" 
             optionLabel="label"
             optionValue="value"
@@ -88,12 +88,12 @@
             placeholder="Selecione..."
             emptyMessage="Nenhum registro encontrado!"
             [(ngModel)]="filtersToSearch.level">
-        </p-dropdown>
+        </p-select>
     </div>
     <div class="flex flex-row gap-1 mb-2">
         <div class="flex flex-column">
             <label class="mb-1">Estado/UF</label>
-            <p-dropdown
+            <p-select
                 [options]="states"
                 [filter]="true"
                 filterBy="name,acronym"
@@ -111,11 +111,11 @@
                 <ng-template pTemplate="item" let-item>
                     {{item.acronym}} - {{item.name}}
                 </ng-template>
-            </p-dropdown>
+            </p-select>
         </div>
         <div class="flex flex-column w-full">
             <label class="mb-1">Cidade</label>
-            <p-dropdown
+            <p-select
                 [options]="cities"
                 [filter]="true"
                 filterBy="name,acronym"
@@ -131,7 +131,7 @@
                 <ng-template pTemplate="item" let-item>
                     {{item.name}}
                 </ng-template>
-            </p-dropdown>
+            </p-select>
         </div>
     </div>
     <div class="flex flex-row mb-2">
@@ -159,7 +159,7 @@
     <div class="flex flex-row mb-2 gap-1">
         <div class="flex flex-column w-full">
             <label class="mb-1">Regra</label>
-            <p-dropdown
+            <p-select
                 [options]="[{ value: 'FL', label:'Primeiro e Último sobrenome' },{ value:'IL', label:'Inicial do Primeiro nome + Sobrenome' },{ value:'PI',label:'Primeiro nome + Inicial do Último Sobrenome' }]" 
                 optionLabel="label"
                 appendTo="body" 
@@ -170,11 +170,11 @@
                 emptyMessage="Nenhum registro encontrado!"
                 [(ngModel)]="filtersToSearch.rule"
                 [ngClass]="{'ng-invalid ng-dirty' : validate && !filtersToSearch.rule}">
-            </p-dropdown>
+            </p-select>
         </div>
         <div class="flex flex-column">
             <label class="mb-1">Tipo de Usuário</label>
-            <p-dropdown
+            <p-select
                 [options]="[{ value: 'L', label: 'Lojista'},{ value:'I', label: 'Lojista (IA)' },{ value: 'R', label: 'Representante'}]"
                 optionLabel="label"
                 appendTo="body"
@@ -183,7 +183,7 @@
                 emptyMessage="Nenhum registro encontrado!"
                 [(ngModel)]="filtersToSearch.user_type"
                 [ngClass]="{'ng-invalid ng-dirty' : validate && !filtersToSearch.user_type}"
-            ></p-dropdown>
+            ></p-select>
         </div>
         <div class="flex flex-column">
             <label class="mb-1">Senha inicial:</label>

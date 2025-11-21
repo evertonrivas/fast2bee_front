@@ -6,7 +6,7 @@ import { Common } from 'src/app/classes/common';
 import { EntitiesService } from 'src/app/services/entities.service';
 import { SliderModule } from 'primeng/slider';
 import { Entity } from 'src/app/models/entity.model';
-import { DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
+import { DropdownChangeEvent } from 'primeng/dropdown';
 import { ComissionService } from 'src/app/services/comission.service';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +19,8 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
+import { SelectModule } from 'primeng/select';
 
 export interface f2bComission{
   [index:number]:number
@@ -44,10 +45,8 @@ export interface f2bTarget{
     PaginatorModule,
     SliderModule,
     InputNumberModule,
-    DropdownModule,
-    NgIf,
-    NgFor,
-    NgClass
+    SelectModule,
+    CommonModule
 ],
   templateUrl: './rep-comission.component.html',
   styleUrl: './rep-comission.component.scss',

@@ -10,7 +10,7 @@
                 <small class="text-cyan-600">* Para editar, marque o item que deseja e utilize as ações massivas</small>
             </div>
             <div class="flex flex-row gap-1">
-                <p-overlayPanel #pnlMassive styleClass="w-30rem lg:w-8" >
+                <p-popover #pnlMassive styleClass="w-30rem lg:w-8" >
                     <ng-template pTemplate="content">
                         <h6>Alteração em Massa</h6>
                         <div class="flex flex-column mb-2">
@@ -24,13 +24,13 @@
                         </div>
                         <div class="flex flex-column mb-2">
                             <label class="mb-1">Grade</label>
-                            <p-dropdown
+                            <p-select
                             [options]="all_grid"
                             optionLabel="name"
                             styleClass="p-inputtext-sm w-full"
                             [(ngModel)]="selectedGrid"
                             (ngModelChange)="onGetGrid($event)">
-                            </p-dropdown>
+                            </p-select>
                         </div>
                         <p-table styleClass="mb-2" *ngIf="selectedGridSizes.length > 0" [columns]="selectedGridSizes" [value]="selectedGridSizes">
                             <ng-template pTemplate="header" let-columns>
@@ -60,12 +60,12 @@
                             <p-button icon="pi pi-cog" label="Executar" styleClass="p-button-sm" (onClick)="onUpdateStockQuantity()"></p-button>
                         </div>
                     </ng-template>
-                </p-overlayPanel>
-                <p-button icon="pi pi-plus" [severity]="'success'" styleClass="p-button-sm" pTooltip="Novo registro" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onEditData()"></p-button>
-                <p-button *ngIf="!isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-trash" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Arquivar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(true)"></p-button>
-                <p-button *ngIf="isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-restore-from-trash icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Restaurar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(false)"></p-button>
-                <p-button [disabled]="tableSelected.length>0?false:true" icon="pi pi-massive-actions icon-xsmall" [severity]="'help'" styleClass="p-button-sm" pTooltip="Ações Massivas" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="pnlMassive.toggle($event)"></p-button>
-                <p-button icon="pi pi-filter" [severity]="'warn'" styleClass="p-button-sm" pTooltip="Filtro(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showFilter()"></p-button>
+                </p-popover>
+                <p-button [rounded]="true" icon="pi pi-plus" [severity]="'success'" styleClass="p-button-sm" pTooltip="Novo registro" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onEditData()"></p-button>
+                <p-button [rounded]="true" *ngIf="!isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-trash" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Arquivar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(true)"></p-button>
+                <p-button [rounded]="true" *ngIf="isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-restore-from-trash icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Restaurar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(false)"></p-button>
+                <p-button [rounded]="true" [disabled]="tableSelected.length>0?false:true" icon="pi pi-massive-actions icon-xsmall" [severity]="'help'" styleClass="p-button-sm" pTooltip="Ações Massivas" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="pnlMassive.toggle($event)"></p-button>
+                <p-button [rounded]="true" icon="pi pi-filter" [severity]="'warn'" styleClass="p-button-sm" pTooltip="Filtro(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showFilter()"></p-button>
                 <p-toggleButton [onIcon]="'pi pi-deleted icon-xsmall'" [offIcon]="'pi pi-deleted icon-xsmall'" styleClass="p-button-sm" pTooltip="Listar arquivado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" [(ngModel)]="isTrash" (onChange)="loadingData({page:0,pageCount:0},isTrash)"></p-toggleButton>
             </div>
         </div>
@@ -143,14 +143,14 @@
 <p-dialog [visible]="formVisible" header="Estoque de Produto" [modal]="true" [closable]="false" styleClass="w-30rem lg:w-8">
     <div class="flex flex-column mb-2">
         <label class="mb-1">Produto</label>
-        <p-dropdown *ngIf="idToEdit==0" [options]="all_products"
+        <p-select *ngIf="idToEdit==0" [options]="all_products"
             optionLabel="name"
             styleClass="w-full"
             appendTo="body"
             [(ngModel)]="selectedProduct"
             [ngClass]="{'ng-invalid ng-dirty' : hasSended && !selectedProduct}"
             >
-        </p-dropdown>
+        </p-select>
         <span *ngIf="idToEdit > 0">{{selectedProduct?.name}}</span>
     </div>
     <div class="flex flex-column mb-2">
@@ -166,7 +166,7 @@
     </div>
     <div class="flex flex-column mb-2">
         <label class="mb-1">Grade</label>
-        <p-dropdown
+        <p-select
             [options]="all_grid"
             optionLabel="name"
             styleClass="p-inputtext-sm w-full"
@@ -175,7 +175,7 @@
             (ngModelChange)="onGetGrid($event)"
             [ngClass]="{'ng-invalid ng-dirty' : hasSended && !selectedGrid}"
             >
-        </p-dropdown>
+        </p-select>
     </div>
     <p-table styleClass="mb-2" *ngIf="selectedGridSizes.length > 0" [columns]="selectedGridSizes" [value]="selectedGridSizes">
         <ng-template pTemplate="header" let-columns>

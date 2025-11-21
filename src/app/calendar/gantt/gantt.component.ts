@@ -15,12 +15,12 @@ import { MilestoneFormComponent } from '../milestone-form/milestone-form.compone
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { NgFor, NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-gantt',
@@ -30,7 +30,6 @@ import { NgFor, NgIf } from '@angular/common';
     ToastModule,
     ConfirmDialogModule,
     PanelModule,
-    OverlayPanelModule,
     ButtonModule,
     TableModule,
     ToggleButtonModule,
@@ -40,7 +39,8 @@ import { NgFor, NgIf } from '@angular/common';
     MilestoneFormComponent,
     NgFor,
     NgIf,
-    CalendarModule
+    CalendarModule,
+    InputTextModule
 ],
   templateUrl: './gantt.component.html',
   encapsulation: ViewEncapsulation.None,

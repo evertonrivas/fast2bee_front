@@ -10,6 +10,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SelectModule } from 'primeng/select';
 import { Common } from 'src/app/classes/common';
 
 import { EntityContact } from 'src/app/models/entity.model';
@@ -23,7 +24,7 @@ import { SysService } from 'src/app/services/sys.service';
   imports:[
     FileUploadModule,
     ProgressSpinnerModule,
-    DropdownModule,
+    SelectModule,
     CommonModule,
     ChipModule,
     FormsModule,

@@ -6,22 +6,20 @@ import { Common } from 'src/app/classes/common';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { UserService } from 'src/app/services/user.service';
 
-import { CommonModule, NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FilterComponent } from "../../common/filter/filter.component";
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { FormComponent } from 'src/app/common/form/form.component';
-import { FormField, FormRow } from 'src/app/models/field.model';
+import { FormField } from 'src/app/models/field.model';
 import { User } from 'src/app/models/user.model';
 import { EntitiesService } from 'src/app/services/entities.service';
 import { Entity } from 'src/app/models/entity.model';
 import { PasswordModule } from 'primeng/password';
 import { City, StateRegion } from 'src/app/models/place.model';
 import { LocationService } from 'src/app/services/location.service';
-import { number } from 'echarts';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
@@ -30,6 +28,8 @@ import { UserTypePipe } from 'src/app/pipes/user-type.pipe';
 import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
+import { InputTextModule } from 'primeng/inputtext';
 
 export interface filterParams{
   level: string|undefined,
@@ -56,7 +56,6 @@ export interface filterParams{
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
@@ -65,8 +64,9 @@ export interface filterParams{
       UserTypePipe,
       DialogModule,
       SidebarModule,
-      DropdownModule,
-      CommonModule
+      SelectModule,
+      CommonModule,
+      InputTextModule
 ]
 })
 export class UsersComponent extends Common implements AfterViewInit{

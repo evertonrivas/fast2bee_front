@@ -3,7 +3,7 @@
 <!--barra superior-->
 <div class="card p-3 mb-2 grid">
     <div class="col">
-        <p-dropdown #funSel [options]="response.data" optionLabel="name" [(ngModel)]="selectedFunnel" styleClass="p-inputtext-sm" (onChange)="changeFunnel($event)"></p-dropdown>
+        <p-select #funSel [options]="response.data" optionLabel="name" [(ngModel)]="selectedFunnel" styleClass="p-inputtext-sm" (onChange)="changeFunnel($event)"></p-select>
     </div>
     <div class="lg:col col-12 justify-content-end">
         <p-button icon="pi pi-plus-circle" [rounded]="true" [text]="true" pTooltip="Novo Cliente" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showCustomerInfo(0,0)"></p-button>
@@ -13,16 +13,16 @@
         <p-button [text]="true" [rounded]="true" severity="help" pTooltip="Recarregar Funil" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="getFunnels('can:list_all true')"><span class="material-symbols-outlined text-lg">autorenew</span></p-button>
         <p-button [text]="true" [rounded]="true" severity="help" pTooltip="Enviar e-mail para selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showEmailSendMassive()"><span class="material-symbols-outlined text-lg">stacked_email</span></p-button>
         <p-button [text]="true" severity="help" [rounded]="true" pTooltip="Mover selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="opStages.toggle($event)"><span class="material-symbols-outlined text-lg">move_group</span></p-button>
-        <p-overlayPanel #opStages>
+        <p-popover #opStages>
             <ng-template pTemplate="content">
                 <div class="flex flex-column">
                     <label for="cbFunnel">Funil</label>
-                    <p-dropdown id="cbFuneel" [options]="response.data" optionLabel="name" styleClass="p-inputtext-sm w-full" (onChange)="getStagesOfFunnel($event)" [ngModel]="selectedFunnel"></p-dropdown>
+                    <p-select id="cbFuneel" [options]="response.data" optionLabel="name" styleClass="p-inputtext-sm w-full" (onChange)="getStagesOfFunnel($event)" [ngModel]="selectedFunnel"></p-select>
                     <label for="cbStage">Etapa</label>
-                    <p-dropdown id="cbStage" [options]="stagesToMove" optionLabel="name" (onChange)="moveSelectedsToStage()" [(ngModel)]="stageToMove" emptyMessage="Nenhum registro encontrado!" styleClass="p-inputtext-sm w-full"></p-dropdown>
+                    <p-select id="cbStage" [options]="stagesToMove" optionLabel="name" (onChange)="moveSelectedsToStage()" [(ngModel)]="stageToMove" emptyMessage="Nenhum registro encontrado!" styleClass="p-inputtext-sm w-full"></p-select>
                 </div>
             </ng-template>
-        </p-overlayPanel>
+        </p-popover>
         <!-- <p-button [disabled]="true" icon="pi pi-users" styleClass="p-button-rounded p-button-text p-button-warning" pTooltip="Detectar e Mesclar" tooltipPosition="top" tooltipStyleClass="text-xs"></p-button> -->
 
         <p-button [disabled]="selectedFunnel.type=='P'?false:true" icon="pi pi-upload" styleClass="p-button-rounded  p-button-text p-button-success" pTooltip="Importar registros de clientes" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="openToImport()"></p-button>
@@ -50,15 +50,15 @@
                 <div class="flex flex-column justify-content-start vertical-align-top">
                     <p-menu #menu [popup]="true" [model]="stageMenu[stage.id]" styleClass="text-sm"></p-menu>
                     <a href='javascript:void(0)' (click)="menu.toggle($event)" class="pb-2"><i class="pi pi-ellipsis-v text-900 text-sm pt-0"></i></a>
-                    <p-overlayPanel #filter>
+                    <p-popover #filter>
                         <ng-template pTemplate="content">
-                            <p-dropdown styleClass="w-full" [options]="stageSearch[stage.id]" [(ngModel)]="stageSearchCondition[stage.id]" optionValue="type"></p-dropdown>
+                            <p-select styleClass="w-full" [options]="stageSearch[stage.id]" [(ngModel)]="stageSearchCondition[stage.id]" optionValue="type"></p-select>
                             <div class="p-inputgroup pt-2">
                                 <input type="text" pInputText placeholder="Procurar..." [(ngModel)]="stageSearchTerm[stage.id]" styleClass="p-inputtext-sm"/>
                                 <button type="button" pButton icon="pi pi-search" (click)="doLocalSearch(stage.id)"></button>
                             </div>
                         </ng-template>
-                    </p-overlayPanel>
+                    </p-popover>
                     <a href="javascript:void(0)" (click)="filter.toggle($event)"><i class="pi pi-filter text-900 text-sm"></i></a>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                 <p-divider styleClass="m-1"></p-divider>
-                                <p-overlayPanel #pnlComment styleClass="w-30rem">
+                                <p-popover #pnlComment styleClass="w-30rem">
                                     <ng-template pTemplate="content">
                                         <div class="flex flex-column">
                                             <label class="mb-1" for="txtObs">Observação: </label>
@@ -108,7 +108,7 @@
                                             <p-button icon="pi pi-save" label="Salvar" styleClass="p-button-sm" (onClick)="saveCustomerComment(customer.id,pnlComment)"></p-button>
                                         </div>
                                     </ng-template>
-                                </p-overlayPanel>
+                                </p-popover>
                                 <div class="pt-3 px-6 pb-3 flex flex-row vertical-align-middle justify-content-between">
                                     <!-- <a href="javascript:void(0)" pTooltip="Agendar Notificação" tooltipPosition="top" tooltipStyleClass="text-xs" (click)="tasks.toggle($event)"><i class="pi pi-clock text-800"></i></a> -->
                                     <a href="javascript:void(0)" pTooltip="Enviar E-mail" tooltipPosition="top" tooltipStyleClass="text-xs" (click)="showEmailSend(customer)"><i class="pi pi-envelope text-800"></i></a>
@@ -248,22 +248,22 @@
         <div class="flex flex-row gap-1 mb-2 w-full">
             <div class="flex flex-column w-full">
                 <label class="mb-1">Funil</label>
-                <p-dropdown styleClass="w-full"
+                <p-select styleClass="w-full"
                 [options]="all_funnels"
                 optionLabel="name"
                 emptyMessage="Nenhum funil disponível"
                 [(ngModel)]="selectedFunnelToCustomers"
                 (onChange)="getFunnelStages($event)"
-                placeholder="Selecione..."></p-dropdown>
+                placeholder="Selecione..."></p-select>
             </div>
             <div class="flex flex-column w-full">
                 <label class="mb-1">Estágio</label>
-                <p-dropdown styleClass="w-full"
+                <p-select styleClass="w-full"
                 [options]="stages_from_funnel"
                 optionLabel="name"
                 [loading]="stageLoading"
                 [(ngModel)]="selectedStageToCustomers"
-                emptyMessage="Nenhum estágio encontrado"></p-dropdown>
+                emptyMessage="Nenhum estágio encontrado"></p-select>
             </div>
         </div>
         <hr size="1">

@@ -20,6 +20,7 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'primeng/popover';
 
 @Component({
     selector: 'app-funnels',
@@ -37,7 +38,7 @@ import { CommonModule } from '@angular/common';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,

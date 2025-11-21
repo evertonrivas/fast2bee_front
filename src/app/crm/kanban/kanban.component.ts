@@ -16,7 +16,6 @@ import { Options, RequestResponse, ResponseError } from 'src/app/models/paginate
 import { UserService } from 'src/app/services/user.service';
 import { City, StateRegion } from 'src/app/models/place.model';
 import { LocationService } from 'src/app/services/location.service';
-import { OverlayPanel, OverlayPanelModule } from 'primeng/overlaypanel';
 import { CustomerDataComponent } from './customer-data/customer-data.component';
 
 import { IconFieldModule } from 'primeng/iconfield';
@@ -35,6 +34,9 @@ import { PaginatorModule } from 'primeng/paginator';
 import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
+import { SelectModule } from 'primeng/select';
+import { Popover, PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 export interface filterParams{
   rule:any|undefined
@@ -54,10 +56,10 @@ export interface filterParams{
     CommonModule,
     FormsModule,
     ToastModule,
-    DropdownModule,
+    SelectModule,
     ConfirmDialogModule,
     ButtonModule,
-    OverlayPanelModule,
+    PopoverModule,
     IconFieldModule,
     InputIconModule,
     MenuModule,
@@ -72,7 +74,7 @@ export interface filterParams{
     SidebarModule,
     DialogModule,
     TableModule,
-    
+    InputTextModule
 ]
 })
 export class KanbanComponent extends Common implements AfterContentInit{
@@ -811,7 +813,7 @@ export class KanbanComponent extends Common implements AfterContentInit{
     });
   }
 
-  saveCustomerComment(id:number,pnl:OverlayPanel){
+  saveCustomerComment(id:number,pnl:Popover){
     this.entSvc.saveHistory(id,this.customerComment).subscribe({
       next: (data) =>{
         pnl.hide();

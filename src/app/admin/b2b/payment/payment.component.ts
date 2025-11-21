@@ -20,6 +20,8 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-payment',
@@ -31,12 +33,13 @@ import { CommonModule } from '@angular/common';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
-      CommonModule
+      CommonModule,
+      InputTextModule
 ],
   providers:[
     MessageService,

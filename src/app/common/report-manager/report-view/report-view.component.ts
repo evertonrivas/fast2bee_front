@@ -7,6 +7,7 @@ import { Calendar, CalendarModule } from 'primeng/calendar';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { SelectModule } from 'primeng/select';
 import { CalendarEvent } from 'src/app/models/calendar.model';
 import { Funnel } from 'src/app/models/crm.model';
 import { Entity } from 'src/app/models/entity.model';
@@ -34,7 +35,7 @@ import { ReportService } from 'src/app/services/report.service';
     DividerModule,
     CalendarModule,
     MultiSelectModule,
-    DropdownModule,
+    SelectModule,
     ButtonModule
   ],
   templateUrl: './report-view.component.html',

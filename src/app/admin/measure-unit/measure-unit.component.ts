@@ -8,6 +8,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
+import { PopoverModule } from 'primeng/popover';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -31,7 +32,7 @@ import { MeasureUnitService } from 'src/app/services/measure-unit.service';
     ToastModule,
     ConfirmDialogModule,
     PanelModule,
-    OverlayPanelModule,
+    PopoverModule,
     ButtonModule,
     TableModule,
     ToggleButtonModule,

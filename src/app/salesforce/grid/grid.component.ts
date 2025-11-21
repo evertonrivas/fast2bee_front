@@ -28,6 +28,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TableModule } from 'primeng/table';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
+import { SelectModule } from 'primeng/select';
 
 export interface SelectedImg{
   [index:number]:string
@@ -44,7 +45,7 @@ export interface SelectedColor{
     CommonModule,
     FormsModule,
     DataViewModule,
-    DropdownModule,
+    SelectModule,
     ImageModule,
     CheckboxModule,
     ButtonModule,

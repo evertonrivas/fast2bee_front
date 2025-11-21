@@ -2,8 +2,8 @@
     <ng-template pTemplate="content">
         <div class="flex flex-column mb-2">
             <label class="mb-2">Tipo do Evento</label>
-            <p-dropdown  appendTo="body" [options]="eventTypes" placeholder="Selecone o evento..." [showClear]="true" optionLabel="name" optionValue="id" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !selectedEventType.id}" [(ngModel)]="selectedEventType.id">
-            </p-dropdown>
+            <p-select  appendTo="body" [options]="eventTypes" placeholder="Selecone o evento..." [showClear]="true" optionLabel="name" optionValue="id" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !selectedEventType.id}" [(ngModel)]="selectedEventType.id">
+            </p-select>
         </div>
         <div class="flex flex-column mb-2">
             <label class="mb-2">Nome</label>

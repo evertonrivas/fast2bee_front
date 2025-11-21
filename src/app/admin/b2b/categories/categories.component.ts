@@ -15,11 +15,12 @@ import { FormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { PanelModule } from 'primeng/panel';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
     selector: 'app-categories',
@@ -37,12 +38,13 @@ import { CommonModule } from '@angular/common';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
       CommonModule,
+      InputTextModule
 ]
 })
 export class CategoriesComponent extends Common implements AfterViewInit, OnDestroy{

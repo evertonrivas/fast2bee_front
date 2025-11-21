@@ -27,6 +27,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DialogModule } from 'primeng/dialog';
 import { CnpjCpfPipe } from 'src/app/pipes/cnpj-cpf.pipe';
 import { EntityTypePipe } from 'src/app/pipes/entity-type.pipe';
+import { PopoverModule } from 'primeng/popover';
 
 @Component({
     selector: 'app-entities',
@@ -44,7 +45,7 @@ import { EntityTypePipe } from 'src/app/pipes/entity-type.pipe';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,

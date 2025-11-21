@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PaginatorModule } from 'primeng/paginator';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
@@ -25,7 +24,6 @@ import { CalendarService } from 'src/app/services/calendar.service';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,

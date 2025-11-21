@@ -61,7 +61,7 @@
 <p-dialog [visible]="showDialog" header="Nova devolução" [closable]="false" [draggable]="false" [modal]="true" [style]="{ width: '90vw'}">
     <div class="flex flex-column w-full mb-2">
         <label class="mb-2">Pedido</label>
-        <p-dropdown appendTo="body" emptyMessage="Nenhum pedido finalizado encontrado" [filter]="true" [options]="allOrders" [(ngModel)]="selectedOrder" styleClass="w-full" panelStyleClass="w-full" placeholder="Selecione o pedido desejado..." (ngModelChange)="loadOrder()">
+        <p-select appendTo="body" emptyMessage="Nenhum pedido finalizado encontrado" [filter]="true" [options]="allOrders" [(ngModel)]="selectedOrder" styleClass="w-full" panelStyleClass="w-full" placeholder="Selecione o pedido desejado..." (ngModelChange)="loadOrder()">
             <ng-template pTemplate="selectedItem">
                 <div class="flex flex-row" *ngIf="selectedOrder">
                     {{selectedOrder.id_order}} - {{selectedOrder.date_created}}
@@ -72,7 +72,7 @@
                     {{order.id_order}} - {{order.date_created}}
                 </div>
             </ng-template>
-        </p-dropdown>
+        </p-select>
     </div>
     <div class="flex flex-column w-full mb-2" *ngIf="localOrder">
         <p-table 
@@ -106,7 +106,7 @@
                     <td>{{item.quantity}}</td>
                     <td>{{item.price}}</td>
                     <td>{{item.discount}}</td>
-                    <td><p-dropdown 
+                    <td><p-select 
                         placeholder="Selecione..." 
                         [options]="allReasons" 
                         optionLabel="description" 
@@ -114,7 +114,7 @@
                         [(ngModel)]="selectedReason[item.id_order_product]"
                         styleClass="w-full"
                         [ngClass]="{'ng-invalid ng-dirty' : hasSended && (selectedReason[item.id_order_product].id == 0 && !selectedProduct[item.id_order_product])}"
-                        ></p-dropdown></td>
+                        ></p-select></td>
                     <td><p-inputNumber 
                         [disabled]="selectedProduct[item.id_order_product]" 
                         [showButtons]="true" 

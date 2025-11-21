@@ -25,6 +25,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
 import { DevolutionStatusPipe } from 'src/app/pipes/devolution-status.pipe';
+import { SelectModule } from 'primeng/select';
 
 export interface canUploadProduct{
   [index:string]:boolean
@@ -57,7 +58,7 @@ export interface quantityProduct{
     FileUploadModule,
     TagModule,
     DialogModule,
-    DropdownModule,
+    SelectModule,
     InputNumberModule,
     TooltipModule,
     DevolutionStatusPipe

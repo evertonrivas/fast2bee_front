@@ -95,14 +95,14 @@
                 <td>{{item.reason}}</td>
                 <td>&nbsp;</td>
                 <td>
-                    <p-dropdown
+                    <p-select
                         appendTo="body"
                         styleClass="p-inputtext-sm"
                         placeholder="Selecione..."
                         [options]="[{ label:'Aprovado',value:'Y' },{ label:'Recusado', value:'N' }]"
                         [(ngModel)]="selectedStatus[item.id_devolution_item]"
                         [ngClass]="{'ng-invalid ng-dirty' : hasSended && selectedStatus[item.id_devolution_item] == ''}"
-                    ></p-dropdown>
+                    ></p-select>
                 </td>
             </tr>
         </ng-template>

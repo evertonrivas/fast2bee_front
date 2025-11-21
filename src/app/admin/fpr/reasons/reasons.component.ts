@@ -20,6 +20,7 @@ import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { PopoverModule } from 'primeng/popover';
 
 @Component({
     selector: 'app-reasons',
@@ -37,7 +38,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,

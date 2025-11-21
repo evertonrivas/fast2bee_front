@@ -33,8 +33,6 @@
               "src/assets"
             ],
             "styles": [
-              "primeng/resources/themes/lara-light-amber/theme.css",
-              "primeng/resources/primeng.min.css",
               "primeflex/primeflex.css",
               "src/assets/styles/layout/layout.scss",
               "primeicons/primeicons.css",
@@ -122,10 +120,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "frontend:build:production"
+              "buildTarget": "frontend:build:production"
             },
             "development": {
-              "browserTarget": "frontend:build:development"
+              "buildTarget": "frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -133,7 +131,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "frontend:build"
+            "buildTarget": "frontend:build"
           }
         },
         "test": {
@@ -150,9 +148,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/primeng/resources/themes/lara-light-indigo/theme.css",
-              "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeflex/primeflex.css",
+              "primeflex/primeflex.css",
               "assets/styles/layout/layout.scss",
               "primeicons/primeicons.css",
               "quill/dist/quill.snow.css",

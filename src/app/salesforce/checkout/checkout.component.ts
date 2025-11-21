@@ -9,6 +9,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { SelectModule } from 'primeng/select';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { Common } from 'src/app/classes/common';
@@ -28,7 +29,7 @@ import { IndicatorsService } from 'src/app/services/indicators.service';
     CommonModule,
     FormsModule,
     ButtonModule,
-    DropdownModule,
+    SelectModule,
     ConfirmDialogModule,
     ToastModule,
     DialogModule,

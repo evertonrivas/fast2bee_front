@@ -34,6 +34,9 @@ import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
+import { PopoverModule } from 'primeng/popover';
+import { SelectModule } from 'primeng/select';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-product-stock',
@@ -44,17 +47,18 @@ import { DialogModule } from 'primeng/dialog';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
       MultiSelectModule,
-      DropdownModule,
+      SelectModule,
       CommonModule,
       CheckboxModule,
       InputNumberModule,
       DialogModule,
+      InputTextModule
 ],
   templateUrl: './product-stock.component.html',
   styleUrl: './product-stock.component.scss',

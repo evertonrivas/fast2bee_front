@@ -11,55 +11,55 @@
             [title]="(!sysconfig.use_company_custom?'Fast2Bee':sysconfig.company_name)"
             height="30" class="mr-4">
     </a>
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button" *ngIf="module==modules.ADM || module==modules.B2B" [pTooltip]="module==modules.ADM?'Exibir/Ocultar Menu':'Exibir/Ocultar Filtros'" tooltipPosition="bottom" tooltipStyleClass="text-xs" (click)="onMenu()">
+    <p-button #menubutton [text]="true" class="layout-menu-button layout-topbar-button" *ngIf="module==modules.ADM || module==modules.B2B" [pTooltip]="module==modules.ADM?'Exibir/Ocultar Menu':'Exibir/Ocultar Filtros'" tooltipPosition="bottom" tooltipStyleClass="text-xs" (click)="onMenu()">
         <i class="material-symbols-outlined">menu</i>
-    </button>
-    <button *ngIf="module==modules.ORD || module==modules.SCM" class="p-link layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/dashboard']" pTooltip="Dashboard" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+    </p-button>
+    <p-button *ngIf="module==modules.ORD || module==modules.SCM" [text]="true" class="layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/dashboard']" pTooltip="Dashboard" tooltipPosition="bottom" tooltipStyleClass="text-xs">
         <i class="material-symbols-outlined">dashboard</i>
-    </button>
-    <button *ngIf="module==modules.SCM || module==modules.CRM || module==modules.ADM" class="p-link layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/reports']" pTooltip="Relatórios" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+    </p-button>
+    <p-button [text]="true" *ngIf="module==modules.SCM || module==modules.CRM || module==modules.ADM" class="layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/reports']" pTooltip="Relatórios" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i class="material-symbols-outlined">picture_as_pdf</i>
-        </button>
+        </p-button>
     <!-- Modulo Calendário -->
     <ng-container *ngIf="module==modules.SCM">
-        <button class="p-link layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/gantt']" pTooltip="Calendário" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+        <p-button [text]="true" class="layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/gantt']" pTooltip="Calendário" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i class="material-symbols-outlined">calendar_month</i>
-        </button>
-        <button *ngIf="sysconfig.flimv_model=='S'" routerLinkActive="active-route" class="p-link layout-topbar-button" [routerLink]="[modulePath+'/flimv']" pTooltip="FLIMV" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+        </p-button>
+        <p-button [text]="true" *ngIf="sysconfig.flimv_model=='S'" routerLinkActive="active-route" class="layout-topbar-button" [routerLink]="[modulePath+'/flimv']" pTooltip="FLIMV" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i class="material-symbols-outlined">military_tech</i>
-        </button>
-        <button class="p-link layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/comission']" pTooltip="Metas e Comissões" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+        </p-button>
+        <p-button [text]="true" class="layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/comission']" pTooltip="Metas e Comissões" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i class="material-symbols-outlined">account_balance_wallet</i>
-        </button>
+        </p-button>
     </ng-container>
     <!-- Modulo CRM -->
     <ng-container *ngIf="module==modules.CRM">
-        <button class="p-link layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/kanban']" pTooltip="Kanban" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+        <p-button [text]="true" class="layout-topbar-button" routerLinkActive="active-route" [routerLink]="[modulePath+'/kanban']" pTooltip="Kanban" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i class="material-symbols-outlined">view_kanban</i>
-        </button>
+        </p-button>
     </ng-container>
 
     <ng-container *ngIf="module==modules.FPR">
-        <button class="p-link layout-topbar-button" routerLinkActive="active-route" pTooltip="Devoluções" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/process']">
+        <p-button [text]="true" class="layout-topbar-button" routerLinkActive="active-route" pTooltip="Devoluções" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/process']">
             <i class="material-symbols-outlined">deployed_code_update</i>
             <label>Devoluções</label>
-        </button>
+        </p-button>
     </ng-container>
 
     <ng-container *ngIf="module==modules.ORD">
-        <button class="p-link layout-topbar-button" routerLinkActive="active-route" pTooltip="Gestor de Pedidos" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/management']">
+        <p-button [text]="true" class="layout-topbar-button" routerLinkActive="active-route" pTooltip="Gestor de Pedidos" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/management']">
             <i class="material-symbols-outlined">dvr</i>
             <label>Pedidos</label>
-        </button>
+        </p-button>
     </ng-container>
 
-    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="showProfileSidebar()">
+    <p-button [text]="true" #topbarmenubutton class="layout-topbar-menu-button layout-topbar-button" (click)="showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
-    </button>
+    </p-button>
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active':profileSidebarVisible}">
         <div *ngIf="module==modules.ADM" class="mt-2 justify-content-end vertical-align-baseline pl-2"><a href="javascript:void(0)" [routerLink]="[modulePath+'/version/'+envconfig.version]">v. {{envconfig.version}}</a></div>
-        <p-overlayPanel #p_module>
+        <p-popover #p_module>
             <ng-template pTemplate="content">
                 <div class="flex flex-column w-full">
                     <span *ngIf="module!=modules.ADM && level_access==levels.ADMIN" class="p-2"><a href="javascript:void(0);" [routerLink]="['/admin']">Adminstrativo</a></span>
@@ -71,47 +71,47 @@
                     <!-- <span *ngIf="module!=modules.MPG" class="p-2"><a href="javascript:void(0);" [routerLink]="['/marketing']">MPG - Marketing</a></span> -->
                 </div>
             </ng-template>
-        </p-overlayPanel>
-        <button class="p-link layout-topbar-button" *ngIf="level_access==levels.ADMIN || level_access==levels.REPR" pTooltip="Trocar módulo" tooltipPosition="bottom" tooltipStyleClass="text-xs"  (click)="p_module.toggle($event)">
+        </p-popover>
+        <p-button [text]="true" class="layout-topbar-button" *ngIf="level_access==levels.ADMIN || level_access==levels.REPR" pTooltip="Trocar módulo" tooltipPosition="bottom" tooltipStyleClass="text-xs"  (click)="p_module.toggle($event)">
             <i class="material-symbols-outlined">apps</i>
             <label>Trocar módulo</label>
-        </button>
+        </p-button>
         <ng-container *ngIf="module==modules.B2B" >
-            <button class="p-link layout-topbar-button" pTooltip="Histórico" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/history']">
+            <p-button [text]="true" class="layout-topbar-button" pTooltip="Histórico" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/history']">
                 <i class="material-symbols-outlined">work_history</i>
                 <label>Histórico</label>
-            </button>
-            <button *ngIf="level_access==levels.ISTORE" class="p-link layout-topbar-button" pTooltip="Sugestão de pedido usando I.A" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/order']">
+            </p-button>
+            <p-button [text]="true" *ngIf="level_access==levels.ISTORE" class="layout-topbar-button" pTooltip="Sugestão de pedido usando I.A" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/order']">
                 <i class="material-symbols-outlined">network_intelligence_update</i>
                 <label>Sugestão I.A</label>
-            </button>
-            <button class="p-link layout-topbar-button" pTooltip="Devoluções" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/devolution']">
+            </p-button>
+            <p-button [text]="true" class="layout-topbar-button" pTooltip="Devoluções" tooltipPosition="bottom" tooltipStyleClass="text-xs" [routerLink]="[modulePath+'/devolution']">
                 <i class="material-symbols-outlined" pBadge severity="info" styleClass="text-xs" [value]="totalDevolution" [badgeDisabled]="totalDevolution==0?true:false">deployed_code_update</i>
                 <label>Devoluções</label>
-            </button>
-            <button class="p-link layout-topbar-button" pTooltip="Produtos do Pedido" tooltipPosition="bottom" tooltipStyleClass="text-xs" (click)="onCart()">
+            </p-button>
+            <p-button [text]="true" class="layout-topbar-button" pTooltip="Produtos do Pedido" tooltipPosition="bottom" tooltipStyleClass="text-xs" (click)="onCart()">
                 <i class="material-symbols-outlined" pBadge [value]="totalInCart" severity="warn" styleClass="text-xs">shopping_cart</i>
                 <label>Pedido</label>
-            </button>
+            </p-button>
         </ng-container>
-        <p-overlayPanel #msgs>
+        <p-popover #msgs>
             <ng-template pTemplate="content">
                 Teste de mensagem
             </ng-template>
-        </p-overlayPanel>
+        </p-popover>
         <!-- botao que serah habilitado no futuro -->
-        <!-- <button class="p-link layout-topbar-button" pTooltip="Verificar mensagens" (click)="msgs.toggle($event)" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+        <!-- <button class="layout-topbar-button" pTooltip="Verificar mensagens" (click)="msgs.toggle($event)" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i *ngIf="module!=modules.B2B" class="material-symbols-outlined" pBadge value="{{totalMessages}}" severity="danger">mail</i>
             <i *ngIf="module==modules.B2B" class="material-symbols-outlined" pBadge severity="danger">mail</i>
         </button> -->
-        <!-- <button class="p-link layout-topbar-button" pTooltip="Editar Perfil" [routerLink]="[modulePath+'/profile']" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+        <!-- <button class="layout-topbar-button" pTooltip="Editar Perfil" [routerLink]="[modulePath+'/profile']" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i class="material-symbols-outlined">person</i>
             <label>Perfil</label>
         </button> -->
-        <button class="p-link layout-topbar-button" pTooltip="Sair do Sistema" (click)="onLogoff()" tooltipPosition="bottom" tooltipStyleClass="text-xs">
+        <p-button [text]="true" class="layout-topbar-button" pTooltip="Sair do Sistema" (click)="onLogoff()" tooltipPosition="bottom" tooltipStyleClass="text-xs">
             <i class="material-symbols-outlined">logout</i>
             <label>Sair</label>
-        </button>
+        </p-button>
     </div>
 </div>
 <p-toast key="sessionRenew"></p-toast>

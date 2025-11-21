@@ -24,6 +24,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { SidebarModule } from 'primeng/sidebar';
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 export interface filterParams{
   rule:any|undefined
@@ -49,14 +51,15 @@ export interface filterParams{
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
       SidebarModule,
       DropdownModule,
-      CommonModule
+      CommonModule,
+      InputTextModule
 ]
 })
 export class CustomerGroupsComponent extends Common implements AfterViewInit{

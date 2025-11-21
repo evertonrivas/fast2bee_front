@@ -15,11 +15,12 @@ import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { PanelModule } from 'primeng/panel';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
     selector: 'app-table-prices',
@@ -37,12 +38,13 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
       ToastModule,
       ConfirmDialogModule,
       PanelModule,
-      OverlayPanelModule,
+      PopoverModule,
       ButtonModule,
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
-      CommonModule
+      CommonModule,
+      InputTextModule
 ]
 })
 export class TablePricesComponent extends Common implements AfterViewInit{

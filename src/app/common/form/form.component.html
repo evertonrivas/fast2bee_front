@@ -10,7 +10,7 @@
                     <p-inputIcon *ngIf="loadingPC" styleClass="pi pi-spinner pi-spin" />
                     <input *ngIf="field.type==fieldType.POSTAL_CODE" mask="00.000-000" pInputText [placeholder]="field.placeholder!=undefined?field.placeholder:''" [(ngModel)]="field.value" [ngClass]="field.case==fieldCase.UPPER?'uppercase':(field.case==fieldCase.LOWER?'lowercase':'')" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}" (ngModelChange)="getPostalCode($event,field.dependent)">
                 </p-iconField>
-                <textarea *ngIf="field.type==fieldType.TEXT" rows="5" pInputTextarea [(ngModel)]="field.value"  [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}" class="w-full"></textarea>
+                <textarea *ngIf="field.type==fieldType.TEXT" rows="5" pTextarea [(ngModel)]="field.value"  [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}" class="w-full"></textarea>
                 <p-iconField iconPosition="right" *ngIf="field.type==fieldType.BARCODE" class="w-full">
                     <p-inputIcon styleClass="pi pi-barcode"/>
                     <input class="w-full" pInputText [placeholder]="field.placeholder!=undefined?field.placeholder:''" [(ngModel)]="field.value" [ngClass]="field.case==fieldCase.UPPER?'uppercase':(field.case==fieldCase.LOWER?'lowercase':'')" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}">
@@ -27,13 +27,13 @@
                 <p-inputNumber *ngIf="field.type==fieldType.MONEY" mode="currency" currency="BRL" locale="pt-BR" styleClass="w-full" inputStyleClass="w-full" [placeholder]="field.placeholder!=undefined?field.placeholder:''" [(ngModel)]="field.value" [ngClass]="field.case==fieldCase.UPPER?'uppercase':(field.case==fieldCase.LOWER?'lowercase':'')" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}"></p-inputNumber>
                 <p-inputNumber *ngIf="field.type==fieldType.NUMBER" [(ngModel)]="field.value" [showButtons]="true" [min]="0" styleClass="w-full" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}"></p-inputNumber>
                 <p-calendar *ngIf="field.type==fieldType.DATE" dateFormat="dd/mm/yyyy" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}"></p-calendar>
-                <p-overlayPanel #pnlIcons appendTo="body">
+                <p-popover #pnlIcons appendTo="body">
                     <ng-template pTemplate="content">
                         <div class="flex flex-wrap gap-1 w-21rem max-w-21rem">
                             <a *ngFor="let icon of icons" href="javascript:void(0)" (click)="setIcon(icon,field)" style="color: #666666!important;"><i class="material-symbols-outlined gap-1">{{icon}}</i></a>
                         </div>
                     </ng-template>
-                </p-overlayPanel>
+                </p-popover>
                 <div class="flex flex-row gap-2 vertical-align-baseline">
                     <p-button *ngIf="field.type==fieldType.ICON" icon="pi pi-emoticon" (onClick)="pnlIcons.toggle($event)"></p-button>
                     <i *ngIf="field.type==fieldType.ICON" class="material-symbols-outlined">{{field.value}}</i>
@@ -51,7 +51,7 @@
                     dateFormat="dd/mm/yyyy"
                     [disabled]="field.disabled"
                     [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}"></p-calendar>
-                <p-dropdown *ngIf="field.type==fieldType.COMBO" 
+                <p-select *ngIf="field.type==fieldType.COMBO" 
                     [options]="field.options" 
                     optionLabel="label"
                     appendTo="body" 
@@ -66,7 +66,7 @@
                     <ng-template pTemplate="selectedItem">
                         {{field.value.label}}
                     </ng-template>
-                </p-dropdown>
+                </p-select>
                 <p-multiSelect *ngIf="field.type==fieldType.MCOMBO" 
                     [options]="field.options" 
                     [(ngModel)]="field.value" 
@@ -84,7 +84,7 @@
                     <p-colorPicker [(ngModel)]="field.value" styleClass="mt-2" appendTo="body"></p-colorPicker>
                     <input pInputText [(ngModel)]="field.value" [ngClass]="'w-full uppercase ' + (field.case==fieldCase.UPPER?'uppercase':(field.case==fieldCase.LOWER?'lowercase':''))">
                 </div>
-                <p-dropdown panelStyleClass="kcolor" *ngIf="field.type==fieldType.KCOLOR"
+                <p-select panelStyleClass="kcolor" *ngIf="field.type==fieldType.KCOLOR"
                     [options]="kcolors"
                     optionLabel="label"
                     appendTo="body" 
@@ -106,7 +106,7 @@
                     <ng-template pTemplate="item" let-color>
                         <div [style]="{'background-color': color.value, 'padding':'0.75rem 1.05rem' }">&nbsp;</div>
                     </ng-template>
-                </p-dropdown>
+                </p-select>
                 <p-checkbox *ngIf="field.type==fieldType.CHECK" [(ngModel)]="field.value" [binary]="true" [ariaLabel]="field.label" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}"></p-checkbox>
                 <div class="flex flex-row gap-2 mt-2" *ngIf="field.type==fieldType.RADIO">
                     <div class="flex" *ngFor="let opt of field.options">

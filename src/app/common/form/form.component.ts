@@ -14,14 +14,15 @@ import { Cep } from 'src/app/models/entity.model';
 import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
-import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { SelectModule } from 'primeng/select';
+import { PopoverModule } from 'primeng/popover';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-form',
@@ -30,7 +31,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CommonModule,
     DialogModule,
     CheckboxModule,
-    OverlayPanelModule,
+    PopoverModule,
     FormsModule,
     PasswordModule,
     ColorPickerModule,
@@ -39,10 +40,12 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     TextareaModule,
     ButtonModule,
     CalendarModule,
-    DropdownModule,
+    SelectModule,
     MultiSelectModule,
     InputNumberModule,
-    RadioButtonModule
+    RadioButtonModule,
+    InputTextModule,
+    TextareaModule
 ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',

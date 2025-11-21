@@ -13,6 +13,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
+import { SelectModule } from 'primeng/select';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-filter',
@@ -22,12 +24,13 @@ import { CheckboxModule } from 'primeng/checkbox';
     CommonModule,
     InputNumberModule,
     CalendarModule,
-    DropdownModule,
+    SelectModule,
     FormsModule,
     MultiSelectModule,
     RadioButtonModule,
     ButtonModule,
-    CheckboxModule
+    CheckboxModule,
+    InputTextModule
   ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss'

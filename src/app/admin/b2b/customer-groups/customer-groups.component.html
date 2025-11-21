@@ -9,16 +9,16 @@
                 <label class="p-panel-title">Grupos de Clientes</label>
             </div>
             <div class="flex flex-row gap-1">
-                <p-overlayPanel #pnlMassive>
+                <p-popover #pnlMassive>
                     <ng-template pTemplate="content">
                         <h5>Alteração em Massa</h5>
                     </ng-template>
-                </p-overlayPanel>
-                <p-button [disabled]="disabledNew" icon="pi pi-plus" [severity]="'success'" styleClass="p-button-sm" pTooltip="Novo registro" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onEditData()"></p-button>
-                <p-button *ngIf="!isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-trash" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Arquivar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(true)"></p-button>
-                <p-button *ngIf="isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-restore-from-trash icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Restaurar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(false)"></p-button>
+                </p-popover>
+                <p-button [rounded]="true" [disabled]="disabledNew" icon="pi pi-plus" [severity]="'success'" styleClass="p-button-sm" pTooltip="Novo registro" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onEditData()"></p-button>
+                <p-button [rounded]="true" *ngIf="!isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-trash" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Arquivar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(true)"></p-button>
+                <p-button [rounded]="true" *ngIf="isTrash" [disabled]="tableSelected.length>0?false:true" icon="pi pi-restore-from-trash icon-xsmall" [severity]="'danger'" styleClass="p-button-sm" pTooltip="Restaurar selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="onDataDelete(false)"></p-button>
                 <!-- <p-button [disabled]="tableSelected.length>0?false:true" icon="pi pi-massive-actions icon-xsmall" [severity]="'help'" styleClass="p-button-sm" pTooltip="Ações Massivas" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="pnlMassive.toggle($event)"></p-button> -->
-                <p-button icon="pi pi-filter" [severity]="'warn'" styleClass="p-button-sm" pTooltip="Filtro(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showFilter()"></p-button>
+                <p-button [rounded]="true" icon="pi pi-filter" [severity]="'warn'" styleClass="p-button-sm" pTooltip="Filtro(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showFilter()"></p-button>
                 <p-toggleButton [onIcon]="'pi pi-deleted icon-xsmall'" [offIcon]="'pi pi-deleted icon-xsmall'" styleClass="p-button-sm" pTooltip="Listar arquivado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" [(ngModel)]="isTrash" (onChange)="loadingData({page:0,pageCount:0},isTrash)"></p-toggleButton>
             </div>
         </div>
@@ -47,7 +47,7 @@
                         <p-button [text]="true" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" tooltipStyleClass="text-sm" (onClick)="onEditData(item.id)"></p-button>
                         <p-button [text]="true" icon="pi pi-customer-group icon-small" pTooltip="Adicionar Clientes" tooltipPosition="top" tooltipStyleClass="text-sm" (onClick)="onEditCustomers(item.id)"></p-button>
                         <p-button [text]="true" icon="pi pi-eye" pTooltip="Ver Clientes" tooltipPosition="top" tooltipStyleClass="text-sm" (onClick)="customerView.toggle($event)"></p-button>
-                        <p-overlayPanel #customerView (onShow)="onViewCustomers({page:0,pageCount:0},item.id)" styleClass="w-30rem" (onHide)="onHideCustomers()">
+                        <p-popover #customerView (onShow)="onViewCustomers({page:0,pageCount:0},item.id)" styleClass="w-30rem" (onHide)="onHideCustomers()">
                             <p-table styleClass="p-datatable-sm p-datatable-striped"
                             [value]="customersInGroup.data"
                             [loading]="loadingCustomers"
@@ -81,7 +81,7 @@
                                 [showFirstLastIcon]="false"
                                 >
                             </p-paginator>
-                        </p-overlayPanel>
+                        </p-popover>
                     </td>
                     <td>{{item.name}}</td>
                     <td>{{item.id_representative!=null?item.representative:'SEM REPRESENTAÇÃO'}}</td>

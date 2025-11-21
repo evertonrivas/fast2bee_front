@@ -101,7 +101,7 @@
         <div class="flex flex-column">
             <!-- &nbsp;&nbsp;<p-tag [severity]="getSeverity(selectedOrder.status)">{{selectedOrder.status | orderStatus}}</p-tag> -->
             <label class="mb-2 font-bold">Status: </label>
-            <p-dropdown
+            <p-select
                 [disabled]="finished"
                 [options]="all_order_status"
                 [(ngModel)]="selectedOrder.status"
@@ -113,18 +113,18 @@
                 <ng-template pTemplate="item" let-status>
                     {{status | orderStatus}}
                 </ng-template>
-            </p-dropdown>
+            </p-select>
         </div>
         <div class="flex flex-column">
             <label class="mb-2 font-bold">Transportadora</label>
-            <p-dropdown
+            <p-select
             [disabled]="finished"
             [options]="track_companies"
             styleClass="p-inputtext-sm"
             appendTo="body"
             [(ngModel)]="selectedOrder.track_company"
             placeholder="Selecione...">
-            </p-dropdown>
+            </p-select>
         </div>
         <div class="flex flex-column">
             <label class="mb-2 font-bold">Nota Fiscal</label>
