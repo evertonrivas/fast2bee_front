@@ -1,12 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input,OnChanges, SimpleChanges } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PaginatorModule } from 'primeng/paginator';
 import { Common } from 'src/app/classes/common';
+
 import { RequestResponse } from 'src/app/models/paginate.model';
-import { CrmService } from 'src/app/services/crm.service';
+import { CustomerActionPipe } from 'src/app/pipes/customer-action.pipe';
 import { EntitiesService } from 'src/app/services/entities.service';
 
 @Component({
   selector: 'app-customer-history',
+  standalone: true,
+  imports:[
+    CommonModule,
+    PaginatorModule,
+    FormsModule,
+    CustomerActionPipe
+  ],
   templateUrl: './customer-history.component.html',
   styleUrls: ['./customer-history.component.scss']
 })

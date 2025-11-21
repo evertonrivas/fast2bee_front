@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { EntitiesService } from 'src/app/services/entities.service';
 import { FilterComponent } from "../../common/filter/filter.component";
-import { FieldCase, FieldType, FileType } from 'src/app/models/system.enum';
+import { EntityType, FieldCase, FieldType, FileType } from 'src/app/models/system.enum';
 import { FormComponent } from 'src/app/common/form/form.component';
 import { Entity } from 'src/app/models/entity.model';
 import { FieldOption, FormField } from 'src/app/models/field.model';
@@ -16,6 +16,17 @@ import { LocationService } from 'src/app/services/location.service';
 import { City, Country, StateRegion } from 'src/app/models/place.model';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpHeaders } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DialogModule } from 'primeng/dialog';
+import { CnpjCpfPipe } from 'src/app/pipes/cnpj-cpf.pipe';
+import { EntityTypePipe } from 'src/app/pipes/entity-type.pipe';
 
 @Component({
     selector: 'app-entities',
@@ -27,12 +38,23 @@ import { HttpHeaders } from '@angular/common/http';
     templateUrl: './entities.component.html',
     styleUrl: './entities.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent,
-        FileUploadModule
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      FileUploadModule,
+      DialogModule,
+      CnpjCpfPipe,
+      EntityTypePipe,
+      CommonModule
+]
 })
 
 export class EntitiesComponent extends Common implements AfterViewInit{

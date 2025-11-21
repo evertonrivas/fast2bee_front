@@ -1,12 +1,13 @@
 import { Component,AfterContentInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Common } from 'src/app/classes/common';
+import { CommonModule } from '@angular/common';
 import { CrmService } from 'src/app/services/crm.service';
-import { ConfirmationService, MenuItem, Message, MessageService } from 'primeng/api';
+import { ConfirmationService, MenuItem, ToastMessageOptions, MessageService } from 'primeng/api';
 import { Funnel, FunnelStage } from 'src/app/models/crm.model';
 import { DataOrder, DataSearch } from 'src/app/models/system.enum';
-import { Entity, EntityContact, EntityNotification, EntityWeb } from 'src/app/models/entity.model';
-import { Dropdown, DropdownChangeEvent } from 'primeng/dropdown';
+import { Entity, EntityContact } from 'src/app/models/entity.model';
+import { Dropdown, DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
 import { Checkbox } from 'src/app/models/checkbox.model';
 import { HttpHeaders } from '@angular/common/http';
 import { CustomerEmailComponent } from './customer-email/customer-email.component';
@@ -15,7 +16,25 @@ import { Options, RequestResponse, ResponseError } from 'src/app/models/paginate
 import { UserService } from 'src/app/services/user.service';
 import { City, StateRegion } from 'src/app/models/place.model';
 import { LocationService } from 'src/app/services/location.service';
-import { OverlayPanel } from 'primeng/overlaypanel';
+import { OverlayPanel, OverlayPanelModule } from 'primeng/overlaypanel';
+import { CustomerDataComponent } from './customer-data/customer-data.component';
+
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { MenuModule } from 'primeng/menu';
+import { DividerModule } from 'primeng/divider';
+import { CustomerHistoryComponent } from './customer-history/customer-history.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import { CheckboxModule } from 'primeng/checkbox';
+import { TooltipModule } from 'primeng/tooltip';
+import { PaginatorModule } from 'primeng/paginator';
+import { SidebarModule } from 'primeng/sidebar';
+import { DialogModule } from 'primeng/dialog';
+import { TableModule } from 'primeng/table';
 
 export interface filterParams{
   rule:any|undefined
@@ -27,9 +46,34 @@ export interface filterParams{
 
 @Component({
   selector: 'app-kanban',
+  standalone: true,
   templateUrl: './kanban.component.html',
   styleUrls: ['./kanban.component.scss'],
-  providers:[MessageService,ConfirmationService]
+  providers:[MessageService,ConfirmationService],
+  imports:[
+    CommonModule,
+    FormsModule,
+    ToastModule,
+    DropdownModule,
+    ConfirmDialogModule,
+    ButtonModule,
+    OverlayPanelModule,
+    IconFieldModule,
+    InputIconModule,
+    MenuModule,
+    DividerModule,
+    CustomerHistoryComponent,
+    CustomerEmailComponent,
+    CustomerDataComponent,
+    FileUploadModule,
+    CheckboxModule,
+    TooltipModule,
+    PaginatorModule,
+    SidebarModule,
+    DialogModule,
+    TableModule,
+    
+]
 })
 export class KanbanComponent extends Common implements AfterContentInit{
   @ViewChild('funSel') funSel:Dropdown|null = null;
@@ -510,7 +554,7 @@ export class KanbanComponent extends Common implements AfterContentInit{
     this.stagesToMove = evt.value.stages as FunnelStage[];
   }
 
-  showMessage(msg:Message){
+  showMessage(msg:ToastMessageOptions){
     if(msg.closable){
       this.emailVisible   = false;
       this.infoVisible    = false;

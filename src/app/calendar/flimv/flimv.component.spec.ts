@@ -8,8 +8,8 @@ describe('FlimvComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FlimvComponent]
-    });
+    imports: [FlimvComponent]
+});
     fixture = TestBed.createComponent(FlimvComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

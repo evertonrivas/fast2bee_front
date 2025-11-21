@@ -8,8 +8,8 @@ describe('MilestoneFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MilestoneFormComponent]
-    });
+    imports: [MilestoneFormComponent]
+});
     fixture = TestBed.createComponent(MilestoneFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

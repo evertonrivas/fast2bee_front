@@ -1,14 +1,12 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { OverlayPanel } from 'primeng/overlaypanel';
-import { PaginatorState } from 'primeng/paginator';
+import { OverlayPanel, OverlayPanelModule } from 'primeng/overlaypanel';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { forkJoin } from 'rxjs';
 import { Common } from 'src/app/classes/common';
 import { FilterComponent } from 'src/app/common/filter/filter.component';
-import { FormComponent } from 'src/app/common/form/form.component';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { Moment } from 'src/app/models/moment.model';
 import { FieldOption } from 'src/app/models/field.model';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
@@ -23,16 +21,41 @@ import { ProductTypeService } from 'src/app/services/product.type.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { SizeService } from 'src/app/services/size.service';
 import { StockService } from 'src/app/services/stock.service';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DropdownModule } from 'primeng/dropdown';
+import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-product-stock',
   standalone: true,
   imports: [
-    CommonModule,
-    SharedModule,
-    FilterComponent,
-    FormComponent
-  ],
+      FormsModule,
+      FilterComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      MultiSelectModule,
+      DropdownModule,
+      CommonModule,
+      CheckboxModule,
+      InputNumberModule,
+      DialogModule,
+],
   templateUrl: './product-stock.component.html',
   styleUrl: './product-stock.component.scss',
   providers:[MessageService, ConfirmationService]

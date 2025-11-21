@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FilterComponent } from "../../../common/filter/filter.component";
 import { CalendarService } from 'src/app/services/calendar.service';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
@@ -13,7 +13,15 @@ import { FormComponent } from 'src/app/common/form/form.component';
 import { CalendarEventType } from 'src/app/models/calendar.model';
 import { FieldOption, FormField, FormRow } from 'src/app/models/field.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @Component({
     selector: 'app-event-types',
@@ -25,12 +33,20 @@ import { PaginatorState } from 'primeng/paginator';
     templateUrl: './event-types.component.html',
     styleUrl: './event-types.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent,
-        TagModule
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      TagModule,
+      CommonModule
+]
 })
 export class EventTypesComponent extends Common implements AfterViewInit{
   localObject!:CalendarEventType;

@@ -6,8 +6,7 @@ import { EntityType } from 'src/app/models/entity.model';
 import { Router } from '@angular/router';
 import { AccessLevel, ModuleName } from 'src/app/models/system.enum';
 import { Common } from 'src/app/classes/common';
-import { formatCurrency } from '@angular/common';
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatCurrency } from '@angular/common';
 import { forkJoin } from 'rxjs';
 import { NgxEchartsModule, NGX_ECHARTS_CONFIG } from 'ngx-echarts';
 import { CardModule } from 'primeng/card';
@@ -30,9 +29,9 @@ import { ComissionService } from 'src/app/services/comission.service';
   ],
   imports:[
     CardModule,
-    CommonModule,
     CardComponent,
-    NgxEchartsModule
+    NgxEchartsModule,
+    CommonModule
   ],
   standalone: true
 })

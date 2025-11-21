@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
-import { SharedModule } from '../shared.module';
+
 import { CardModule } from 'primeng/card';
 import { TreeModule, TreeNodeSelectEvent } from 'primeng/tree';
 import { FormComponent } from '../form/form.component';
@@ -16,8 +15,6 @@ import { forkJoin } from 'rxjs';
   selector: 'app-report-manager',
   standalone: true,
   imports: [
-    CommonModule,
-    SharedModule,
     CardModule,
     TreeModule,
     FormComponent,

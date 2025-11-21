@@ -118,7 +118,7 @@
                     <td><p-inputNumber 
                         [disabled]="selectedProduct[item.id_order_product]" 
                         [showButtons]="true" 
-                        size="3" 
+                        [size]="'small'" 
                         min="0" 
                         [max]="item.quantity" 
                         [(ngModel)]="selectedQuantity[item.id_order_product]"

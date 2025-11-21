@@ -3,15 +3,23 @@ import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FilterComponent } from "../../../common/filter/filter.component";
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { TablePriceService } from 'src/app/services/table-price.service';
 import { FormComponent } from 'src/app/common/form/form.component';
 import { TablePrice } from 'src/app/models/table-price.model';
 import { FormField, FormRow } from 'src/app/models/field.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @Component({
     selector: 'app-table-prices',
@@ -23,11 +31,19 @@ import { FieldCase, FieldType } from 'src/app/models/system.enum';
     templateUrl: './table-prices.component.html',
     styleUrl: './table-prices.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      CommonModule
+]
 })
 export class TablePricesComponent extends Common implements AfterViewInit{
   localObject!:TablePrice;

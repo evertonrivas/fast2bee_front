@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FilterComponent } from "../../../common/filter/filter.component";
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { CrmService } from 'src/app/services/crm.service';
@@ -13,6 +12,15 @@ import { TagModule } from 'primeng/tag';
 import { Funnel, FunnelStage } from 'src/app/models/crm.model';
 import { FieldOption, FormField, FormRow } from 'src/app/models/field.model';
 import { FormComponent } from 'src/app/common/form/form.component';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { CommonModule, NgStyle } from '@angular/common';
 
 @Component({
     selector: 'app-funnel-stages',
@@ -24,12 +32,20 @@ import { FormComponent } from 'src/app/common/form/form.component';
     templateUrl: './funnel-stages.component.html',
     styleUrl: './funnel-stages.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent,
-        TagModule
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      TagModule,
+      CommonModule
+]
 })
 export class FunnelStagesComponent extends Common implements AfterViewInit{
   localObject!:FunnelStage;

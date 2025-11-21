@@ -1,15 +1,25 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { EntitiesService } from 'src/app/services/entities.service';
 import { SliderModule } from 'primeng/slider';
 import { Entity } from 'src/app/models/entity.model';
-import { DropdownChangeEvent } from 'primeng/dropdown';
+import { DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
 import { ComissionService } from 'src/app/services/comission.service';
 import { ResponseError } from 'src/app/models/paginate.model';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PaginatorModule } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 export interface f2bComission{
   [index:number]:number
@@ -23,10 +33,22 @@ export interface f2bTarget{
   selector: 'app-rep-comission',
   standalone: true,
   imports: [
-    CommonModule,
-    SharedModule,
-    SliderModule
-  ],
+    FormsModule,
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    OverlayPanelModule,
+    ButtonModule,
+    TableModule,
+    ToggleButtonModule,
+    PaginatorModule,
+    SliderModule,
+    InputNumberModule,
+    DropdownModule,
+    NgIf,
+    NgFor,
+    NgClass
+],
   templateUrl: './rep-comission.component.html',
   styleUrl: './rep-comission.component.scss',
   providers:[MessageService, ConfirmationService]

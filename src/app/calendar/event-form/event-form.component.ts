@@ -1,16 +1,47 @@
 import { Component,Input,OnDestroy,Output,EventEmitter, ViewChild, AfterViewInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { Dropdown } from 'primeng/dropdown';
+import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { Common } from 'src/app/classes/common';
 import { CalendarEvent, CalendarEventData, CalendarEventType } from 'src/app/models/calendar.model';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { MessageService } from 'primeng/api';
 import { MomentService } from 'src/app/services/moment.service';
 import { Moment } from 'src/app/models/moment.model';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PaginatorModule } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DialogModule } from 'primeng/dialog';
+import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { CalendarModule } from 'primeng/calendar';
+
 
 
 @Component({
   selector: 'app-event-form',
+  standalone: true,
+  imports:[
+      FormsModule,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      DialogModule,
+      DropdownModule,
+      NgClass,
+      NgIf,
+      CalendarModule,
+      NgStyle
+  ],
   templateUrl: './event-form.component.html',
   styleUrls: ['./event-form.component.scss']
 })

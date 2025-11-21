@@ -1,30 +1,49 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SharedModule } from '../shared.module';
-import { CommonModule } from '@angular/common';
+
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { FieldOption, FormField, FormRow } from 'src/app/models/field.model';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { PasswordModule } from 'primeng/password';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { HttpHeaders } from '@angular/common/http';
 import { provideNgxMask } from 'ngx-mask';
 import { SysService } from 'src/app/services/sys.service';
 import { Cep } from 'src/app/models/entity.model';
+import { CommonModule } from '@angular/common';
+import { DialogModule } from 'primeng/dialog';
+import { CheckboxModule } from 'primeng/checkbox';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [
     CommonModule,
-    SharedModule,
+    DialogModule,
+    CheckboxModule,
+    OverlayPanelModule,
+    FormsModule,
     PasswordModule,
     ColorPickerModule,
     IconFieldModule,
     InputIconModule,
-    InputTextareaModule
-  ],
+    TextareaModule,
+    ButtonModule,
+    CalendarModule,
+    DropdownModule,
+    MultiSelectModule,
+    InputNumberModule,
+    RadioButtonModule
+],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
   providers:[provideNgxMask()]
@@ -265,7 +284,7 @@ export class FormComponent {
     field.value = icon;
   }
 
-  getPostalCode(evt:EventEmitter<any>,dependents?:FormField[]){
+  getPostalCode(evt:any,dependents?:FormField[]){
     if(evt.length==8){
       this.loadingPC = true;
       this.sys.getPostalCode(evt.toString()).subscribe({

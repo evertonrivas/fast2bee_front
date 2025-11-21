@@ -8,8 +8,8 @@ describe('ReturnComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DevolutionComponent]
-    });
+    imports: [DevolutionComponent]
+});
     fixture = TestBed.createComponent(DevolutionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,15 +1,20 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { ChangeDetectorRef, Component,Input,OnChanges } from '@angular/core';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
 import { Card, FormatType, SubtitleCard } from 'src/app/models/card.model';
+import { ShortMoneyPipe } from 'src/app/pipes/short-money.pipe';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
-  imports: [SkeletonModule,CardModule,CommonModule,SharedModule],
+  imports: [
+    SkeletonModule, 
+    CardModule, 
+    CommonModule,
+    ShortMoneyPipe],
   providers: [CurrencyPipe],
   standalone:true,
 })

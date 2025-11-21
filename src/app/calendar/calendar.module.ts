@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CalendarRoutingModule } from './calendar-routing.module';
 import { CalendarComponent } from './calendar.component';
-import { SharedModule } from '../common/shared.module';
+
 import { SplitterModule } from 'primeng/splitter';
 import { EventComponent } from './event/event.component';
 import { MilestoneFormComponent } from './milestone-form/milestone-form.component';
@@ -17,24 +17,21 @@ import { SliderModule } from 'primeng/slider';
 import { TopbarComponent } from '../common/topbar/topbar.component';
 
 @NgModule({
-  declarations: [
-    CalendarComponent,
-    EventComponent,
-    MilestoneFormComponent,
-    EventFormComponent,
-    GanttComponent,
-    FlimvComponent
-  ],
   imports: [
+    FlimvComponent,
+    EventFormComponent,
+    MilestoneFormComponent,
+    EventComponent,
+    CalendarComponent,
+    GanttComponent,
     CommonModule,
     CalendarRoutingModule,
-    SharedModule,
     SplitterModule,
-    FormsModule, 
+    FormsModule,
     PCalendarModule,
     CascadeSelectModule,
     SliderModule,
     TopbarComponent
-  ]
+]
 })
 export class CalendarModule { }

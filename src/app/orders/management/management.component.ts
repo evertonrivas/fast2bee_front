@@ -1,9 +1,9 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { Common } from 'src/app/classes/common';
 import { Router } from '@angular/router';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { Order, OrderHistory } from 'src/app/models/order.model';
 import { OrderStatus } from 'src/app/models/system.enum';
@@ -11,16 +11,36 @@ import { B2bOrderService } from 'src/app/services/b2b.order.service';
 import { TimelineModule } from 'primeng/timeline';
 import { TagModule } from 'primeng/tag';
 import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import { ShortMoneyPipe } from 'src/app/pipes/short-money.pipe';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { OrderStatusPipe } from 'src/app/pipes/order-status.pipe';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
   imports: [
     CommonModule,
-    SharedModule,
     TimelineModule,
-    TagModule
-  ],
+    TagModule,
+    ToastModule,
+    PanelModule,
+    TableModule,
+    ButtonModule,
+    FormsModule,
+    ShortMoneyPipe,
+    PaginatorModule,
+    DialogModule,
+    DropdownModule,
+    OrderStatusPipe,
+    InputNumberModule
+],
   providers:[MessageService],
   templateUrl: './management.component.html',
   styleUrl: './management.component.scss'
@@ -101,9 +121,9 @@ export class ManagementComponent extends Common implements AfterViewInit{
     this.showDialog = true;
   }
 
-  getSeverity(status:number):"success" | "secondary" | "info" | "warning" | "danger" | "contrast" | undefined{
+  getSeverity(status:number):"success" | "secondary" | "info" | "warn" | "danger" | "contrast" | undefined{
     if(status==OrderStatus.SENDED){
-      return "warning";
+      return "warn";
     }else if(status==OrderStatus.PROCESSING){
       return "info";
     }else if(status==OrderStatus.TRANSPORTING){

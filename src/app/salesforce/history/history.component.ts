@@ -1,15 +1,40 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { TimelineModule } from 'primeng/timeline';
 import { Common } from 'src/app/classes/common';
+
 import { OrderHistory } from 'src/app/models/order.model';
 import { RequestResponse } from 'src/app/models/paginate.model';
 import { OrderStatus } from 'src/app/models/system.enum';
+import { OrderStatusPipe } from 'src/app/pipes/order-status.pipe';
+import { ShortMoneyPipe } from 'src/app/pipes/short-money.pipe';
 import { B2bOrderService } from 'src/app/services/b2b.order.service';
 
 @Component({
   selector: 'app-history',
+  standalone: true,
+  imports:[
+    PanelModule,
+    TableModule,
+    CommonModule,
+    FormsModule,
+    ShortMoneyPipe,
+    ButtonModule,
+    PaginatorModule,
+    DialogModule,
+    OrderStatusPipe,
+    TimelineModule,
+    TagModule
+],
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss']
 })
@@ -65,9 +90,9 @@ export class HistoryComponent extends Common implements AfterViewInit{
     this.showDialog = true;
   }
 
-  getSeverity(status:number):"success" | "secondary" | "info" | "warning" | "danger" | "contrast" | undefined{
+  getSeverity(status:number):"success" | "secondary" | "info" | "warn" | "danger" | "contrast" | undefined{
     if(status==OrderStatus.SENDED){
-      return "warning";
+      return "warn";
     }else if(status==OrderStatus.PROCESSING){
       return "info";
     }else if(status==OrderStatus.TRANSPORTING){

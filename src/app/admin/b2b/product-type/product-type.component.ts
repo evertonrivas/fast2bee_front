@@ -3,15 +3,23 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnDestroy, Simp
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FilterComponent } from "../../../common/filter/filter.component";
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { ProductTypeService } from 'src/app/services/product.type.service';
 import { FormComponent } from 'src/app/common/form/form.component';
 import { ProductType } from 'src/app/models/product.model';
 import { FormField, FormRow } from 'src/app/models/field.model';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @Component({
     selector: 'app-product-type',
@@ -23,11 +31,19 @@ import { FormField, FormRow } from 'src/app/models/field.model';
     templateUrl: './product-type.component.html',
     styleUrl: './product-type.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      CommonModule
+]
 })
 export class ProductTypeComponent extends Common implements AfterViewInit, OnDestroy, OnChanges{
   localObject!:ProductType;

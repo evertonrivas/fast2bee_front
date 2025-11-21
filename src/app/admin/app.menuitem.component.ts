@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, RouterLinkActive, RouterLink } from "@angular/router";
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { LayoutService } from "../services/layout.service";
+import { NgIf, NgClass, NgFor } from "@angular/common";
+import { Ripple } from "primeng/ripple";
 
 @Component({
     selector: '[app-menuitem]',
@@ -40,7 +42,9 @@ import { LayoutService } from "../services/layout.service";
             })),
             transition('collapsed <=> expanded', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
         ])
-    ]
+    ],
+    standalone: true,
+    imports: [NgIf, Ripple, NgClass, RouterLinkActive, RouterLink, NgFor]
 })
 export class AppMenuitemComponent implements OnInit{
     @Input() item:any;

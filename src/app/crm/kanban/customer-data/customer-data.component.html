@@ -80,7 +80,7 @@
                     </div>
                     <div class="flex flex-column w-full">
                         <label class="mb-1">Localidade/Cidade</label>
-                        <p-autoComplete #cmplCity id="txtCustomerLocation" [showClear]="true" styleClass="w-full p-inputtext-sm" inputStyleClass="w-full" [(ngModel)]="editableCustomer.city" [suggestions]="filteredCities" [field]="$any(cityFormatedName)" (completeMethod)="searchCity($event)" [ngClass]="{'ng-invalid ng-dirty' : hasSended && editableCustomer.city.id==0}">
+                        <p-autoComplete #cmplCity id="txtCustomerLocation" showClear="true" styleClass="w-full p-inputtext-sm" inputStyleClass="w-full" [(ngModel)]="editableCustomer.city" [suggestions]="filteredCities" [optionLabel]="$any(cityFormatedName)" (completeMethod)="searchCity($event)" [ngClass]="{'ng-invalid ng-dirty' : hasSended && editableCustomer.city.id==0}">
                             <ng-template let-item pTemplate="item">
                                 <span>{{item?.name}}/{{item?.state_region?.acronym}}-{{item?.state_region?.country?.name}}</span>
                             </ng-template>

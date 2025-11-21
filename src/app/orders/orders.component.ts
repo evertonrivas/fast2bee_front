@@ -1,8 +1,11 @@
 import { AfterContentInit, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { TopbarComponent } from '../common/topbar/topbar.component';
 
 @Component({
   selector: 'app-orders',
+  standalone: true,
+  imports:[TopbarComponent,RouterOutlet],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })

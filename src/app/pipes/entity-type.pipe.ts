@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'entityType'
+    name: 'entityType',
+    standalone: true
 })
 export class EntityTypePipe implements PipeTransform {
 

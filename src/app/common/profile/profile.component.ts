@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { SharedModule } from '../shared.module';
-import { CommonModule } from '@angular/common';
+import { PanelModule } from 'primeng/panel';
+
 
 @Component({
   selector: 'app-profile',
@@ -9,8 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./profile.component.scss'],
   standalone:true,
   imports:[
-    SharedModule,
-    CommonModule
+    PanelModule
   ],
   providers:[
     MessageService

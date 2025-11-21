@@ -1,5 +1,4 @@
 import { Component,AfterContentInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth, SysConfig } from 'src/app/models/auth.model';
 import { SecurityService } from 'src/app/services/security.service';

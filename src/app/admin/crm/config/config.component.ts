@@ -1,9 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { PanelModule } from 'primeng/panel';
+import { ToastModule } from 'primeng/toast';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FunnelStage } from 'src/app/models/crm.model';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { CrmConfigKeys } from 'src/app/models/system.enum';
@@ -17,8 +23,13 @@ export interface Config{
   selector: 'app-config',
   standalone: true,
   imports: [
-    CommonModule,
-    SharedModule,
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    MultiSelectModule,
+    FormsModule,
+    ButtonModule,
+    CommonModule
   ],
   providers:[
     MessageService, ConfirmationService

@@ -2,14 +2,21 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { TagModule } from 'primeng/tag';
 import { Common } from 'src/app/classes/common';
 import { RequestResponse } from 'src/app/models/paginate.model';
 import { DevolutionStatus } from 'src/app/models/system.enum';
 import { B2bDevolutionService } from 'src/app/services/b2b.devolution.service';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { Devolution } from 'src/app/models/devolution.model';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+import { DevolutionStatusPipe } from 'src/app/pipes/devolution-status.pipe';
 
 export interface selectedStatus{
   [index:string]:string
@@ -20,9 +27,16 @@ export interface selectedStatus{
   standalone: true,
   imports: [
     CommonModule,
-    SharedModule,
+    PanelModule,
+    TableModule,
+    ButtonModule,
+    PaginatorModule,
+    DialogModule,
+    FormsModule,
+    DropdownModule,
+    DevolutionStatusPipe,
     TagModule
-  ],
+],
   templateUrl: './process.component.html',
   styleUrl: './process.component.scss',
   providers:[MessageService,ConfirmationService]
@@ -74,7 +88,7 @@ export class ProcessComponent extends Common implements AfterViewInit {
     });
   }
 
-  getSeverity(status:number):"success" | "secondary" | "info" | "warning" | "danger" | "contrast" | undefined{
+  getSeverity(status:number):"success" | "secondary" | "info" | "warn" | "danger" | "contrast" | undefined{
     if(status==DevolutionStatus.SAVED){
       return "secondary";
     }else if(status==DevolutionStatus.APPROVED_ALL){
@@ -86,7 +100,7 @@ export class ProcessComponent extends Common implements AfterViewInit {
     }else if(status==DevolutionStatus.FINISHED){
       return "contrast";
     }
-    return "warning";
+    return "warn";
   }
 
   onCancel():void{

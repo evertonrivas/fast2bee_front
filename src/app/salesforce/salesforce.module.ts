@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SalesforceRoutingModule } from './salesforce-routing.module';
 import { SalesforceComponent } from './salesforce.component';
-import { SharedModule } from '../common/shared.module';
+
 import { SidebarModule } from 'primeng/sidebar';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DividerModule } from 'primeng/divider';
@@ -23,18 +23,15 @@ import { OrderStatusPipe } from "../pipes/order-status.pipe";
 
 
 @NgModule({
-  declarations: [
-    SalesforceComponent,
-    GridComponent,
-    HistoryComponent,
-    AutoOrderComponent,
-    DevolutionComponent,
-    CheckoutComponent
-  ],
   imports: [
+    SalesforceComponent,
+    HistoryComponent,
+    GridComponent,
+    DevolutionComponent,
+    CheckoutComponent,
+    AutoOrderComponent,
     CommonModule,
     SalesforceRoutingModule,
-    SharedModule,
     SidebarModule,
     MultiSelectModule,
     DividerModule,

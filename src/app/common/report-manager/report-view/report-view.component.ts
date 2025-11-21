@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ButtonModule } from 'primeng/button';
 import { Calendar, CalendarModule } from 'primeng/calendar';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
@@ -33,7 +34,8 @@ import { ReportService } from 'src/app/services/report.service';
     DividerModule,
     CalendarModule,
     MultiSelectModule,
-    DropdownModule
+    DropdownModule,
+    ButtonModule
   ],
   templateUrl: './report-view.component.html',
   styleUrl: './report-view.component.scss'

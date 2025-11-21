@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { FilterComponent } from "../../common/filter/filter.component";
@@ -26,6 +26,18 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { HttpHeaders } from '@angular/common/http';
 import { Moment } from 'src/app/models/moment.model';
 import { DividerModule } from 'primeng/divider';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
     selector: 'app-products',
@@ -37,13 +49,26 @@ import { DividerModule } from 'primeng/divider';
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent,
-        FileUploadModule,
-        DividerModule
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      FileUploadModule,
+      DividerModule,
+      DialogModule,
+      CurrencyPipe,
+      CommonModule,
+      SidebarModule,
+      MultiSelectModule,
+      DropdownModule
+]
 })
 export class ProductsComponent extends Common implements AfterViewInit {
   localObject!:Product;

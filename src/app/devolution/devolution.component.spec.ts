@@ -8,8 +8,8 @@ describe('ReturnComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ReturnComponent]
-    });
+    imports: [ReturnComponent]
+});
     fixture = TestBed.createComponent(ReturnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

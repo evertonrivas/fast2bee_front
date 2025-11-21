@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 import { CrmRoutingModule } from './crm-routing.module';
 import { CrmComponent } from './crm.component';
-import { SharedModule } from '../common/shared.module';
+
 import { KanbanComponent } from './kanban/kanban.component';
 import { CustomerDataComponent } from './kanban/customer-data/customer-data.component';
 import { CustomerFileComponent } from './kanban/customer-file/customer-file.component';
@@ -19,30 +18,24 @@ import { DividerModule } from 'primeng/divider';
 import { BadgeModule } from 'primeng/badge';
 import { DragDropModule } from 'primeng/dragdrop';
 import { TabViewModule } from 'primeng/tabview';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TextareaModule } from 'primeng/textarea';
 import { FileUploadModule } from 'primeng/fileupload';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { EditorModule } from 'primeng/editor';
 import { TopbarComponent } from '../common/topbar/topbar.component';
-import { ChipsModule } from 'primeng/chips';
+import { ChipModule } from 'primeng/chip';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
-  declarations: [
-    CrmComponent,
-    KanbanComponent,
-    CustomerDataComponent,
-    CustomerFileComponent,
-    CustomerEmailComponent,
-    CustomerHistoryComponent
-  ],
   imports: [
+    CrmComponent,
+    CustomerEmailComponent,
+    CustomerDataComponent,
     CommonModule,
     CrmRoutingModule,
-    SharedModule,
     CardModule,
     MenuModule,
     SplitButtonModule,
@@ -51,17 +44,17 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     BadgeModule,
     DragDropModule,
     TabViewModule,
-    InputTextareaModule,
+    TextareaModule,
     FileUploadModule,
     AutoCompleteModule,
     EditorModule,
     TopbarComponent,
-    ChipsModule,
+    ChipModule,
     IconFieldModule,
     InputIconModule,
     ToolbarModule,
     ProgressSpinnerModule
-  ],
+],
   providers:[
     provideNgxMask()
   ]

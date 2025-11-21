@@ -1,12 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FilterComponent } from "../../../common/filter/filter.component";
 import { MomentService } from 'src/app/services/moment.service';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { FormComponent } from 'src/app/common/form/form.component';
@@ -14,6 +13,15 @@ import { FieldOption, FormField, FormRow } from 'src/app/models/field.model';
 import { BrandService } from 'src/app/services/brand.service';
 import { Brand } from 'src/app/models/brand.model';
 import { Moment } from 'src/app/models/moment.model';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-moment',
@@ -25,11 +33,19 @@ import { Moment } from 'src/app/models/moment.model';
     templateUrl: './moment.component.html',
     styleUrl: './moment.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      CommonModule
+]
 })
 export class MomentComponent extends Common implements AfterViewInit, OnDestroy{
   localObject!:Moment;

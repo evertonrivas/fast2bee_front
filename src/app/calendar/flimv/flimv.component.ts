@@ -1,13 +1,37 @@
+import { NgIf } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PaginatorModule } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 import { Common } from 'src/app/classes/common';
+
 import { CommercialRule } from 'src/app/models/commercial-rule.model';
 import { CustomerCurve } from 'src/app/models/system.enum';
 import { CalendarService } from 'src/app/services/calendar.service';
 
 @Component({
   selector: 'app-flimv',
+  standalone: true,
+  imports:[
+      FormsModule,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      NgIf
+  ],
   templateUrl: './flimv.component.html',
   styleUrls: ['./flimv.component.scss'],
   providers:[MessageService]

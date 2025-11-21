@@ -160,7 +160,7 @@
                 <td>{{item.price | currency}}</td>
                 <td *ngIf="selectedOrder.status!=status.FINISHED">{{item.stock_quantity}}</td>
                 <td>
-                    <p-inputNumber *ngIf="selectedOrder.status!=status.FINISHED" [(ngModel)]="item.quantity" [min]="0" [showButtons]="true" [size]="3"></p-inputNumber>
+                    <p-inputNumber *ngIf="selectedOrder.status!=status.FINISHED" [(ngModel)]="item.quantity" [min]="0" [showButtons]="true" [size]="'small'"></p-inputNumber>
                     <label *ngIf="selectedOrder.status==status.FINISHED">{{item.quantity}}</label>
                 </td>
             </tr>

@@ -8,8 +8,8 @@ describe('CustomerHistoryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CustomerHistoryComponent]
-    });
+    imports: [CustomerHistoryComponent]
+});
     fixture = TestBed.createComponent(CustomerHistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

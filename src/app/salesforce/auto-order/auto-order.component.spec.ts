@@ -8,8 +8,8 @@ describe('AutoOrderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AutoOrderComponent]
-    });
+    imports: [AutoOrderComponent]
+});
     fixture = TestBed.createComponent(AutoOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

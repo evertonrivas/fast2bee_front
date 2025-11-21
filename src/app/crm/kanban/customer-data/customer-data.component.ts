@@ -1,12 +1,12 @@
 import { Component,Input, ViewChild,Output, EventEmitter,OnChanges, SimpleChanges, AfterViewInit, input } from '@angular/core';
-import { Message } from 'primeng/api';
-import { AutoComplete, AutoCompleteCompleteEvent } from 'primeng/autocomplete';
-import { Cep, Entity, EntityContact, EntityType, EntityWeb, RepEntity } from 'src/app/models/entity.model';
+import { ToastMessageOptions } from 'primeng/api';
+import { AutoCompleteCompleteEvent, AutoCompleteModule } from 'primeng/autocomplete';
+import { Cep, Entity, EntityContact, EntityType, EntityWeb } from 'src/app/models/entity.model';
 import { City } from 'src/app/models/place.model';
 import { EntitiesService } from 'src/app/services/entities.service';
 import { ConfirmationService } from 'primeng/api';
 import { LocationService } from 'src/app/services/location.service';
-import { DropdownChangeEvent } from 'primeng/dropdown';
+import { DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
 import { Funnel, FunnelStage } from 'src/app/models/crm.model';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { Common } from 'src/app/classes/common';
@@ -15,8 +15,36 @@ import { Router } from '@angular/router';
 import { CrmService } from 'src/app/services/crm.service';
 import { SysService } from 'src/app/services/sys.service';
 
+import { TabViewModule } from 'primeng/tabview';
+import { DividerModule } from 'primeng/divider';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { ContactTypePipe } from 'src/app/pipes/contact-type.pipe';
+import { InputMaskModule } from 'primeng/inputmask';
+
 @Component({
   selector: 'app-customer-data',
+  standalone: true,
+  imports:[
+    ConfirmDialogModule,
+    DropdownModule,
+    FormsModule,
+    CommonModule,
+    ButtonModule,
+    TableModule,
+    TabViewModule,
+    DividerModule,
+    IconFieldModule,
+    InputIconModule,
+    AutoCompleteModule,
+    ContactTypePipe,
+    InputMaskModule
+],
   templateUrl: './customer-data.component.html',
   styleUrls: ['./customer-data.component.scss'],
   providers: [ConfirmationService]
@@ -35,7 +63,7 @@ export class CustomerDataComponent extends Common implements OnChanges, AfterVie
 
   @ViewChild('pnlContact') pnlContact:OverlayPanel|null = null;
   @ViewChild('pnlWeb') pnlWeb:OverlayPanel|null = null;
-  @Output() messageToShow = new EventEmitter<Message>();
+  @Output() messageToShow = new EventEmitter<ToastMessageOptions>();
   funnels:Funnel[] = [];
   representatives:Entity[] = [];
   selectedRepresentativeId:number = 0;

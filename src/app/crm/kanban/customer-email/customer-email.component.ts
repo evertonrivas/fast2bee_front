@@ -1,9 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { HttpHeaders } from '@angular/common/http';
 import { Component, Input,EventEmitter,Output, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Message } from 'primeng/api';
-import { FileUploadEvent } from 'primeng/fileupload';
+import { ToastMessageOptions } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { ChipModule } from 'primeng/chip';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { Common } from 'src/app/classes/common';
+
 import { EntityContact } from 'src/app/models/entity.model';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { EmailService } from 'src/app/services/email.service';
@@ -11,6 +19,17 @@ import { SysService } from 'src/app/services/sys.service';
 
 @Component({
   selector: 'app-customer-email',
+  standalone: true,
+  imports:[
+    FileUploadModule,
+    ProgressSpinnerModule,
+    DropdownModule,
+    CommonModule,
+    ChipModule,
+    FormsModule,
+    ButtonModule,
+    DialogModule
+],
   templateUrl: './customer-email.component.html',
   styleUrls: ['./customer-email.component.scss']
 })
@@ -19,7 +38,7 @@ export class CustomerEmailComponent extends Common implements AfterViewInit{
   @Input() uploadHeaders:HttpHeaders = new HttpHeaders();
   @Input() uploadMax:number = 0;
   @Input() massiveEmail:boolean = false;
-  @Output() messageToShow = new EventEmitter<Message>();
+  @Output() messageToShow = new EventEmitter<ToastMessageOptions>();
   ai_visible:boolean = false;
   ai_loading:boolean = false;
   ai_suggestion_title:string = "";

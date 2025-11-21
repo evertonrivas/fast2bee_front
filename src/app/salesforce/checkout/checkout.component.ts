@@ -1,7 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DataViewModule } from 'primeng/dataview';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 import { Common } from 'src/app/classes/common';
+
 import { CartContent, CartItem, CartSize, PaymentCondition } from 'src/app/models/order.model';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { Product,Image, ProductStock, SubTotal, ProductStockSizes, Color } from 'src/app/models/product.model';
@@ -10,6 +21,19 @@ import { IndicatorsService } from 'src/app/services/indicators.service';
 
 @Component({
   selector: 'app-checkout',
+  standalone: true,
+  imports:[
+    DataViewModule,
+    TableModule,
+    CommonModule,
+    FormsModule,
+    ButtonModule,
+    DropdownModule,
+    ConfirmDialogModule,
+    ToastModule,
+    DialogModule,
+    InputNumberModule,
+  ],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
   providers:[ConfirmationService,MessageService]

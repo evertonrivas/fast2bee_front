@@ -1,21 +1,33 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfirmationService, MessageService, PrimeNGConfig, SelectItem, SelectItemGroup } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { ConfirmationService, MessageService, SelectItemGroup } from 'primeng/api';
+import { PrimeNG } from 'primeng/config';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { Common } from 'src/app/classes/common';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { Product,Image, ProductStock, SubTotal } from 'src/app/models/product.model';
-import { CheckboxChangeEvent } from 'primeng/checkbox';
+import { CheckboxChangeEvent, CheckboxModule } from 'primeng/checkbox';
 import { Color as B2bColor } from 'src/app/models/product.model';
-import { Dropdown, DropdownChangeEvent } from 'primeng/dropdown';
+import { Dropdown, DropdownChangeEvent, DropdownModule } from 'primeng/dropdown';
 import { B2bOrderService } from 'src/app/services/b2b.order.service';
 import { EntitiesService } from 'src/app/services/entities.service';
 import { Entity } from 'src/app/models/entity.model';
-import { Dialog } from 'primeng/dialog';
+import { Dialog, DialogModule } from 'primeng/dialog';
 import { IndicatorsService } from 'src/app/services/indicators.service';
 import { CartItem } from 'src/app/models/order.model';
 import { SysService } from 'src/app/services/sys.service';
 import { ColorService } from 'src/app/services/color.service';
+
+import { CommonModule } from '@angular/common';
+import { ImageModule } from 'primeng/image';
+import { FormsModule } from '@angular/forms';
+import { DataViewModule } from 'primeng/dataview';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TableModule } from 'primeng/table';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { TooltipModule } from 'primeng/tooltip';
 
 export interface SelectedImg{
   [index:number]:string
@@ -27,6 +39,23 @@ export interface SelectedColor{
 
 @Component({
   selector: 'app-grid',
+  standalone: true,
+  imports:[
+    CommonModule,
+    FormsModule,
+    DataViewModule,
+    DropdownModule,
+    ImageModule,
+    CheckboxModule,
+    ButtonModule,
+    PaginatorModule,
+    DialogModule,
+    ToastModule,
+    ConfirmDialogModule,
+    TableModule,
+    InputNumberModule,
+    TooltipModule
+],
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
   providers:[MessageService,ConfirmationService]
@@ -59,15 +88,15 @@ export class GridComponent extends Common implements AfterViewInit{
   constructor(route:Router,
     private ssvc:SysService,
     private cdr:ChangeDetectorRef,
-    private config:PrimeNGConfig,
     private cfg:ConfirmationService,
     private svcOrd:B2bOrderService,
     private svcEnt:EntitiesService,
     private svcInd:IndicatorsService,
     private msg:MessageService,
-    private svcCo:ColorService){
+    private svcCo:ColorService,
+    private primeng: PrimeNG){
     super(route);
-    this.config.ripple = true;
+    this.primeng.ripple.set(true);
 
     //busca padrao do sistema em caso refresh ou inicio da tela
     this.options.query    = "is:order_by price||is:order asc";

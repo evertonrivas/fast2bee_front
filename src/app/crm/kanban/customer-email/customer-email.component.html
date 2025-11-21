@@ -9,10 +9,10 @@
         </ng-template>
     </p-dropdown>
     <ng-container *ngIf="emailToList.length <= 4">
-        <p-chips *ngIf="massiveEmail" placeholder="Teste" [(ngModel)]="emailToList" field="value" class="p-fluid" [disabled]="true"></p-chips>
+        <p-chip *ngIf="massiveEmail" placeholder="Teste" [(ngModel)]="emailToList" field="value" class="p-fluid" [disabled]="true"></p-chip>
     </ng-container>
     <ng-container *ngIf="emailToList.length > 4">
-        <p-chips class="p-fluid" [disabled]="true" placeholder="Teste total" [(ngModel)]="moreThan4"></p-chips>
+        <p-chip class="p-fluid" [disabled]="true" placeholder="Teste total" [(ngModel)]="moreThan4"></p-chip>
     </ng-container>
 </div>
 <div class="flex flex-column w-full mt-1">

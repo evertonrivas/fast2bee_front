@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FilterComponent } from "../../../common/filter/filter.component";
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { Options, RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { ProductsService } from 'src/app/services/products.service';
@@ -14,6 +13,17 @@ import { FieldOption, FormField, FormRow } from 'src/app/models/field.model';
 import { Color, ProductGrid, ProductGridDistribution, Size } from 'src/app/models/product.model';
 import { ColorService } from 'src/app/services/color.service';
 import { SizeService } from 'src/app/services/size.service';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CommonModule } from '@angular/common';
 
 interface sizes{
   id_size:number,
@@ -37,11 +47,22 @@ interface localDistribution{
     templateUrl: './product-grid.component.html',
     styleUrl: './product-grid.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent
-    ]
+    FormsModule,
+    FilterComponent,
+    FormComponent,
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    OverlayPanelModule,
+    ButtonModule,
+    TableModule,
+    ToggleButtonModule,
+    PaginatorModule,
+    DialogModule,
+    FormsModule,
+    CommonModule,
+    InputNumberModule
+]
 })
 export class ProductGridComponent extends Common implements AfterViewInit,OnDestroy{
   localObject!:ProductGrid;

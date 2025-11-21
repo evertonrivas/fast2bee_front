@@ -23,15 +23,15 @@
                     <i class="pi pi-star" *ngIf="rule.id==curves.FIVE_STARS || rule.id==curves.FOUR_STARS || rule.id==curves.THREE_STARS || rule.id==curves.TWO_STARS" style="font-size:9px!important"></i>
                     <i class="pi pi-star" *ngIf="rule.id==curves.FIVE_STARS || rule.id==curves.FOUR_STARS || rule.id==curves.THREE_STARS || rule.id==curves.TWO_STARS || rule.id==curves.ONE_STAR" style="font-size:9px!important"></i>
                 </td>
-                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.frequency" styleClass="w-full" [step]="5"></p-slider></td>
+                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.frequency" styleClass="w-full" step="5"></p-slider></td>
                 <td style="width: 15px!important;"><span>{{rule.frequency}}%</span></td>
-                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.liquidity" styleClass="w-full" [step]="5" [disabled]="true"></p-slider></td>
+                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.liquidity" styleClass="w-full" step="5" [disabled]="true"></p-slider></td>
                 <td style="width: 15px!important;"><span>{{rule.liquidity}}%</span></td>
                 <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.injury" styleClass="w-full"></p-slider></td>
                 <td style="width: 15px!important;"><span>{{rule.injury}}</span></td>
-                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.mix" styleClass="w-full" [step]="5"></p-slider></td>
+                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.mix" styleClass="w-full" step="5"></p-slider></td>
                 <td style="width: 15px!important;"><span>{{rule.mix}}%</span></td>
-                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.volume" styleClass="w-full" [max]="50" [min]="1" [range]="true"></p-slider></td>
+                <td class="vertical-align-middle"><p-slider [(ngModel)]="rule.volume" styleClass="w-full" max="50" min="1" range="true"></p-slider></td>
                 <td style="width: 15px!important;"><span>{{rule.volume}}</span></td>
             </tr>
         </ng-template>

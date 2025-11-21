@@ -1,16 +1,47 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Table } from 'primeng/table';
-import { Calendar } from 'primeng/calendar';
+import { Table, TableModule } from 'primeng/table';
+import { Calendar, CalendarModule } from 'primeng/calendar';
 import { Common } from 'src/app/classes/common';
 import { CalendarModel, CalendarEvent } from 'src/app/models/calendar.model';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
-import { PrimeNGConfig } from 'primeng/api';
+import { PrimeNG } from 'primeng/config';
 import { FileType } from 'src/app/models/system.enum';
+
+import { EventComponent } from '../event/event.component';
+import { EventFormComponent } from '../event-form/event-form.component';
+import { MilestoneFormComponent } from '../milestone-form/milestone-form.component';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PaginatorModule } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-gantt',
+  standalone: true,
+  imports:[
+    FormsModule,
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    OverlayPanelModule,
+    ButtonModule,
+    TableModule,
+    ToggleButtonModule,
+    PaginatorModule,
+    EventComponent,
+    EventFormComponent,
+    MilestoneFormComponent,
+    NgFor,
+    NgIf,
+    CalendarModule
+],
   templateUrl: './gantt.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./gantt.component.scss'],
@@ -33,7 +64,7 @@ export class GanttComponent extends Common implements OnDestroy,OnInit{
   constructor(private svc:CalendarService,
     private confirmationService: ConfirmationService, 
     private messageService: MessageService,
-    private config: PrimeNGConfig,
+    private config: PrimeNG,
     route:Router){
     super(route)
     this.config.setTranslation({

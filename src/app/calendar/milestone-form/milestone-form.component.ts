@@ -5,9 +5,41 @@ import { CalendarEvent, CalendarEventData, CalendarEventType } from 'src/app/mod
 import { CalendarService } from 'src/app/services/calendar.service';
 import { MessageService } from 'primeng/api';
 import { RequestResponse } from 'src/app/models/paginate.model';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PaginatorModule } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextModule } from 'primeng/inputtext';
+import { NgClass } from '@angular/common';
+
 
 @Component({
   selector: 'app-milestone-form',
+  standalone: true,
+  imports:[
+    FormsModule,
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    OverlayPanelModule,
+    ButtonModule,
+    TableModule,
+    ToggleButtonModule,
+    PaginatorModule,
+    DialogModule,
+    DropdownModule,
+    CalendarModule,
+    InputTextModule,
+    NgClass
+  ],
   templateUrl: './milestone-form.component.html',
   styleUrls: ['./milestone-form.component.scss']
 })

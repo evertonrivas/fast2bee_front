@@ -1,12 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 import { Common } from 'src/app/classes/common';
 import { FilterComponent } from 'src/app/common/filter/filter.component';
 import { FormComponent } from 'src/app/common/form/form.component';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FieldOption, FormField, FormRow } from 'src/app/models/field.model';
 import { MeasureUnit } from 'src/app/models/measure-unit';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
@@ -17,11 +25,19 @@ import { MeasureUnitService } from 'src/app/services/measure-unit.service';
   selector: 'app-measure-unit',
   standalone: true,
   imports: [
-    CommonModule,
-    SharedModule,
+    FormsModule,
     FilterComponent,
-    FormComponent
-  ],
+    FormComponent,
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    OverlayPanelModule,
+    ButtonModule,
+    TableModule,
+    ToggleButtonModule,
+    PaginatorModule,
+    CommonModule
+],
   providers:[MessageService,ConfirmationService],
   templateUrl: './measure-unit.component.html',
   styleUrl: './measure-unit.component.scss'

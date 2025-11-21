@@ -1,15 +1,22 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FunnelStage } from 'src/app/models/crm.model';
 import { CrmConfigKeys } from 'src/app/models/system.enum';
 import { CrmService } from 'src/app/services/crm.service';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { TenantConfig } from 'src/app/models/auth.model';
 import { SysService } from 'src/app/services/sys.service';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { PanelModule } from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
+import { NgIf } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+import { FormsModule } from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
 
 export interface Config{
   [index:string]: string
@@ -19,8 +26,14 @@ export interface Config{
   selector: 'app-config',
   standalone: true,
   imports: [
-    CommonModule,
-    SharedModule
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    ButtonModule,
+    NgIf,
+    InputTextModule,
+    FormsModule,
+    DropdownModule
   ],
   providers: [
     MessageService,

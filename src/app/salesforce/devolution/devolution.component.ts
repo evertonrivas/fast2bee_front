@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FileUploadEvent } from 'primeng/fileupload';
+import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
 import { Common } from 'src/app/classes/common';
 import { Order, OrderHistory, OrderProduct } from 'src/app/models/order.model';
 import { Reason,Devolution,DevolutionItem } from 'src/app/models/devolution.model';
@@ -10,7 +10,21 @@ import { B2bDevolutionService } from 'src/app/services/b2b.devolution.service';
 import { DevolutionStatus, OrderStatus } from 'src/app/models/system.enum';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+
+import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { PanelModule } from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { TooltipModule } from 'primeng/tooltip';
+import { DevolutionStatusPipe } from 'src/app/pipes/devolution-status.pipe';
 
 export interface canUploadProduct{
   [index:string]:boolean
@@ -30,6 +44,24 @@ export interface quantityProduct{
 
 @Component({
   selector: 'app-devolution',
+  standalone: true,
+  imports:[
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    ButtonModule,
+    TableModule,
+    FormsModule,
+    CommonModule,
+    PaginatorModule,
+    FileUploadModule,
+    TagModule,
+    DialogModule,
+    DropdownModule,
+    InputNumberModule,
+    TooltipModule,
+    DevolutionStatusPipe
+],
   templateUrl: './devolution.component.html',
   styleUrls: ['./devolution.component.scss'],
   providers: [
@@ -338,7 +370,7 @@ export class DevolutionComponent extends Common implements AfterViewInit{
     // });
   }
 
-  getSeverity(status:number):"success" | "secondary" | "info" | "warning" | "danger" | "contrast" | undefined{
+  getSeverity(status:number):"success" | "secondary" | "info" | "warn" | "danger" | "contrast" | undefined{
     if(status==DevolutionStatus.SAVED){
       return "secondary";
     }else if(status==DevolutionStatus.APPROVED_ALL){
@@ -350,7 +382,7 @@ export class DevolutionComponent extends Common implements AfterViewInit{
     }else if(status==DevolutionStatus.FINISHED){
       return "contrast";
     }
-    return "warning";
+    return "warn";
   }
 
   onOrderNumber(id:number):string{

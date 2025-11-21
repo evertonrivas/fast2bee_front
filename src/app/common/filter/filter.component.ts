@@ -1,16 +1,33 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SharedModule } from '../../common/shared.module';
+
 import { FieldFilter } from '../../models/field.model';
 import { FieldType } from '../../models/system.enum';
 import { SysService } from 'src/app/services/sys.service';
+import { SidebarModule } from 'primeng/sidebar';
+import { CommonModule } from '@angular/common';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { FormsModule } from '@angular/forms';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
   imports: [
+    SidebarModule,
     CommonModule,
-    SharedModule
+    InputNumberModule,
+    CalendarModule,
+    DropdownModule,
+    FormsModule,
+    MultiSelectModule,
+    RadioButtonModule,
+    ButtonModule,
+    CheckboxModule
   ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss'

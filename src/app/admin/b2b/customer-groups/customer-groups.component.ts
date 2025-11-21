@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FilterComponent } from "../../../common/filter/filter.component";
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { FormComponent } from 'src/app/common/form/form.component';
 import { Options, RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { FieldOption, FormField, FormRow } from 'src/app/models/field.model';
@@ -14,6 +13,17 @@ import { EntitiesService } from 'src/app/services/entities.service';
 import { CustomerGroup, Entity } from 'src/app/models/entity.model';
 import { City, StateRegion } from 'src/app/models/place.model';
 import { LocationService } from 'src/app/services/location.service';
+import { FormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { PanelModule } from 'primeng/panel';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { SidebarModule } from 'primeng/sidebar';
+import { DropdownModule } from 'primeng/dropdown';
+import { CommonModule } from '@angular/common';
 
 export interface filterParams{
   rule:any|undefined
@@ -33,11 +43,21 @@ export interface filterParams{
     templateUrl: './customer-groups.component.html',
     styleUrl: './customer-groups.component.scss',
     imports: [
-        SharedModule,
-        CommonModule,
-        FilterComponent,
-        FormComponent
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      SidebarModule,
+      DropdownModule,
+      CommonModule
+]
 })
 export class CustomerGroupsComponent extends Common implements AfterViewInit{
   localObject!:CustomerGroup;

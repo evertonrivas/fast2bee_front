@@ -1,12 +1,12 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { Common } from 'src/app/classes/common';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { UserService } from 'src/app/services/user.service';
-import { SharedModule } from 'src/app/common/shared.module';
-import { CommonModule } from '@angular/common';
+
+import { CommonModule, NgClass } from '@angular/common';
 import { FilterComponent } from "../../common/filter/filter.component";
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { FormComponent } from 'src/app/common/form/form.component';
@@ -18,6 +18,18 @@ import { PasswordModule } from 'primeng/password';
 import { City, StateRegion } from 'src/app/models/place.model';
 import { LocationService } from 'src/app/services/location.service';
 import { number } from 'echarts';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { PanelModule } from 'primeng/panel';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { UserTypePipe } from 'src/app/pipes/user-type.pipe';
+import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
+import { DropdownModule } from 'primeng/dropdown';
 
 export interface filterParams{
   level: string|undefined,
@@ -38,12 +50,24 @@ export interface filterParams{
     templateUrl: './users.component.html',
     styleUrl: './users.component.scss',
     imports: [
-        CommonModule,
-        SharedModule,
-        FilterComponent,
-        FormComponent,
-        PasswordModule
-    ]
+      FormsModule,
+      FilterComponent,
+      FormComponent,
+      ToastModule,
+      ConfirmDialogModule,
+      PanelModule,
+      OverlayPanelModule,
+      ButtonModule,
+      TableModule,
+      ToggleButtonModule,
+      PaginatorModule,
+      PasswordModule,
+      UserTypePipe,
+      DialogModule,
+      SidebarModule,
+      DropdownModule,
+      CommonModule
+]
 })
 export class UsersComponent extends Common implements AfterViewInit{
   localObject!:User;

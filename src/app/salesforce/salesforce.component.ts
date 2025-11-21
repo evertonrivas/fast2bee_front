@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Common } from '../classes/common';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { LayoutService } from '../services/layout.service';
 import { forkJoin } from 'rxjs';
 import { B2bBrand, Color, ProductCategory, ProductModel, ProductStock, ProductType, Size, SubTotal,Image, Product, ProductStockSizes } from '../models/product.model';
@@ -20,8 +20,37 @@ import { Moment } from '../models/moment.model';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { IndicatorsService } from '../services/indicators.service';
 
+import { TopbarComponent } from '../common/topbar/topbar.component';
+import { DividerModule } from 'primeng/divider';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { SidebarModule } from 'primeng/sidebar';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CommonModule } from '@angular/common';
+import { TableModule } from 'primeng/table';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { FormsModule } from '@angular/forms';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 @Component({
   selector: 'app-salesforce',
+  standalone: true,
+  imports:[
+    FormsModule,
+    ConfirmDialogModule,
+    TopbarComponent, 
+    RouterOutlet, 
+    DividerModule,
+    ButtonModule,
+    DialogModule,
+    ToastModule,
+    SidebarModule,
+    MultiSelectModule,
+    CommonModule,
+    TableModule,
+    InputNumberModule
+  ],
   templateUrl: './salesforce.component.html',
   styleUrls: ['./salesforce.component.scss'],
   providers: [MessageService,ConfirmationService]

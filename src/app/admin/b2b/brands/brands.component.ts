@@ -1,27 +1,43 @@
-import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { PaginatorState } from 'primeng/paginator';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { ToastModule } from 'primeng/toast';
 import { Common } from 'src/app/classes/common';
 import { FilterComponent } from 'src/app/common/filter/filter.component';
 import { FormComponent } from 'src/app/common/form/form.component';
-import { SharedModule } from 'src/app/common/shared.module';
+
 import { FormField, FormRow } from 'src/app/models/field.model';
 import { RequestResponse, ResponseError } from 'src/app/models/paginate.model';
 import { B2bBrand } from 'src/app/models/product.model';
 import { FieldCase, FieldType } from 'src/app/models/system.enum';
 import { BrandService } from 'src/app/services/brand.service';
+import { PanelModule } from 'primeng/panel';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-brands',
   standalone: true,
   imports: [
-    SharedModule,
-    CommonModule,
+    FormsModule,
     FilterComponent,
-    FormComponent
-  ],
+    FormComponent,
+    ToastModule,
+    ConfirmDialogModule,
+    PanelModule,
+    OverlayPanelModule,
+    ButtonModule,
+    TableModule,
+    ToggleButtonModule,
+    PaginatorModule,
+    CommonModule
+],
   providers: [
     MessageService,
     ConfirmationService
