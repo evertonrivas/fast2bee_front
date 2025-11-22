@@ -3,16 +3,16 @@ import { LayoutService } from '../services/layout.service';
 import { Common } from '../classes/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TopbarComponent } from '../common/topbar/topbar.component';
-import { Sidebar } from 'primeng/sidebar';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { AppMenuitemComponent } from './app.menuitem.component';
+import { DrawerModule } from "primeng/drawer";
 
 @Component({
     selector: 'app-admin',
     templateUrl: './admin.component.html',
     styleUrls: ['./admin.component.scss'],
     standalone: true,
-    imports: [TopbarComponent, RouterOutlet, Sidebar, CommonModule, AppMenuitemComponent]
+    imports: [TopbarComponent, RouterOutlet, DrawerModule, CommonModule, AppMenuitemComponent]
 })
 export class AdminComponent extends Common implements OnInit, AfterViewInit{
     sidebarVisible:boolean = false;

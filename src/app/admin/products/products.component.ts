@@ -34,7 +34,7 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DialogModule } from 'primeng/dialog';
-import { SidebarModule } from 'primeng/sidebar';
+import { DrawerModule } from 'primeng/drawer';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SelectModule } from 'primeng/select';
 import { TextareaModule } from 'primeng/textarea';
@@ -64,7 +64,7 @@ import { TextareaModule } from 'primeng/textarea';
       DialogModule,
       CurrencyPipe,
       CommonModule,
-      SidebarModule,
+      DrawerModule,
       MultiSelectModule,
       SelectModule,
       TextareaModule

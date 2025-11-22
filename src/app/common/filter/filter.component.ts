@@ -3,7 +3,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angu
 import { FieldFilter } from '../../models/field.model';
 import { FieldType } from '../../models/system.enum';
 import { SysService } from 'src/app/services/sys.service';
-import { SidebarModule } from 'primeng/sidebar';
+import { DrawerModule } from 'primeng/drawer';
 import { CommonModule } from '@angular/common';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
@@ -20,7 +20,7 @@ import { InputTextModule } from 'primeng/inputtext';
   selector: 'app-filter',
   standalone: true,
   imports: [
-    SidebarModule,
+    DrawerModule,
     CommonModule,
     InputNumberModule,
     CalendarModule,

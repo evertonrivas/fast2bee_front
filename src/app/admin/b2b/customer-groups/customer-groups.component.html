@@ -108,7 +108,7 @@
         </p-paginator>
     </ng-template>
 </p-panel>
-<p-sidebar styleClass="w-30rem" [(visible)]="showCustomers" position="right" (onHide)="clearSearch()">
+<p-drawer styleClass="w-30rem" [(visible)]="showCustomers" position="right" (onHide)="clearSearch()">
     <ng-template pTemplate="header">Clientes</ng-template>
     <ng-template pTemplate="content">
         <div class="flex flex-row gap-1 mb-2">
@@ -182,4 +182,4 @@
             <p-button label="Executar" severity="primary" icon="pi pi-cog" styleClass="p-button-sm" [disabled]="selectedEntitiesToAddInGroup.length==0" (onClick)="onAddToGroup()" [loading]="sendCustomer"></p-button>
         </div>
     </ng-template>
-</p-sidebar>
+</p-drawer>

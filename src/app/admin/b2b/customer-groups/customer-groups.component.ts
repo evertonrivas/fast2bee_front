@@ -21,7 +21,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { SidebarModule } from 'primeng/sidebar';
+import { DrawerModule } from 'primeng/drawer';
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
 import { PopoverModule } from 'primeng/popover';
@@ -56,7 +56,7 @@ export interface filterParams{
       TableModule,
       ToggleButtonModule,
       PaginatorModule,
-      SidebarModule,
+      DrawerModule,
       DropdownModule,
       CommonModule,
       InputTextModule

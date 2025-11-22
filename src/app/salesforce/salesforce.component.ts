@@ -25,7 +25,7 @@ import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
-import { SidebarModule } from 'primeng/sidebar';
+import { DrawerModule } from 'primeng/drawer';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CommonModule } from '@angular/common';
 import { TableModule } from 'primeng/table';
@@ -45,7 +45,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ButtonModule,
     DialogModule,
     ToastModule,
-    SidebarModule,
+    DrawerModule,
     MultiSelectModule,
     CommonModule,
     TableModule,

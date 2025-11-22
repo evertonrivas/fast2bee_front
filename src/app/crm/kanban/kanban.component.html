@@ -2,10 +2,10 @@
 <p-confirmDialog></p-confirmDialog>
 <!--barra superior-->
 <div class="card p-3 mb-2 grid">
-    <div class="col">
-        <p-select #funSel [options]="response.data" optionLabel="name" [(ngModel)]="selectedFunnel" styleClass="p-inputtext-sm" (onChange)="changeFunnel($event)"></p-select>
+    <div class="col-2 align-items-center">
+        <p-select size="small" #funSel [options]="response.data" optionLabel="name" [(ngModel)]="selectedFunnel" placeholder="Selecione" (onChange)="changeFunnel($event)"></p-select>
     </div>
-    <div class="lg:col col-12 justify-content-end">
+    <div class="flex lg:col-8 col align-items-center justify-content-center">
         <p-button icon="pi pi-plus-circle" [rounded]="true" [text]="true" pTooltip="Novo Cliente" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="showCustomerInfo(0,0)"></p-button>
         <p-button icon="pi pi-check-circle" [rounded]="true" [text]="true" pTooltip="Adicionar Cliente Existente" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="searchCustomers()"></p-button>
         <p-button icon="pi pi-minus-circle" [rounded]="true" [text]="true" pTooltip="Remover selecionado(s)" tooltipPosition="top" tooltipStyleClass="text-xs" (onClick)="delCustomersSelected()"></p-button>
@@ -29,7 +29,7 @@
         <p-button [disabled]="true" icon="pi pi-file-excel" styleClass="p-button-rounded  p-button-success p-button-text" pTooltip="Exportar para CSV" tooltipPosition="top" tooltipStyleClass="text-xs"></p-button>
         <p-button [disabled]="true" icon="pi pi-file-export" styleClass="p-button-rounded  p-button-success p-button-text" pTooltip="Exportar para JSON" tooltipPosition="top" tooltipStyleClass="text-xs"></p-button>
     </div>
-    <div class="lg:col-2 col-12">
+    <div class="flex lg:col-2 col align-items-center justify-content-end">
         <p-iconField iconPosition="right">
             <p-inputIcon styleClass="pi pi-search"/>
             <input type="text" pInputText placeholder="Procurar..." (keydown)="doGlobalSearch($event)" class="p-inputtext-sm" [(ngModel)]="globalSearchInput"/>
@@ -142,15 +142,15 @@
 </div>
 
 <!--painel de exibicao do historico-->
-<p-sidebar [(visible)]="historyVisible" position="right" styleClass="w-30rem lg:w-5" >
+<p-drawer [(visible)]="historyVisible" position="right" styleClass="w-30rem lg:w-5" >
     <h3 class="w-full text-center">Histórico do Cliente</h3>
     <p class="w-full text-center">{{infoCustomer.fantasy_name}}</p>
     <p-divider></p-divider>
     <app-customer-history [loadHistory]="historyVisible" [idCustomer]="infoCustomer.id"></app-customer-history>
-</p-sidebar>
+</p-drawer>
 
 <!--painel de envio de arquivo-->
-<p-sidebar [(visible)]="uploadVisible" position="bottom" styleClass="h-20rem">
+<p-drawer [(visible)]="uploadVisible" position="bottom" styleClass="h-20rem">
     <h4 class="w-full text-center">Envio de arquivo</h4>
     <p class="text-center">{{infoCustomer.name}}</p>
     <p-fileUpload #upl
@@ -170,7 +170,7 @@
         invalidFileLimitMessageDetail="Máximo permitido: {0}"
         (onUpload)="uploadDone()"
         ></p-fileUpload>
-</p-sidebar>
+</p-drawer>
  
 <!--envio de email-->
 <p-dialog [(visible)]="emailVisible" styleClass="w-30rem lg:w-9" [modal]="true" [draggable]="false">
@@ -229,7 +229,7 @@
     </div>
 </p-dialog>
 
-<p-sidebar [(visible)]="infoVisible" styleClass="w-30rem lg:w-6" [modal]="true" position="right" (onHide)="resetForm($event)">
+<p-drawer [(visible)]="infoVisible" styleClass="w-30rem lg:w-6" [modal]="true" position="right" (onHide)="resetForm($event)">
     <ng-template pTemplate="header">
         <h3 class="w-full text-center">Informações do Cliente</h3>
     </ng-template>  
@@ -239,10 +239,10 @@
         [isVisible]="infoVisible"
         [(idStageOfCustomer)]="stageOfCustomer"
         [idCustomerFunnel]="funnelOfCustomer"></app-customer-data>
-</p-sidebar>
+</p-drawer>
 
 
-<p-sidebar styleClass="w-30rem" [(visible)]="showCustomers" position="right" (onHide)="clearSearch()">
+<p-drawer styleClass="w-30rem" [(visible)]="showCustomers" position="right" (onHide)="clearSearch()">
     <ng-template pTemplate="header">Clientes</ng-template>
     <ng-template pTemplate="content">
         <div class="flex flex-row gap-1 mb-2 w-full">
@@ -291,4 +291,4 @@
             <p-button label="Executar" severity="primary" icon="pi pi-cog" styleClass="p-button-sm" [disabled]="selectedEntitiesToAddInCRM.length==0" (onClick)="onAddToCRM()" [loading]="sendCustomer"></p-button>
         </div>
     </ng-template>
-</p-sidebar>
+</p-drawer>

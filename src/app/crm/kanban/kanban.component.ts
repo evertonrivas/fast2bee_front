@@ -31,7 +31,7 @@ import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 import { TooltipModule } from 'primeng/tooltip';
 import { PaginatorModule } from 'primeng/paginator';
-import { SidebarModule } from 'primeng/sidebar';
+import { DrawerModule } from 'primeng/drawer';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { SelectModule } from 'primeng/select';
@@ -71,7 +71,7 @@ export interface filterParams{
     CheckboxModule,
     TooltipModule,
     PaginatorModule,
-    SidebarModule,
+    DrawerModule,
     DialogModule,
     TableModule,
     InputTextModule

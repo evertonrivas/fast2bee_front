@@ -9,7 +9,7 @@
         </div>        
     </div>
 </div>
-<p-sidebar [(visible)]="sidebarVisible" styleClass="w-25rem">
+<p-drawer [(visible)]="sidebarVisible" styleClass="w-25rem">
     <ng-template pTemplate="header"><div class="text-xl font-bold text-gray-500"><i class="pi pi-filter mr-1"></i> Filtros</div></ng-template>
     <div *ngIf="all_brand.length > 0" class="flex flex-column w-full">
         <label class="mb-2">Marca(s):</label>
@@ -44,10 +44,10 @@
         </p-multiSelect>
     </div>
     <p-button icon="pi pi-ffilter" label="Filtrar" styleClass="w-full mt-2" (onClick)="doFilter()"></p-button>
-</p-sidebar>
+</p-drawer>
 
 
-<p-sidebar position="right" [(visible)]="sidebarCart" styleClass="w-30rem lg:w-5" appendTo="body">
+<p-drawer position="right" [(visible)]="sidebarCart" styleClass="w-30rem lg:w-5" appendTo="body">
     <ng-template pTemplate="header"><div class="text-xl font-bold text-gray-500"><i class="pi pi-shopping-cart mr-1"></i>Itens do Pedido</div></ng-template>
     <p-divider></p-divider>
     <div class="flex flex-column w-full">
@@ -92,7 +92,7 @@
     <div style="bottom: 0px!important;">
         <p-button [disabled]="totalMyItens==0?true:false" styleClass="w-full p-button-danger" icon="pi pi-supplier" label="Revisar e Finalizar Pedido" iconPos="right" (onClick)="gotoCheckout()"></p-button>
     </div>
-</p-sidebar>
+</p-drawer>
 
 
 <p-dialog [visible]="showEditCartDialog" [closable]="false" [draggable]="false" [modal]="true" [header]="productToEdit!=undefined?productToEdit.name:''" styleClass="w-30rem lg:w-8">

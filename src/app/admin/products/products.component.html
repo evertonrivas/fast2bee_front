@@ -122,7 +122,7 @@
         ></p-fileUpload>
 </p-dialog>
 
-<p-sidebar styleClass="w-30rem" [(visible)]="showMassive" position="right" (onHide)="clearMassive()">
+<p-drawer styleClass="w-30rem" [(visible)]="showMassive" position="right" (onHide)="clearMassive()">
     <ng-template pTemplate="header">Ações em massa</ng-template>
     <ng-template pTemplate="content">
         <div class="flex flex-column gap-2 w-full lg:flex-row">
@@ -199,4 +199,4 @@
             <p-button icon="pi pi-unity-measure icon-xsmall" styleClass="w-full lg:w-auto" label="Alterar" (onClick)="executeMassive(actions.MEASURE)"></p-button>
         </div>
     </ng-template>
-</p-sidebar>
+</p-drawer>

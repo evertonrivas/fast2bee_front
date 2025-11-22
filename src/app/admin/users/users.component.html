@@ -73,7 +73,7 @@
     <div class="flex flex-row justify-content-center w-full"><p-button icon="pi pi-check" styleClass="p-button-sm p-button-success" label="OK" (onClick)="showDialogReset = false"></p-button></div>
 </p-dialog>
 
-<p-sidebar [(visible)]="visibleMassive" position="right" styleClass="w-6">
+<p-drawer [(visible)]="visibleMassive" position="right" styleClass="w-6">
     <ng-template pTemplate="header"><h5>Adição em Massa</h5></ng-template>
     <div class="flex flex-column w-full">
         <label class="mb-1">Tipo de Entidade</label>
@@ -194,4 +194,4 @@
         <p-button label="Cancelar" severity="warn" icon="pi pi-ban" styleClass="p-button-sm" (onClick)="cancelMassive()"></p-button>
         <p-button label="Executar" severity="primary" icon="pi pi-cog" styleClass="p-button-sm" [disabled]="selectedEntitiesToCreateUser.length==0" (onClick)="executeMassive()" [loading]="sendMassive"></p-button>
     </div>
-</p-sidebar>
+</p-drawer>

@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { SalesforceRoutingModule } from './salesforce-routing.module';
 import { SalesforceComponent } from './salesforce.component';
 
-import { SidebarModule } from 'primeng/sidebar';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DividerModule } from 'primeng/divider';
 import { GridComponent } from './grid/grid.component';
@@ -32,7 +31,6 @@ import { OrderStatusPipe } from "../pipes/order-status.pipe";
     AutoOrderComponent,
     CommonModule,
     SalesforceRoutingModule,
-    SidebarModule,
     MultiSelectModule,
     DividerModule,
     ImageModule,

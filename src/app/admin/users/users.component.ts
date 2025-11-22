@@ -26,8 +26,7 @@ import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { UserTypePipe } from 'src/app/pipes/user-type.pipe';
 import { DialogModule } from 'primeng/dialog';
-import { SidebarModule } from 'primeng/sidebar';
-import { DropdownModule } from 'primeng/dropdown';
+import { DrawerModule } from 'primeng/drawer';
 import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
 
@@ -63,7 +62,7 @@ export interface filterParams{
       PasswordModule,
       UserTypePipe,
       DialogModule,
-      SidebarModule,
+      DrawerModule,
       SelectModule,
       CommonModule,
       InputTextModule
