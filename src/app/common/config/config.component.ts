@@ -107,7 +107,7 @@ export class ConfigComponent extends Common implements AfterViewInit{
           case this.modules.SCM.valueOf().toString(): this.title = " do "; break;
           default:{
             this.title = "do Sistema";
-            this.sSys.getConfig().subscribe({
+            this.sSys.getConfig(localStorage.getItem("id_profile") as string).subscribe({
               next: (data) =>{
                 if("company_name" in data){
                   this.tenant_config = data as TenantConfig;
@@ -153,11 +153,19 @@ export class ConfigComponent extends Common implements AfterViewInit{
       this.sSys.saveConfig(this.tenant_config).subscribe({
         next: (data) =>{
           if (typeof data === 'boolean'){
-            this.msg.add({
-              summary:"Sucesso...",
-              detail: "Configuração salva com sucesso!",
-              severity:"success"
-            });
+            if (data==true){
+              this.msg.add({
+                summary:"Sucesso...",
+                detail: "Configuração salva com sucesso!",
+                severity:"success"
+              });
+            }else{
+              this.msg.add({
+                summary:"Falha...",
+                detail: "Não foi possível salvar as alterações!",
+                severity:"warn"
+              });
+            }
           }else{
             this.msg.add({
               summary:"Falha...",
