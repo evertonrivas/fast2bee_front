@@ -27,7 +27,18 @@
         </div> -->
     </ng-container>
     <ng-container *ngIf="module==modules.ADM">
-
+        <div class="col-12">
+            <div class="card border-round">
+                <label class="font-bold">Meu Plano</label><br><br>
+                <p>Plano: <em>{{myPlan?.name}}</em></p>
+                <p>Licenças administrativas: {{myPlan?.adm_licenses}}</p>
+                <p>Licenças de colaboradores: {{myPlan?.user_licenses}}</p>
+                <p>Licenças de representantes: {{myPlan?.repr_licenses}}</p>
+                <p>Licenças de logistas: {{myPlan?.store_licenses}}</p>
+                <p>Licenças de logistas com I.A: {{myPlan?.istore_licenses}}</p>
+                <p>Mensalidade do plano: <strong>{{myPlan?.value | currency}}</strong></p>
+            </div>
+        </div>
     </ng-container>
     <ng-container *ngIf="module==modules.FPR">
 

@@ -15,6 +15,7 @@ import { FormatType } from 'src/app/models/card.model';
 import { IndicatorsService } from 'src/app/services/indicators.service';
 import { SecurityService } from 'src/app/services/security.service';
 import { ComissionService } from 'src/app/services/comission.service';
+import { SysService } from 'src/app/services/sys.service';
 
 
 @Component({
@@ -39,6 +40,8 @@ export class DashboardComponent extends Common implements AfterViewInit,OnInit,O
   firstChartOption:EChartsOption = {};
   secondChartOption:EChartsOption = {};
   symbols:any[] = [];
+
+  myPlan:any;
   
   //target (meta)
   bodyMax:number = 0;
@@ -56,6 +59,7 @@ export class DashboardComponent extends Common implements AfterViewInit,OnInit,O
   constructor(private svcI:IndicatorsService,
     private svcU:SecurityService,
     private svc:ComissionService,
+    private svcS:SysService,
     route:Router){
       super(route)
 
@@ -289,6 +293,12 @@ export class DashboardComponent extends Common implements AfterViewInit,OnInit,O
     const $totalLoja  = this.svcI.licenseCount(AccessLevel.STORE);
     const $totalLojaI = this.svcI.licenseCount(AccessLevel.ISTORE);
     const $totalUser  = this.svcI.licenseCount(AccessLevel.USER);
+
+    this.svcS.getPlan().subscribe({
+      next: (data) =>{
+        this.myPlan = data;
+      }
+    })
 
     this.serviceSub[0] = forkJoin([$totalUsers,$totalAdmin,$totalRepre,$totalLoja,$totalLojaI,$totalUser]).subscribe(([totalUsers,totalAdmin,totalRepre,totalLoja,totalLojaI,totalUser])=>{
       this.topCards[0].icon      = "license";
