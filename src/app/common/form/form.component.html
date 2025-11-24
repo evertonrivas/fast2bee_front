@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="visible" styleClass="md:w-6 w-30rem" (onHide)="clearFields()" [header]="title" [modal]="true" [closable]="false">
+<p-dialog [(visible)]="visible" styleClass="md:w-9 w-30rem" (onHide)="clearFields()" [header]="title" [modal]="true" [closable]="false">
     <!-- <h5 class="text-center">{{title}}</h5> -->
     <ng-container>
         <div class="flex flex-column w-full md:flex-row mb-2 gap-2" *ngFor="let row of rows">
@@ -107,10 +107,12 @@
                         <div [style]="{'background-color': color.value, 'padding':'0.75rem 1.05rem' }">&nbsp;</div>
                     </ng-template>
                 </p-select>
-                <p-checkbox *ngIf="field.type==fieldType.CHECK" [(ngModel)]="field.value" [binary]="true" [ariaLabel]="field.label" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}"></p-checkbox>
+                <p-checkbox [inputId]="field.name" *ngIf="field.type==fieldType.CHECK" [(ngModel)]="field.value" [binary]="true" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}"></p-checkbox>
+                <label [for]="field.name" styleClass="mr-1"*ngIf="field.type==fieldType.CHECK" >{{field.label}}</label>
                 <div class="flex flex-row gap-2 mt-2" *ngIf="field.type==fieldType.RADIO">
-                    <div class="flex" *ngFor="let opt of field.options">
-                        <p-radioButton [name]="field.name" [value]="opt.value" [ariaLabel]="opt.label" [(ngModel)]="field.value" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}" (ngModelChange)="field.lockField!=undefined?onChangeLock($event,field.lockField,1):null"></p-radioButton>
+                    <div class="flex gap-1" *ngFor="let opt of field.options">
+                        <p-radiobutton [inputId]="opt.label" [name]="field.name" [value]="opt.value" [(ngModel)]="field.value" [disabled]="field.disabled" [ngClass]="{'ng-invalid ng-dirty' : (sended && field.required) && !field.value}" (ngModelChange)="field.lockField!=undefined?onChangeLock($event,field.lockField,1):null"></p-radiobutton>
+                        <label *ngIf="field.type==fieldType.RADIO" [for]="opt.label" styleClass="mr-1">{{ opt.label }}</label>
                     </div>
                 </div>
                 <div class="flex flex-row gap-2 mt-2 w-full" *ngIf="field.type==fieldType.PASSWD">
