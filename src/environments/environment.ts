@@ -5,6 +5,7 @@ export const environment = {
     backend_crm: "https://fast2bee.pythonanywhere.com/crm/api",
     backend_scm: "https://fast2bee.pythonanywhere.com/scm/api",
     backend_cmm: "https://fast2bee.pythonanywhere.com/cmm/api",
+    backend_ntf: "ws://localhost:8000/smc/api",
     locale: {
         language: "pt-BR",
         currency_code: "R$",

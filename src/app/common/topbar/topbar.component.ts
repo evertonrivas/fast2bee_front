@@ -1,9 +1,9 @@
-import { Component,Input,AfterContentInit,OnDestroy } from '@angular/core';
+import { Component,AfterContentInit,OnDestroy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SecurityService } from 'src/app/services/security.service';
 import { MessageService } from 'primeng/api';
-import { ChatService } from 'src/app/services/chat.service';
+//import { ChatService } from 'src/app/services/chat.service';
 import { Common } from 'src/app/classes/common';
 import { LayoutService } from 'src/app/services/layout.service';
 import { ToastModule } from 'primeng/toast';
@@ -16,13 +16,14 @@ import { BadgeModule } from 'primeng/badge';
 import { IndicatorsService } from 'src/app/services/indicators.service';
 import { ModuleName } from 'src/app/models/system.enum';
 import { PopoverModule } from 'primeng/popover';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.scss'],
   standalone:true,
-  providers: [MessageService,ChatService],
+  providers: [MessageService,NotificationService],
   imports:[
     CommonModule,
     FormsModule,
@@ -50,7 +51,7 @@ export class TopbarComponent extends Common implements AfterContentInit,OnDestro
 
   constructor(private svc:SecurityService,
     private msgSvc:MessageService,
-    private chatSvc:ChatService,
+    private notSvc:NotificationService,
     private laySvc:LayoutService,
     private IndSvc:IndicatorsService,
     route:Router
@@ -66,6 +67,12 @@ export class TopbarComponent extends Common implements AfterContentInit,OnDestro
           }
         });
       });
+
+      // this.notSvc.listenForNotification().subscribe(
+      //   (data:any) =>{
+      //     console.log('Nova notificação recebida: ',data);
+      //   }
+      // );
   }
 
   ngOnDestroy(): void {
@@ -100,18 +107,6 @@ export class TopbarComponent extends Common implements AfterContentInit,OnDestro
         }
       });
     }
-
-    this.chatSub = this.chatSvc.chatAnnounced$.subscribe({
-      next(value) {
-        
-      },
-      error(err) {
-        
-      },
-      complete() {
-        
-      },
-    });
   }
 
   checkMessage():void{

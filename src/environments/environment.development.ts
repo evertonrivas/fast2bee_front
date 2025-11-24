@@ -5,6 +5,7 @@ export const environment = {
     backend_scm: "http://localhost:5000/scm/api",
     backend_smc: "http://localhost:5000/smc/api",
     backend_cmm: "http://localhost:5000/cmm/api",
+    backend_ntf: "ws://localhost:8000/smc/api",
     locale: {
         language: "pt-BR",
         currency_code: "R$",

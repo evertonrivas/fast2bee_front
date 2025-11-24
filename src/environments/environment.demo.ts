@@ -3,7 +3,9 @@ export const environment = {
     backend_fpr: "https://fast2beedemo.pythonanywhere.com/fpr/api",
     backend_crm: "https://fast2beedemo.pythonanywhere.com/crm/api",
     backend_scm: "https://fast2beedemo.pythonanywhere.com/scm/api",
+    backend_smc: "https://fast2beedemo.pythonanywhere.com/smc/api",
     backend_cmm: "https://fast2beedemo.pythonanywhere.com/cmm/api",
+    backend_ntf: "ws://fastwbeedemo.pythonanywhere.com/smc/api",
     locale: {
         language: "pt",
         currency_code: "R$",
