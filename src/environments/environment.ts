@@ -6,7 +6,7 @@ export const environment = {
     backend_scm: "https://fast2bee.pythonanywhere.com/scm/api",
     backend_cmm: "https://fast2bee.pythonanywhere.com/cmm/api",
     locale: {
-        language: "pt",
+        language: "pt-BR",
         currency_code: "R$",
         date_format: "shortDate",
         timezone: "-0300"
