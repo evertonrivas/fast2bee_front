@@ -72,12 +72,4 @@ export class UserService extends MyHttp{
       headers:this.getHeader(ContentType.json)
     });
   }
-
-  resetPassword(p_id:number):Observable<string|ResponseError>{
-    return this.http.put<string|ResponseError>(this.sys_config.backend_smc+'/users/password/',{
-      "id": p_id
-    },{
-      headers:this.getHeader(ContentType.json)
-    });
-  }
 }
