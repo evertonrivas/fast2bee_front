@@ -11,6 +11,10 @@ import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeng/themes/lara';
 import { definePreset } from '@primeng/themes';
+import { registerLocaleData } from '@angular/common';
+import localePtBr from '@angular/common/locales/pt';
+
+registerLocaleData(localePtBr);
 
 const F2bPreset = definePreset(Lara, {
     semantic: {
