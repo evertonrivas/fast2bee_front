@@ -40,3 +40,12 @@ export interface TenantConfig{
     email_from_name: string,
     email_from_value: string
 }
+
+export interface MyPlan{
+    name: string,
+    adm_licenses: number,
+    repr_licenses: number,
+    store_licenses: number,
+    istore_licenses: number,
+    value: number
+}
