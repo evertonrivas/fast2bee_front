@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Filter } from '../models/filter.model';
 import { ContentType, MyHttp } from './my-http';
-import { SysConfig, TenantConfig } from '../models/auth.model';
+import { MyPlan, TenantConfig } from '../models/auth.model';
 import { ResponseError } from '../models/paginate.model';
 import { Cep } from '../models/entity.model';
 
@@ -24,8 +24,8 @@ export class SysService extends MyHttp{
     return;
   }
 
-  getConfig():Observable<TenantConfig|ResponseError>{
-    return this.http.get<TenantConfig|ResponseError>(this.sys_config.backend_cmm+'/config/',{
+  getConfig(profile:string):Observable<TenantConfig|ResponseError>{
+    return this.http.get<TenantConfig|ResponseError>(this.sys_config.backend_smc+'/config/'+profile,{
       headers:this.getHeader()
     });
   }
@@ -50,6 +50,12 @@ export class SysService extends MyHttp{
       "type": helpType
     },{
       headers: this.getHeader(ContentType.json)
+    })
+  }
+
+  getPlan():Observable<MyPlan|ResponseError>{
+    return this.http.get<MyPlan|ResponseError>(this.sys_config.backend_smc+'/plan/my-plan/',{
+      headers: this.getHeader()
     })
   }
 
