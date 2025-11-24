@@ -299,6 +299,15 @@ export class SizesComponent extends Common implements AfterViewInit{
           new_size: i.toString()
         });
       }
+    }else if(type=='T'){
+      for(let i=80;i<141;i++){
+        massive.push({
+          id: 0,
+          name: i.toString(),
+          old_size: i.toString(),
+          new_size: i.toString()
+        })
+      }
     }
 
 
