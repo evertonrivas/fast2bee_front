@@ -6,7 +6,7 @@ export const environment = {
     backend_smc: "http://localhost:5000/smc/api",
     backend_cmm: "http://localhost:5000/cmm/api",
     locale: {
-        language: "pt",
+        language: "pt-BR",
         currency_code: "R$",
         date_format: "shortDate",
         timezone: "-0300"
