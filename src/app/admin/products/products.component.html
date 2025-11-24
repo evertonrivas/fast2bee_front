@@ -89,7 +89,7 @@
         [url]="url_upload_images"
         name="files[]"
         [withCredentials]="true"
-        [fileLimit]="sysconfig.company_max_up_images"
+        [fileLimit]="sysconfig.max_upload_images"
         accept="image/*"
         [headers]="uploadHeaders"
         invalidFileLimitMessageSummary="Número máximo de arquivos excedido."

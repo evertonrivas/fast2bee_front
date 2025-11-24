@@ -1,14 +1,14 @@
 <div class="layout-topbar">
     <img *ngIf="module!=modules.B2B" 
-        [src]="'assets/images/'+(!sysconfig.use_company_custom?'Fast2Bee.png':sysconfig.company_logo)" 
-        [alt]="(!sysconfig.use_company_custom?'Fast2Bee':sysconfig.company_name)"
-        [title]="(!sysconfig.use_company_custom?'Fast2Bee':sysconfig.company_name)"
+        [src]="'assets/images/'+(!sysconfig.company_custom?'Fast2Bee.png':sysconfig.company_logo)" 
+        [alt]="(!sysconfig.company_custom?'Fast2Bee':sysconfig.company_name)"
+        [title]="(!sysconfig.company_custom?'Fast2Bee':sysconfig.company_name)"
         height="30" class="mr-4">
     <a *ngIf="module==modules.B2B" href="javascript:void(0)" [routerLink]="[modulePath+'/grid']">
         <img 
-            [src]="'assets/images/'+(!sysconfig.use_company_custom?'Fast2Bee.png':sysconfig.company_logo)" 
-            [alt]="(!sysconfig.use_company_custom?'Fast2Bee':sysconfig.company_name)"
-            [title]="(!sysconfig.use_company_custom?'Fast2Bee':sysconfig.company_name)"
+            [src]="'assets/images/'+(!sysconfig.company_custom?'Fast2Bee.png':sysconfig.company_logo)" 
+            [alt]="(!sysconfig.company_custom?'Fast2Bee':sysconfig.company_name)"
+            [title]="(!sysconfig.company_custom?'Fast2Bee':sysconfig.company_name)"
             height="30" class="mr-4">
     </a>
     <p-button #menubutton [text]="true" [severity]="'secondary'" class="layout-menu-button layout-topbar-button" *ngIf="module==modules.ADM || module==modules.B2B" [pTooltip]="module==modules.ADM?'Exibir/Ocultar Menu':'Exibir/Ocultar Filtros'" tooltipPosition="bottom" tooltipStyleClass="text-xs" (click)="onMenu()">

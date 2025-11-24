@@ -63,8 +63,8 @@ export class DashboardComponent extends Common implements AfterViewInit,OnInit,O
     route:Router){
       super(route)
 
-      this.symbols.push(this.sysconfig.company_dashboard_image);
-      this.chartColor = this.sysconfig.company_dashboard_color;
+      this.symbols.push(this.sysconfig.dashboard_image);
+      this.chartColor = this.sysconfig.dashboard_color;
   }
   
   ngOnDestroy(): void {

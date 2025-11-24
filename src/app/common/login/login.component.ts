@@ -46,19 +46,34 @@ export class LoginComponent implements AfterContentInit{
   company_name:string = "";
 
   app_config:SysConfig = {
-    system_pagination_size: 0,
-    use_company_custom: false,
-    company_name: "",
-    company_logo: "",
-    company_instagram: "",
-    company_facebook: "",
-    company_linkedin: "",
-    company_max_up_files: 0,
-    company_max_up_images: 0,
-    company_use_url_images: false,
-    company_dashboard_color: "",
-    company_dashboard_image: "",
-    flimv_model: ""
+    pagination_size: 0,
+    email_brevo_api_key: '',
+    email_from_name: '',
+    email_from_value: '',
+    flimv_model: '',
+    dashboard_config: '',
+    ai_model: '',
+    ai_api_key: '',
+    company_custom: false,
+    company_name: '',
+    company_logo: '',
+    url_instagram: '',
+    url_facebook: '',
+    url_linkedin: '',
+    max_upload_files: 0,
+    max_upload_images: 0,
+    use_url_images: false,
+    track_orders: false,
+    erp_integration: false,
+    erp_url: '',
+    erp_token: '',
+    erp_grant_type: '',
+    erp_client_id: '',
+    erp_client_secret: '',
+    erp_username: '',
+    erp_password: '',
+    dashboard_color: '',
+    dashboard_image: ''
   }
 
   app_token:Auth = {
@@ -85,56 +100,34 @@ export class LoginComponent implements AfterContentInit{
   ngAfterContentInit(): void {
     this.config_loading = true;
     //limpa o storage antes de usar o sistema
-    localStorage.removeItem("system_pagination_size");
-    localStorage.removeItem("use_company_custom");
+    localStorage.removeItem("pagination_size");
+    localStorage.removeItem("email_brevo_api_key");
+    localStorage.removeItem("email_from_name");
+    localStorage.removeItem("email_from_value");
+    localStorage.removeItem("flimv_model");
+    localStorage.removeItem("dashboard_config");
+    localStorage.removeItem("ai_model");
+    localStorage.removeItem("ai_api_key");
+    localStorage.removeItem("company_custom");
     localStorage.removeItem("company_name");
     localStorage.removeItem("company_logo");
-    localStorage.removeItem("company_instagram");
-    localStorage.removeItem("company_facebook");
-    localStorage.removeItem("company_linkedin");
-    localStorage.removeItem("company_max_up_files");
-    localStorage.removeItem("company_max_up_images");
-    localStorage.removeItem("company_use_url_images");
-    localStorage.removeItem("company_dashboard_color");
-    localStorage.removeItem("company_dashboard_image");
-    localStorage.removeItem("flimv_model");
-    localStorage.removeItem("id_user");
-    localStorage.removeItem("token_access");
-    localStorage.removeItem("token_type");
-    localStorage.removeItem("token_expire");
-    localStorage.removeItem("level_access");
-    localStorage.removeItem("id_profile");
-    //busca as configuracoes do sistema
-    /*this.svc.getConfig().subscribe({
-      next:(data) =>{
-        if ("system_pagination_size" in data){
-          let config:SysConfig = data as SysConfig;
-          localStorage.setItem("system_pagination_size",String(config.system_pagination_size));
-          localStorage.setItem("use_company_custom",String(config.use_company_custom?1:0));
-          localStorage.setItem("company_name",config.company_name);
-          localStorage.setItem("company_logo",config.company_logo);
-          localStorage.setItem("company_instagram",config.company_instagram);
-          localStorage.setItem("company_facebook",config.company_facebook);
-          localStorage.setItem("company_linkedin",config.company_linkedin);
-          localStorage.setItem("company_max_up_files",String(config.company_max_up_files));
-          localStorage.setItem("company_max_up_images",String(config.company_max_up_images));
-          localStorage.setItem("company_use_url_images",String(config.company_use_url_images?1:0));
-          localStorage.setItem("company_dashboard_image",String(config.company_dashboard_image));
-          localStorage.setItem("company_dashboard_color",String(config.company_dashboard_color));
-          localStorage.setItem("flimv_model",config.flimv_model);
-
-          this.use_company_custom = config.use_company_custom;
-          this.company_logo = config.company_logo;
-          this.company_name = config.company_name;
-          
-          this.config_loading = false;
-        }
-        else{
-
-        }
-      }
-    });*/
-
+    localStorage.removeItem("url_instagram");
+    localStorage.removeItem("url_facebook");
+    localStorage.removeItem("url_linkedin");
+    localStorage.removeItem("max_upload_files");
+    localStorage.removeItem("max_upload_images");
+    localStorage.removeItem("use_url_images");
+    localStorage.removeItem("track_orders");
+    localStorage.removeItem("erp_integration");
+    localStorage.removeItem("erp_url");
+    localStorage.removeItem("erp_token");
+    localStorage.removeItem("erp_grant_type");
+    localStorage.removeItem("erp_client_id");
+    localStorage.removeItem("erp_client_secret");
+    localStorage.removeItem("erp_username");
+    localStorage.removeItem("erp_password");
+    localStorage.removeItem("dashboard_image");
+    localStorage.removeItem("dashboard_color");
 
     this.username_value = localStorage.getItem("username") as string;
     this.password_value = localStorage.getItem("password") as string;
@@ -191,21 +184,36 @@ export class LoginComponent implements AfterContentInit{
         localStorage.setItem("message_renew","1");
 
         // configuracoes para essa conta
-        localStorage.setItem("system_pagination_size",String(this.app_token.config.system_pagination_size));
-        localStorage.setItem("use_company_custom",String(this.app_token.config.use_company_custom?1:0));
+        localStorage.setItem("pagination_size",String(this.app_token.config.pagination_size));
+        localStorage.setItem("email_brevo_api_key",String(this.app_token.config.email_brevo_api_key));
+        localStorage.setItem("email_from_name",String(this.app_token.config.email_from_name));
+        localStorage.setItem("email_from_value",String(this.app_token.config.email_from_value));
+        localStorage.setItem("flimv_model",this.app_token.config.flimv_model);
+        localStorage.setItem("dashboard_config",String(this.app_token.config.dashboard_config));
+        localStorage.setItem("ai_model",String(this.app_token.config.ai_model));
+        localStorage.setItem("ai_api_key",String(this.app_token.config.ai_api_key));
+        localStorage.setItem("company_custom",String(this.app_token.config.company_custom?1:0));
         localStorage.setItem("company_name",this.app_token.config.company_name);
         localStorage.setItem("company_logo",this.app_token.config.company_logo);
-        localStorage.setItem("company_instagram",this.app_token.config.company_instagram);
-        localStorage.setItem("company_facebook",this.app_token.config.company_facebook);
-        localStorage.setItem("company_linkedin",this.app_token.config.company_linkedin);
-        localStorage.setItem("company_max_up_files",String(this.app_token.config.company_max_up_files));
-        localStorage.setItem("company_max_up_images",String(this.app_token.config.company_max_up_images));
-        localStorage.setItem("company_use_url_images",String(this.app_token.config.company_use_url_images?1:0));
-        localStorage.setItem("company_dashboard_image",String(this.app_token.config.company_dashboard_image));
-        localStorage.setItem("company_dashboard_color",String(this.app_token.config.company_dashboard_color));
-        localStorage.setItem("flimv_model",this.app_token.config.flimv_model);
+        localStorage.setItem("url_instagram",this.app_token.config.url_instagram);
+        localStorage.setItem("url_facebook",this.app_token.config.url_facebook);
+        localStorage.setItem("url_linkedin",this.app_token.config.url_linkedin);
+        localStorage.setItem("max_upload_files",String(this.app_token.config.max_upload_files));
+        localStorage.setItem("max_upload_images",String(this.app_token.config.max_upload_images));
+        localStorage.setItem("use_url_images",String(this.app_token.config.use_url_images?1:0));
+        localStorage.setItem("track_orders",String(this.app_token.config.track_orders?1:0));
+        localStorage.setItem("erp_integration",String(this.app_token.config.erp_integration?1:0));
+        localStorage.setItem("erp_url",String(this.app_token.config.erp_url));
+        localStorage.setItem("erp_token",String(this.app_token.config.erp_token));
+        localStorage.setItem("erp_grant_type",String(this.app_token.config.erp_grant_type));
+        localStorage.setItem("erp_client_id",String(this.app_token.config.erp_client_id));
+        localStorage.setItem("erp_client_secret",String(this.app_token.config.erp_client_secret));
+        localStorage.setItem("erp_username",String(this.app_token.config.erp_username));
+        localStorage.setItem("erp_password",String(this.app_token.config.erp_password));
+        localStorage.setItem("dashboard_color",String(this.app_token.config.dashboard_color));
+        localStorage.setItem("dashboard_image",String(this.app_token.config.dashboard_image));
 
-        this.use_company_custom = this.app_token.config.use_company_custom;
+        this.use_company_custom = this.app_token.config.company_custom;
         this.company_logo = this.app_token.config.company_logo;
         this.company_name = this.app_token.config.company_name;
 

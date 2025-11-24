@@ -16,19 +16,34 @@ export class Common{
     formVisible:boolean = false; //exibe ou oculta o formulario
     envconfig = isDevMode()?sys_config_dev:sys_config; //arquivo de configuracoes do sistema
     sysconfig:SysConfig = {
-        use_company_custom: false,
+        pagination_size: 0,
+        email_brevo_api_key: "",
+        email_from_name: "",
+        email_from_value: "",
+        flimv_model: "",
+        dashboard_config: "",
+        ai_model: "",
+        ai_api_key: "",
+        company_custom: false,
         company_name: "",
         company_logo: "",
-        company_instagram: "",
-        company_facebook: "",
-        company_linkedin: "",
-        company_max_up_files: 0,
-        company_max_up_images: 0,
-        company_use_url_images: false,
-        system_pagination_size: 0,
-        flimv_model: "",
-        company_dashboard_color: "",
-        company_dashboard_image: ""
+        url_instagram: "",
+        url_facebook: "",
+        url_linkedin: "",
+        max_upload_files: 0,
+        max_upload_images: 0,
+        use_url_images: false,
+        track_orders: false,
+        erp_integration: false,
+        erp_url: "",
+        erp_token: "",
+        erp_grant_type: "",
+        erp_client_id: "",
+        erp_client_secret: "",
+        erp_username: "",
+        erp_password: "",
+        dashboard_image: "",
+        dashboard_color: ""
     }
     module:ModuleName = ModuleName.NONE; // nome do module que estah em uso no sistema
     modulePath:string = ""; //url do caminho do modulo
@@ -64,21 +79,36 @@ export class Common{
         }
 
         this.sysconfig = {
-            use_company_custom: JSON.stringify(localStorage.getItem("use_company_custom")).replaceAll('"',"")=="1"?true:false,
-            company_name: JSON.stringify(localStorage.getItem("company_name")).replaceAll('"',""),
-            company_logo: JSON.stringify(localStorage.getItem("company_logo")).replaceAll('"',""),
-            company_instagram: JSON.stringify(localStorage.getItem("company_instagram")).replaceAll('"',""),
-            company_facebook: JSON.stringify(localStorage.getItem("company_facebook")).replaceAll('"',""),
-            company_linkedin: JSON.stringify(localStorage.getItem("company_linkedin")).replaceAll('"',""),
-            company_max_up_files: parseInt(JSON.stringify(localStorage.getItem("company_max_up_files")).replaceAll('"',"")),
-            company_max_up_images: parseInt(JSON.stringify(localStorage.getItem("company_max_up_images")).replaceAll('"',"")),
-            company_use_url_images: JSON.stringify(localStorage.getItem("company_use_url_images")).replaceAll('"',"")=="1"?true:false,
-            system_pagination_size: parseInt(JSON.stringify(localStorage.getItem("system_pagination_size")).replaceAll('"',"")),
+            pagination_size: parseInt(JSON.stringify(localStorage.getItem("pagination_size")).replaceAll('"','')),
+            email_brevo_api_key: JSON.stringify(localStorage.getItem("email_brevo_api_key")).replaceAll('"',''),
+            email_from_name: JSON.stringify(localStorage.getItem("email_from_name")).replaceAll('"',''),
+            email_from_value: JSON.stringify(localStorage.getItem("email_from_value")).replaceAll('"',''),
             flimv_model: JSON.stringify(localStorage.getItem("flimv_model")).replaceAll('"',''),
-            company_dashboard_color: JSON.stringify(localStorage.getItem("company_dashboard_color")).replaceAll('"',''),
-            company_dashboard_image: JSON.stringify(localStorage.getItem("company_dashboard_image")).replaceAll('"','')
+            dashboard_config: JSON.stringify(localStorage.getItem("dashboard_config")).replaceAll('"',''),
+            ai_model: JSON.stringify(localStorage.getItem("ai_model")).replaceAll('"',''),
+            ai_api_key: JSON.stringify(localStorage.getItem("ai_api_key")).replaceAll('"',''),
+            company_custom: JSON.stringify(localStorage.getItem("company_custom")).replaceAll('"',"")=="1"?true:false,
+            company_name: JSON.stringify(localStorage.getItem("company_name")).replaceAll('"',''),
+            company_logo: JSON.stringify(localStorage.getItem("company_logo")).replaceAll('"',''),
+            url_instagram: JSON.stringify(localStorage.getItem("url_instagram")).replaceAll('"',''),
+            url_facebook: JSON.stringify(localStorage.getItem("url_facebook")).replaceAll('"',''),
+            url_linkedin: JSON.stringify(localStorage.getItem("url_linkedin")).replaceAll('"',''),
+            max_upload_files: parseInt(JSON.stringify(localStorage.getItem("max_upload_files")).replaceAll('"','')),
+            max_upload_images: parseInt(JSON.stringify(localStorage.getItem("max_upload_images")).replaceAll('"','')),
+            use_url_images: JSON.stringify(localStorage.getItem("use_url_images")).replaceAll('"',"")=="1"?true:false,
+            track_orders: JSON.stringify(localStorage.getItem("track_orders")).replaceAll('"',"")=="1"?true:false,
+            erp_integration: JSON.stringify(localStorage.getItem("erp_integration")).replaceAll('"',"")=="1"?true:false,
+            erp_url: JSON.stringify(localStorage.getItem("erp_url")).replaceAll('"',''),
+            erp_token: JSON.stringify(localStorage.getItem("erp_token")).replaceAll('"',''),
+            erp_grant_type: JSON.stringify(localStorage.getItem("erp_grant_type")).replaceAll('"',''),
+            erp_client_id: JSON.stringify(localStorage.getItem("erp_client_id")).replaceAll('"',''),
+            erp_client_secret: JSON.stringify(localStorage.getItem("erp_client_secret")).replaceAll('"',''),
+            erp_username: JSON.stringify(localStorage.getItem("erp_username")).replaceAll('"',''),
+            erp_password: JSON.stringify(localStorage.getItem("erp_password")).replaceAll('"',''),
+            dashboard_image: JSON.stringify(localStorage.getItem("dashboard_image")).replaceAll('"',''),
+            dashboard_color: JSON.stringify(localStorage.getItem("dashboard_color")).replaceAll('"',''),
         }
-        this.options.pageSize = this.sysconfig.system_pagination_size;
+        this.options.pageSize = parseInt(JSON.stringify(localStorage.getItem("pagination_size")));
 
         for(let i=0;i<10;i++){
             if (this.serviceSub[i]==undefined)

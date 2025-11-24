@@ -440,7 +440,7 @@ export class ProductsComponent extends Common implements AfterViewInit {
     }
 
     let fOpts:FieldOption[] = [];
-    for(let i=0;i<this.sysconfig.company_max_up_images;i++){
+    for(let i=0;i<this.sysconfig.max_upload_images;i++){
       fOpts.push({
         id:(i*-1),
         label:'',
@@ -510,7 +510,7 @@ export class ProductsComponent extends Common implements AfterViewInit {
               { fields:[fType,fModel,fGrid,fMeasure] },
               { fields:[fObserve] }
             );
-            if (this.sysconfig.company_use_url_images){
+            if (this.sysconfig.use_url_images){
               this.formRows.push({
                 fields:[fImages]
               });
@@ -537,7 +537,7 @@ export class ProductsComponent extends Common implements AfterViewInit {
         { fields:[fType,fModel,fGrid,fMeasure] },
         { fields:[fObserve] }
       );
-      if (this.sysconfig.company_use_url_images){
+      if (this.sysconfig.use_url_images){
         this.formRows.push({
           fields:[fImages]
         });
@@ -556,7 +556,7 @@ export class ProductsComponent extends Common implements AfterViewInit {
         if(typeof data ==='number'){
 
           //valida se precisa fazer upload de imagem ou se usa url
-          if(!this.sysconfig.company_use_url_images){
+          if(!this.sysconfig.use_url_images){
             this.idToEdit = data as number;
             this.url_upload_images += this.idToEdit;
             this.showDialogUpload = true;
@@ -568,7 +568,7 @@ export class ProductsComponent extends Common implements AfterViewInit {
           });
         }else if(typeof data ==='boolean'){
           //valida se precisa fazer upload de imagem ou se usa url
-          if(!this.sysconfig.company_use_url_images){
+          if(!this.sysconfig.use_url_images){
             this.url_upload_images += this.idToEdit;
             this.showDialogUpload = true;
           }

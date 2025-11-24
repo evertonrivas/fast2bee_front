@@ -192,7 +192,7 @@ export class GridComponent extends Common implements AfterViewInit{
   listProducts(){
     this.loading = true;
     this.options.page = 1;
-    this.options.pageSize = this.sysconfig.system_pagination_size;
+    this.options.pageSize = this.sysconfig.pagination_size;
     this.svcOrd.listGallery(this.options).subscribe({
       next: (data) =>{
         this.response = data as RequestResponse;
@@ -206,7 +206,7 @@ export class GridComponent extends Common implements AfterViewInit{
     this.loading = true;
     this.svcCo.list({
       page:1,
-      pageSize: this.sysconfig.system_pagination_size,
+      pageSize: this.sysconfig.pagination_size,
       query:'can:list-all 1||is:b2b 1'
     }).subscribe({
       next: (data) =>{

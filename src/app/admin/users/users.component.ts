@@ -29,6 +29,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DrawerModule } from 'primeng/drawer';
 import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
+import { SecurityService } from 'src/app/services/security.service';
 
 export interface filterParams{
   level: string|undefined,
@@ -91,6 +92,7 @@ export class UsersComponent extends Common implements AfterViewInit{
   filtering:boolean = false;
   constructor(route:Router,
     private svc:UserService,
+    private svcS:SecurityService,
     private svcE:EntitiesService,
     private svcL:LocationService,
     private msg:MessageService,
@@ -438,7 +440,7 @@ export class UsersComponent extends Common implements AfterViewInit{
   }
 
   resetUserPassword(id:number,uname:string):void{
-    this.svc.resetPassword(id).subscribe({
+    this.svcS.setNewPassword(id).subscribe({
       next:(data) =>{
         if(typeof data ==='string'){
           this.usernameReset   = uname;

@@ -21,7 +21,6 @@ import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DialogModule } from 'primeng/dialog';
-import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TooltipModule } from 'primeng/tooltip';
 import { DevolutionStatusPipe } from 'src/app/pipes/devolution-status.pipe';

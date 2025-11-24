@@ -17,7 +17,7 @@ export class MyHttp {
 
     }
 
-    protected getHeader(cType:ContentType = ContentType.none):HttpHeaders{
+    protected getHeader(cType:ContentType = ContentType.none,profile:string|null = null):HttpHeaders{
         let content_type = '';
         switch (cType){
             case ContentType.json:{
@@ -34,7 +34,11 @@ export class MyHttp {
             }
         }
         let header = new HttpHeaders()
-        header = header.set("X-customer", (localStorage.getItem('id_profile')?.toString() ?? ''))
+        if (profile==null){
+            header = header.set("X-customer", (localStorage.getItem('id_profile')?.toString() ?? ''));
+        }else{
+            header = header.set("X-customer",profile);
+        }
         header = header.set("Authorization", (localStorage.getItem('token_type') ?? '') + ' ' + (localStorage.getItem('token_access') ?? ''));
         if (content_type!=''){
             header = header.set('Content-Type',content_type);
