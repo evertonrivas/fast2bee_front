@@ -108,7 +108,7 @@ export class Common{
             dashboard_image: JSON.stringify(localStorage.getItem("dashboard_image")).replaceAll('"',''),
             dashboard_color: JSON.stringify(localStorage.getItem("dashboard_color")).replaceAll('"',''),
         }
-        this.options.pageSize = parseInt(JSON.stringify(localStorage.getItem("pagination_size")));
+        this.options.pageSize = this.sysconfig.pagination_size;
 
         for(let i=0;i<10;i++){
             if (this.serviceSub[i]==undefined)
