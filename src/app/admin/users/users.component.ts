@@ -162,16 +162,17 @@ export class UsersComponent extends Common implements AfterViewInit{
         label:"Administrador",
         id:undefined
       },{
+        value:"I",
+        label:"Lojista/Empresa (IA)",
+        id:undefined
+      }
+      ,{
         value: "L",
-        label:"Lojista",
+        label:"Lojista/Empresa",
         id:undefined
       },{
         value:"R",
         label:"Representante",
-        id:undefined
-      },{
-        value:"V",
-        label:"Vendedor",
         id:undefined
       },{
         value:"C",
@@ -245,22 +246,25 @@ export class UsersComponent extends Common implements AfterViewInit{
       lockField: undefined
     }
 
+    let opts = [];
+    opts.push({value:'A',label:'Administrador',id:undefined});
+    if (id>0){
+      opts.push({value:'L',label:'Lojista/Empresa',id:undefined});
+      opts.push({value:'I',label:'Lojista/Empresa (IA)',id:undefined});
+      opts.push({value:'R',label:'Representante',id:undefined});
+    }
+    opts.push({value:'C',label:'Usuário da Empresa',id:undefined});
+
     let fLevel:FormField = {
       label: "Nível de Acesso",
       name: "type",
       placeholder: "Selecione...",
       type: FieldType.COMBO,
       value: undefined,
-      options: [
-        { value:'A', label:'Administrador',id:undefined },
-        { value:'L', label:'Lojista',id:undefined },
-        { value:'I', label:'Lojista (IA)',id:undefined },
-        { value:'R', label:'Representante',id:undefined },
-        { value:'C', label:'Usuário da Empresa',id:undefined }
-      ],
+      options: opts,
       required: true,
       case: FieldCase.UPPER,
-      disabled: false,
+      disabled: id>0?true:false,
       lockField:undefined
     }
 
@@ -302,13 +306,7 @@ export class UsersComponent extends Common implements AfterViewInit{
 
             fActive.value   = this.localObject.active;
 
-            switch(this.localObject.type){
-              case 'A': fLevel.value = { value:'A', label:'Administrador',id:undefined }; break;
-              case 'L': fLevel.value = { value:'L', label:'Lojista',id:undefined }; break;
-              case 'I': fLevel.value = { value:'I', label:'Lojista (IA)',id:undefined }; break;
-              case 'R': fLevel.value = { value:'R', label:'Representante',id:undefined }; break;
-              case 'C': fLevel.value = { value:'U', label:'Usuário da Empresa',id:undefined }; break;
-            }
+            fLevel.value = fLevel.options?.find(v => v.value == this.localObject.type);
 
             //monta as linhas do forme e exibe o mesmo
             this.formRows.push({fields: [fieldName,fieldUName]});
@@ -340,8 +338,7 @@ export class UsersComponent extends Common implements AfterViewInit{
   onDataSave(data:any):void{
     this.hasSended = true;
     if (this.idToEdit == 0 ){
-      let id_customer:string =localStorage.getItem("id_profile") as string
-      this.serviceSub[3] = this.svc.save([data],id_customer).subscribe({
+      this.serviceSub[3] = this.svc.save([data]).subscribe({
         next:(data) =>{
           this.hasSended = false;
           this.formVisible = false;
