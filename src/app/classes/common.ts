@@ -116,7 +116,7 @@ export class Common{
         }
 
         this.getModule();
-        switch(localStorage.getItem("level_access") as string){
+        switch(localStorage.getItem("user_type") as string){
             case 'A': this.level_access = AccessLevel.ADMIN; break;
             case 'L': this.level_access = AccessLevel.STORE; break;
             case 'I': this.level_access = AccessLevel.ISTORE; break;
