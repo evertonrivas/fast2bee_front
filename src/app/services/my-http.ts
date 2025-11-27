@@ -39,6 +39,8 @@ export class MyHttp {
         }else{
             header = header.set("X-customer",profile);
         }
+        header = header.set("X-entity",(localStorage.getItem('id_entity')?.toString() ?? ''));
+        header = header.set("X-type",(localStorage.getItem('level_access')?.toString() ?? ''));
         header = header.set("Authorization", (localStorage.getItem('token_type') ?? '') + ' ' + (localStorage.getItem('token_access') ?? ''));
         if (content_type!=''){
             header = header.set('Content-Type',content_type);

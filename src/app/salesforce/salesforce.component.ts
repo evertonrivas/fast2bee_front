@@ -3,7 +3,7 @@ import { Common } from '../classes/common';
 import { Router, RouterOutlet } from '@angular/router';
 import { LayoutService } from '../services/layout.service';
 import { forkJoin } from 'rxjs';
-import { B2bBrand, Color, ProductCategory, ProductModel, ProductStock, ProductType, Size, SubTotal,Image, Product, ProductStockSizes } from '../models/product.model';
+import { B2bBrand, Color, ProductCategory, ProductModel, ProductStock, ProductType, Size, SubTotal,Image, Product } from '../models/product.model';
 import { Options, ResponseError } from '../models/paginate.model';
 import { Filter } from '../models/filter.model';
 import { B2bOrderService } from '../services/b2b.order.service';

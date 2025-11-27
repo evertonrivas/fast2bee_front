@@ -37,19 +37,18 @@
     </div>
 </div>
 
-<div class="flex justify-content-between overflow-x-scroll col-12 min-w-full overflow-y-hidden crm-kanban-stages-height">
+<div class="flex justify-content-between overflow-x-scroll col-12 min-w-full overflow-y-hidden crm-kanban-stages-height gap-2">
     <ng-container *ngFor="let stage of stagesOfFunnel;let i=index">
         <!--Inicio do stagio de funil-->
-        <div class="p-panel w-full" [ngClass]="i<stagesOfFunnel.length-1?'pr-2':''">
-            <div class="p-panel-header flex justify-content-between flex-grow-1 " [ngStyle]="{'background-color': stage.color}">
-                <div class="flex flex-column vertical-align-middle">
+        <div class="w-full">
+            <!--header do stagio-->
+            <div class="flex justify-content-between w-full p-3" [ngStyle]="{'background-color': stage.color}">
+                <div class="flex flex-column vertical-align-middle gap-2">
                     <span class="font-medium"><span class="material-symbols-outlined vertical-align-text-bottom icon-small" [ngStyle]="{'color': stage.icon_color}">{{stage.icon}}</span> {{stage.name}}</span>
                     <a href="javascript:void(0)" class="text-sm text-800" (click)="checkAll(stage.id)"><span class="material-symbols-outlined vertical-align-text-bottom icon-small" [ngStyle]="{'color': stage.icon_color}">done_all</span> Marcar todos</a>
                     <span class="text-xs ml-1">{{customersOfStage[stage.id].pagination.registers}} clientes</span>
                 </div>
-                <div class="flex flex-column justify-content-start vertical-align-top">
-                    <p-menu #menu [popup]="true" [model]="stageMenu[stage.id]" styleClass="text-sm"></p-menu>
-                    <a href='javascript:void(0)' (click)="menu.toggle($event)" class="pb-2"><i class="pi pi-ellipsis-v text-900 text-sm pt-0"></i></a>
+                <div class="flex flex-row justify-content-start vertical-align-top">
                     <p-popover #filter>
                         <ng-template pTemplate="content">
                             <p-select styleClass="w-full" [options]="stageSearch[stage.id]" [(ngModel)]="stageSearchCondition[stage.id]" optionValue="type"></p-select>
@@ -60,6 +59,8 @@
                         </ng-template>
                     </p-popover>
                     <a href="javascript:void(0)" (click)="filter.toggle($event)"><i class="pi pi-filter text-900 text-sm"></i></a>
+                    <p-menu #menu [popup]="true" [model]="stageMenu[stage.id]" styleClass="text-sm"></p-menu>
+                    <a href='javascript:void(0)' (click)="menu.toggle($event)" class="pb-2"><i class="pi pi-ellipsis-v text-900 text-sm pt-0"></i></a>
                 </div>
             </div>
             <div class="flex flex-column crm-kanban-stage bg-{{stage.color}}-50" pDroppable (onDrop)="finishMove(stage.id)">

@@ -80,9 +80,10 @@ export class LoginComponent implements AfterContentInit{
     token_access: "",
     token_type: "",
     token_expire: "",
-    level_access: "",
+    user_type: "",
     id_user: 0,
-    id_profile: 0,
+    id_profile: "",
+    id_entity: 0,
     config: this.app_config
   }
 
@@ -128,6 +129,14 @@ export class LoginComponent implements AfterContentInit{
     localStorage.removeItem("erp_password");
     localStorage.removeItem("dashboard_image");
     localStorage.removeItem("dashboard_color");
+
+    localStorage.removeItem("token_access");
+    localStorage.removeItem("token_type");
+    localStorage.removeItem("token_expire");
+    localStorage.removeItem("user_type");
+    localStorage.removeItem("id_user");
+    localStorage.removeItem("id_profile");
+    localStorage.removeItem("id_entity");
 
     this.username_value = localStorage.getItem("username") as string;
     this.password_value = localStorage.getItem("password") as string;
@@ -178,9 +187,10 @@ export class LoginComponent implements AfterContentInit{
         localStorage.setItem('token_type',this.app_token.token_type);
         localStorage.setItem('token_expire',this.app_token.token_expire);
 
-        localStorage.setItem('id_user',String(this.app_token.id_user));
+        localStorage.setItem('id_user',this.app_token.id_user.toString());
         localStorage.setItem('id_profile',String(this.app_token.id_profile));
-        localStorage.setItem("level_access",String(this.app_token.level_access));
+        localStorage.setItem('id_entity',this.app_token.id_entity.toString());
+        localStorage.setItem("user_type",String(this.app_token.user_type));
         localStorage.setItem("message_renew","1");
 
         // configuracoes para essa conta
@@ -217,7 +227,7 @@ export class LoginComponent implements AfterContentInit{
         this.company_logo = this.app_token.config.company_logo;
         this.company_name = this.app_token.config.company_name;
 
-        switch(this.app_token.level_access){
+        switch(this.app_token.user_type){
           case "A": this.route.navigate(["/admin"]); break;
           case "L": this.route.navigate(["/salesforce"]); break;
           case "I": this.route.navigate(["/salesforce"]); break;

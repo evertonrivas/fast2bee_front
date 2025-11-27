@@ -4,8 +4,9 @@ export interface Auth {
     token_expire: string,
 
     id_user:number,
-    id_profile: number,
-    level_access: string,
+    id_profile: string,
+    id_entity: number,
+    user_type: string,
     config: SysConfig
 }
 

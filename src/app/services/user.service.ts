@@ -29,10 +29,9 @@ export class UserService extends MyHttp{
     });
   }
 
-  save(users:User[],id_customer:string):Observable<boolean|number|ResponseError>{
+  save(users:User[]):Observable<boolean|number|ResponseError>{
     var url = this.sys_config.backend_smc+"/users/";
     return this.http.post<boolean>(url,{
-      "id_customer": id_customer,
       "users": users
     },{
       headers:this.getHeader(ContentType.json)
