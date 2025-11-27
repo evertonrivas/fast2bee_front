@@ -31,6 +31,7 @@
                     <th style="width: 50px!important;" class="text-center" pFrozenColumn><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
                     <th style="width: 150px!important;" pFrozenColumn>Ações</th>
                     <th pSortableColumn="username" pFrozenColumn>Username <p-sortIcon field="username"></p-sortIcon></th>
+                    <th pSortableColumn="email">E-mail <p-sortIcon field="email"></p-sortIcon></th>
                     <th pSortableColumn="type">Nível de Acesso <p-sortIcon field="type"></p-sortIcon></th>
                     <th pSortableColumn="active">Ativo <p-sortIcon field="active"></p-sortIcon></th>
                 </tr>
@@ -43,6 +44,7 @@
                         <p-button [text]="true" icon="pi pi-lock-open" pTooltip="Redefinir Senha" tooltipPosition="left" (onClick)="resetUserPassword(item.id,item.username)"></p-button>
                     </td>
                     <td pFrozenColumn>{{item.username}}</td>
+                    <td>{{item.email}}</td>
                     <td>{{item.type | userType }}</td>
                     <td>{{item.active==true?"Sim":"Não" }}</td>
                 </tr>
@@ -175,7 +177,7 @@
         <div class="flex flex-column">
             <label class="mb-1">Tipo de Usuário</label>
             <p-select
-                [options]="[{ value: 'L', label: 'Lojista'},{ value:'I', label: 'Lojista (IA)' },{ value: 'R', label: 'Representante'}]"
+                [options]="[{ value: 'L', label: 'Lojista/Empresa'},{ value:'I', label: 'Lojista/Empresa (IA)' },{ value: 'R', label: 'Representante'}]"
                 optionLabel="label"
                 appendTo="body"
                 [showClear]="true"
