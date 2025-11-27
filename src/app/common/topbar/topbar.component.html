@@ -90,7 +90,10 @@
                 <label>Devoluções</label>
             </p-button>
             <p-button [text]="true" [severity]="'secondary'" class="layout-topbar-button" pTooltip="Produtos do Pedido" tooltipPosition="bottom" tooltipStyleClass="text-xs" (click)="onCart()">
-                <i class="material-symbols-outlined" pBadge [value]="totalInCart" severity="warn" styleClass="text-xs">shopping_cart</i>
+                <p-overlaybadge *ngIf="totalInCart>0" [value]="totalInCart" severity="warn">
+                    <i class="material-symbols-outlined">shopping_cart</i>
+                </p-overlaybadge>
+                <i *ngIf="totalInCart==0" class="material-symbols-outlined">shopping_cart</i>
                 <label>Pedido</label>
             </p-button>
         </ng-container>

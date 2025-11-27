@@ -17,6 +17,7 @@ import { IndicatorsService } from 'src/app/services/indicators.service';
 import { ModuleName } from 'src/app/models/system.enum';
 import { PopoverModule } from 'primeng/popover';
 import { NotificationService } from 'src/app/services/notification.service';
+import { OverlayBadgeModule } from 'primeng/overlaybadge';
 
 @Component({
   selector: 'app-topbar',
@@ -34,7 +35,8 @@ import { NotificationService } from 'src/app/services/notification.service';
     TooltipModule,
     ButtonModule,
     RippleModule,
-    BadgeModule
+    BadgeModule,
+    OverlayBadgeModule
   ]
 })
 export class TopbarComponent extends Common implements AfterContentInit,OnDestroy{
