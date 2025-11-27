@@ -8,7 +8,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { TextareaModule } from 'primeng/textarea';
 import { HttpHeaders } from '@angular/common/http';
-import { provideNgxMask } from 'ngx-mask';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { SysService } from 'src/app/services/sys.service';
 import { Cep } from 'src/app/models/entity.model';
 import { CommonModule } from '@angular/common';
@@ -45,7 +45,8 @@ import { InputTextModule } from 'primeng/inputtext';
     InputNumberModule,
     RadioButtonModule,
     InputTextModule,
-    TextareaModule
+    TextareaModule,
+    NgxMaskDirective
 ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',

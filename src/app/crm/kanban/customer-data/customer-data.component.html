@@ -1,184 +1,190 @@
 <p-confirmDialog></p-confirmDialog>
-<p-tabView [(activeIndex)]="tabActive">
-    <p-tabPanel>
-        <ng-template pTemplate="header">
+<p-tabs [value]="tabActive">
+    <p-tablist>
+        <p-tab [value]="0">
             <i class="pi pi-user"></i>&nbsp;<span>Endereço e Cadastro</span>
-        </ng-template>
-        <div class="flex flex-column">
-            <div class="flex flex-row gap-2 mb-2">
-                <div class="flex flex-column">
-                    <label>Funil</label>
-                    <p-select 
-                        [options]="funnels" 
-                        optionLabel="name" 
-                        styleClass="p-inputtext-sm w-full" 
-                        (onChange)="getStagesOfFunnel($event)" 
-                        [ngModel]="customerFunnel" 
-                        [ngClass]="{'ng-invalid ng-dirty' : hasSended && !customerFunnel}"
-                        placeholder="Selecione..."></p-select>
+        </p-tab>
+        <p-tab [value]="1">
+            <i class="pi pi-mobile"></i>&nbsp;<span>Contato e Web</span>
+        </p-tab>
+    </p-tablist>
+    <p-tabpanels>
+        <p-tabpanel [value]="0">
+            <div class="flex flex-column w-full">
+                <div class="flex flex-row gap-2 mb-2 w-full">
+                    <div class="flex flex-column w-full">
+                        <label>Funil</label>
+                        <p-select 
+                            [options]="funnels" 
+                            optionLabel="name" 
+                            [fluid]="true"
+                            (onChange)="getStagesOfFunnel($event)" 
+                            [ngModel]="customerFunnel" 
+                            [ngClass]="{'ng-invalid ng-dirty' : hasSended && !customerFunnel}"
+                            placeholder="Selecione..."></p-select>
+                    </div>
+                    <div class="flex flex-column w-full">
+                        <label>Etapa</label>
+                        <p-select 
+                            [options]="stages" 
+                            optionLabel="name" 
+                            [(ngModel)]="selectedStage" 
+                            emptyMessage="Nenhum registro encontrado!" 
+                            [fluid]="true"
+                            [ngClass]="{'ng-invalid ng-dirty' : hasSended && idStageOfCustomer==0}" 
+                            (onChange)="setStage($event)"
+                            placeholder="Selecione..."></p-select>
+                    </div>
                 </div>
+                <p-divider></p-divider>
                 <div class="flex flex-column">
-                    <label>Etapa</label>
-                    <p-select 
-                        [options]="stages" 
-                        optionLabel="name" 
-                        [(ngModel)]="selectedStage" 
-                        emptyMessage="Nenhum registro encontrado!" 
-                        styleClass="p-inputtext-sm w-full" 
-                        [ngClass]="{'ng-invalid ng-dirty' : hasSended && idStageOfCustomer==0}" 
-                        (onChange)="setStage($event)"
-                        placeholder="Selecione..."></p-select>
+                    <div class="flex flex-column w-full">
+                        <label for="slReprsentative">Representante</label>
+                        <p-select #ddRep [options]="representatives" optionLabel="name" optionValue="id" [(ngModel)]="selectedRepresentativeId" placeholder="Selecione..." [fluid]="true">
+                            <ng-template let-selectedItem pTemplate="selectedItem">
+                                <span *ngIf="selectedItem!=undefined" [ngClass]="selectedItem.id==0?'text-red-500':''">{{selectedItem.name}}</span>
+                            </ng-template>
+                            <ng-template let-item pTemplate="item">
+                                <span [ngClass]="item.id==0?'text-red-500':''">{{item.name}}</span>
+                            </ng-template>
+                        </p-select>
+                    </div>
+                    <div class="flex flex-column">
+                        <label class="mb-1">Nome</label>
+                        <input pInputText class="w-full" [(ngModel)]="editableCustomer.name" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.name}" >
+                    </div>
+                    <div class="flex flex-column lg:flex-row gap-2">
+                        <div class="flex flex-column w-full">
+                            <label class="mb-1">Nome Fantasia</label>
+                            <input pInputText class="w-full" [(ngModel)]="editableCustomer.fantasy_name" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.fantasy_name}" >
+                        </div>
+                        <div class="flex flex-column w-full">
+                            <label class="mb-1">CPF/CNPJ</label>
+                            <input id="txtCustomerTaxvat" mask="000.000.000-00||00.000.000/0000-00" [(ngModel)]="editableCustomer.taxvat" pInputText class="p-component p-element w-full"/>
+                        </div>
+                    </div>
+                    <div class="flex flex-column lg:flex-row gap-2">
+                        <div class="flex flex-column w-3">
+                            <label class="mb-1">CEP</label>
+                            <p-iconField [iconPosition]="'right'">
+                                <p-inputIcon *ngIf="loading" styleClass="pi pi-spinner pi-spin" />
+                                <input pInputText mask="00.000-000" class="p-inputtext p-component p-element w-full" [(ngModel)]="editableCustomer.postal_code" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.postal_code}" (ngModelChange)="getPostalCode($event)">
+                            </p-iconField>
+                        </div>
+                        <div class="flex flex-column w-full">
+                            <label class="mb-1">Endereço</label>
+                            <span class="p-input-icon-left">
+                                <p-iconfield>
+                                    <p-inputicon class="pi pi-map-marker"/>
+                                    <input pInputText id="txtCustomerAddress" class="w-full" [(ngModel)]="editableCustomer.address" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.address}">
+                                </p-iconfield>
+                            </span>
+                        </div>
+                    </div> 
+                    <div class="flex flex-column lg:flex-row gap-2">
+                        <div class="flex flex-column w-full">
+                            <label class="mb-1">Bairro</label>
+                            <input pInputText class="w-full" [(ngModel)]="editableCustomer.neighborhood" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.neighborhood}">
+                        </div>
+                        <div class="flex flex-column w-full">
+                            <label class="mb-1">Localidade/Cidade</label>
+                            <p-autoComplete #cmplCity id="txtCustomerLocation" showClear="true" [fluid]="true" [(ngModel)]="editableCustomer.city" [suggestions]="filteredCities" [optionLabel]="$any(cityFormatedName)" (completeMethod)="searchCity($event)" [ngClass]="{'ng-invalid ng-dirty' : hasSended && editableCustomer.city.id==0}">
+                                <ng-template let-item pTemplate="item">
+                                    <span>{{item?.name}}/{{item?.state_region?.acronym}}-{{item?.state_region?.country?.name}}</span>
+                                </ng-template>
+                            </p-autoComplete>
+                        </div>
+                    </div>       
+                </div>
+                <div class="flex flex-row justify-content-end mt-2">
+                    <p-button icon="pi pi-save" label="Salvar" styleClass="p-button-sm" (onClick)="saveCustomerInfo()"></p-button>
                 </div>
             </div>
-            <p-divider></p-divider>
-            <div class="flex flex-column">
+        </p-tabpanel>
+        <p-tabpanel [value]="1">
+            <div class="flex flex-column lg:flex-row gap-2 mb-2">
+                <div class="flex flex-column">
+                    <label class="mb-1">Nome</label>
+                    <input [disabled]="editableCustomer.id==0" pInputText [(ngModel)]="newContact.name" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.name}">
+                </div>
                 <div class="flex flex-column w-full">
-                    <label for="slReprsentative">Representante</label>
-                    <p-select #ddRep [options]="representatives" optionLabel="name" optionValue="id" [(ngModel)]="selectedRepresentativeId" placeholder="Selecione..." styleClass="p-inputtext-sm w-full">
-                        <ng-template let-selectedItem pTemplate="selectedItem">
-                            <span *ngIf="selectedItem!=undefined" [ngClass]="selectedItem.id==0?'text-red-500':''">{{selectedItem.name}}</span>
+                    <label class="mb-1">Tipo</label>
+                    <p-select #dptpc [disabled]="editableCustomer.id==0" 
+                        [options]="contact_types" 
+                        [(ngModel)]="newContact.contact_type"
+                        placeholder="Selecione..."
+                        [fluid]="true">
+                        <ng-template let-selected pTemplate="selectedItem">
+                            <i class="pi pi-at" *ngIf="selected.value=='E'"></i>
+                            <i class="pi pi-phone" *ngIf="selected.value=='P'"></i>
+                            <i class="pi pi-mobile" *ngIf="selected.value=='C'"></i>
+                            <i class="pi pi-linkedin" *ngIf="selected.value=='L'"></i>
+                            <i class="pi pi-instagram" *ngIf="selected.value=='I'"></i>
+                            <i class="pi pi-facebook" *ngIf="selected.value=='F'"></i>
+                            <i class="pi pi-sitemap" *ngIf="selected.value=='W'"></i>
+                            <i class="pi pi-cloud" *ngIf="selected.value=='O'"></i>
+                            {{selected?.label}}
                         </ng-template>
                         <ng-template let-item pTemplate="item">
-                            <span [ngClass]="item.id==0?'text-red-500':''">{{item.name}}</span>
+                            <i class="pi pi-at" *ngIf="item.value=='E'"></i>
+                            <i class="pi pi-phone" *ngIf="item.value=='P'"></i>
+                            <i class="pi pi-mobile" *ngIf="item.value=='C'"></i>
+                            <i class="pi pi-linkedin" *ngIf="item.value=='L'"></i>
+                            <i class="pi pi-instagram" *ngIf="item.value=='I'"></i>
+                            <i class="pi pi-facebook" *ngIf="item.value=='F'"></i>
+                            <i class="pi pi-sitemap" *ngIf="item.value=='W'"></i>
+                            <i class="pi pi-cloud" *ngIf="item.value=='O'"></i>
+                            {{item.label}}
                         </ng-template>
                     </p-select>
                 </div>
-                <div class="flex flex-column">
-                    <label class="mb-1">Nome</label>
-                    <input pInputText class="p-inputtext-sm w-full" [(ngModel)]="editableCustomer.name" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.name}" >
+                <div class="flex flex-column w-full" *ngIf="dptpc.value=='E' || !dptpc.value">
+                    <label class="mb-1">E-mail</label>
+                    <input [disabled]="!dptpc.value" pInputText type="email" placeholder="seu@email.com" type="email" [(ngModel)]="newContact.value" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.value}">
                 </div>
-                <div class="flex flex-column lg:flex-row gap-2">
-                    <div class="flex flex-column w-full">
-                        <label class="mb-1">Nome Fantasia</label>
-                        <input pInputText class="p-inputtext-sm w-full" [(ngModel)]="editableCustomer.fantasy_name" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.fantasy_name}" >
-                    </div>
-                    <div class="flex flex-column w-full">
-                        <label class="mb-1">CPF/CNPJ</label>
-                        <input id="txtCustomerTaxvat" mask="000.000.000-00||00.000.000/0000-00" [(ngModel)]="editableCustomer.taxvat" class="p-inputtext p-component p-element p-inputtext-sm w-full"/>
-                    </div>
+                <div class="flex flex-column w-full" *ngIf="dptpc.value=='P' || dptpc.value=='C'">
+                    <label class="mb-1">Telefone</label>
+                    <input [disabled]="editableCustomer.id==0" mask="(99) 9999-9999||(99) 99999-9999" [(ngModel)]="newContact.value" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.value}">
                 </div>
-                <div class="flex flex-column lg:flex-row gap-2">
-                    <div class="flex flex-column w-3">
-                        <label class="mb-1">CEP</label>
-                        <p-iconField [iconPosition]="'right'">
-                            <p-inputIcon *ngIf="loading" styleClass="pi pi-spinner pi-spin" />
-                            <input pInputText mask="00.000-000" class="p-inputtext p-component p-element p-inputtext-sm w-full" [(ngModel)]="editableCustomer.postal_code" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.postal_code}" (ngModelChange)="getPostalCode($event)">
-                        </p-iconField>
-                    </div>
-                    <div class="flex flex-column w-full">
-                        <label class="mb-1">Endereço</label>
-                        <span class="p-input-icon-left">
-                            <i class="pi pi-map-marker"></i>
-                            <input pInputText id="txtCustomerAddress" class="w-full p-inputtext-sm" [(ngModel)]="editableCustomer.address" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.address}">
-                        </span>
-                    </div>
-                </div> 
-                <div class="flex flex-column lg:flex-row gap-2">
-                    <div class="flex flex-column w-full">
-                        <label class="mb-1">Bairro</label>
-                        <input pInputText class="p-inputtext-sm w-full" [(ngModel)]="editableCustomer.neighborhood" [ngClass]="{'ng-invalid ng-dirty' : hasSended && !editableCustomer.neighborhood}">
-                    </div>
-                    <div class="flex flex-column w-full">
-                        <label class="mb-1">Localidade/Cidade</label>
-                        <p-autoComplete #cmplCity id="txtCustomerLocation" showClear="true" styleClass="w-full p-inputtext-sm" inputStyleClass="w-full" [(ngModel)]="editableCustomer.city" [suggestions]="filteredCities" [optionLabel]="$any(cityFormatedName)" (completeMethod)="searchCity($event)" [ngClass]="{'ng-invalid ng-dirty' : hasSended && editableCustomer.city.id==0}">
-                            <ng-template let-item pTemplate="item">
-                                <span>{{item?.name}}/{{item?.state_region?.acronym}}-{{item?.state_region?.country?.name}}</span>
-                            </ng-template>
-                        </p-autoComplete>
-                    </div>
-                </div>       
+                <div class="flex flex-column w-full" *ngIf="dptpc.value=='L' || dptpc.value=='I' || dptpc.value=='F' || dptpc.value=='W' || dptpc.value=='O'">
+                    <label class="mb-1">URL</label>
+                    <input pInputText [(ngModel)]="newContact.value" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.value}">
+                </div>
+                <div class="flex flex-column justify-content-end w-full lg:w-auto">
+                    <label class="mb-1 hidden lg:inline">&nbsp;</label>
+                    <p-button [disabled]="editableCustomer.id==0" icon="pi pi-save" label="Salvar" styleClass="p-button-sm w-full lg:w-auto " (onClick)="onSaveContact(newContact.id)"></p-button>
+                </div>
             </div>
-            <div class="flex flex-row justify-content-end mt-2">
-                <p-button icon="pi pi-save" label="Salvar" styleClass="p-button-sm" (onClick)="saveCustomerInfo()"></p-button>
-            </div>
-        </div>
-    </p-tabPanel>
-    <p-tabPanel>
-        <ng-template pTemplate="header">
-            <i class="pi pi-mobile"></i>&nbsp;<span>Contato e Web</span>
-        </ng-template>
-        <div class="flex flex-column lg:flex-row gap-2 mb-2">
-            <div class="flex flex-column">
-                <label class="mb-1">Nome</label>
-                <input [disabled]="editableCustomer.id==0" pInputText class="p-inputtext-sm" [(ngModel)]="newContact.name" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.name}">
-            </div>
-            <div class="flex flex-column w-full">
-                <label class="mb-1">Tipo</label>
-                <p-select #dptpc [disabled]="editableCustomer.id==0" 
-                    [options]="contact_types" 
-                    [(ngModel)]="newContact.contact_type"
-                    placeholder="Selecione..."
-                    styleClass="p-inputtext-sm w-full">
-                    <ng-template let-selected pTemplate="selectedItem">
-                        <i class="pi pi-at" *ngIf="selected.value=='E'"></i>
-                        <i class="pi pi-phone" *ngIf="selected.value=='P'"></i>
-                        <i class="pi pi-mobile" *ngIf="selected.value=='C'"></i>
-                        <i class="pi pi-linkedin" *ngIf="selected.value=='L'"></i>
-                        <i class="pi pi-instagram" *ngIf="selected.value=='I'"></i>
-                        <i class="pi pi-facebook" *ngIf="selected.value=='F'"></i>
-                        <i class="pi pi-sitemap" *ngIf="selected.value=='W'"></i>
-                        <i class="pi pi-cloud" *ngIf="selected.value=='O'"></i>
-                        {{selected?.label}}
-                    </ng-template>
-                    <ng-template let-item pTemplate="item">
-                        <i class="pi pi-at" *ngIf="item.value=='E'"></i>
-                        <i class="pi pi-phone" *ngIf="item.value=='P'"></i>
-                        <i class="pi pi-mobile" *ngIf="item.value=='C'"></i>
-                        <i class="pi pi-linkedin" *ngIf="item.value=='L'"></i>
-                        <i class="pi pi-instagram" *ngIf="item.value=='I'"></i>
-                        <i class="pi pi-facebook" *ngIf="item.value=='F'"></i>
-                        <i class="pi pi-sitemap" *ngIf="item.value=='W'"></i>
-                        <i class="pi pi-cloud" *ngIf="item.value=='O'"></i>
-                        {{item.label}}
-                    </ng-template>
-                </p-select>
-            </div>
-            <div class="flex flex-column w-full" *ngIf="dptpc.value=='E' || !dptpc.value">
-                <label class="mb-1">E-mail</label>
-                <input [disabled]="!dptpc.value" pInputText type="email" placeholder="seu@email.com" type="email" class="p-inputtext-sm" [(ngModel)]="newContact.value" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.value}">
-            </div>
-            <div class="flex flex-column w-full" *ngIf="dptpc.value=='P' || dptpc.value=='C'">
-                <label class="mb-1">Telefone</label>
-                <p-inputMask [disabled]="editableCustomer.id==0" [mask]="dptpc.value=='P'?'(99) 9999-9999':'(99) 99999-9999'" class="p-inputtext-sm" [(ngModel)]="newContact.value" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.value}"></p-inputMask>
-            </div>
-            <div class="flex flex-column w-full" *ngIf="dptpc.value=='L' || dptpc.value=='I' || dptpc.value=='F' || dptpc.value=='W' || dptpc.value=='O'">
-                <label class="mb-1">URL</label>
-                <input pInputText class="p-inputtext-sm" [(ngModel)]="newContact.value" [ngClass]="{'ng-invalid ng-dirty' : sendContact && !newContact.value}">
-            </div>
-            <div class="flex flex-column justify-content-end w-full lg:w-auto">
-                <label class="mb-1 hidden lg:inline">&nbsp;</label>
-                <p-button [disabled]="editableCustomer.id==0" icon="pi pi-save" label="Salvar" styleClass="p-button-sm w-full lg:w-auto " (onClick)="onSaveContact(newContact.id)"></p-button>
-            </div>
-        </div>
-        <p-table
-            [value]="editableCustomer.contacts"
-            styleClass="p-datatable-striped">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>Nome</th>
-                    <th>Tipo do contato</th>
-                    <th>Valor</th>
-                    <th>Padrão</th>
-                    <th class="text-center" [ngStyle]="{'width':'120px'}">Ações</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-contact>
-                <tr>
-                    <td>{{contact.name}}</td>
-                    <td>{{contact.contact_type | contactType}}</td>
-                    <td>
-                        <span *ngIf="contact.is_whatsapp">
-                            <i class="pi pi-whatsapp text-green-300"></i> <a href="https://wa.me/{{contact.value}}" target="_blank">{{contact.value}}</a>
-                        </span>
-                        <span *ngIf="!contact.is_whatsapp">{{contact.value}}</span>
-                    </td>
-                    <td class="justify-content-center text-center"><i *ngIf="contact.is_default" class="pi pi-check"></i></td>
-                    <td class="justify-content-center">
-                        <p-button [text]="true" icon="pi pi-trash" severity="danger" (onClick)="onDeleteContact(contact)"></p-button>
-                        <p-button [text]="true" icon="pi pi-pencil" (onClick)="onEditContact(contact)"></p-button>
-                    </td>
-                </tr>
-            </ng-template>
-        </p-table>
-    </p-tabPanel>
-</p-tabView>
+            <p-table
+                [value]="editableCustomer.contacts"
+                styleClass="p-datatable-striped">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Tipo do contato</th>
+                        <th>Valor</th>
+                        <th>Padrão</th>
+                        <th class="text-center" [ngStyle]="{'width':'120px'}">Ações</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-contact>
+                    <tr>
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.contact_type | contactType}}</td>
+                        <td>
+                            <span *ngIf="contact.is_whatsapp">
+                                <i class="pi pi-whatsapp text-green-300"></i> <a href="https://wa.me/{{contact.value}}" target="_blank">{{contact.value}}</a>
+                            </span>
+                            <span *ngIf="!contact.is_whatsapp">{{contact.value}}</span>
+                        </td>
+                        <td class="justify-content-center text-center"><i *ngIf="contact.is_default" class="pi pi-check"></i></td>
+                        <td class="justify-content-center">
+                            <p-button [text]="true" icon="pi pi-trash" severity="danger" (onClick)="onDeleteContact(contact)"></p-button>
+                            <p-button [text]="true" icon="pi pi-pencil" (onClick)="onEditContact(contact)"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-tabpanel>
+    </p-tabpanels>
+</p-tabs>

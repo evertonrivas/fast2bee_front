@@ -28,7 +28,7 @@ export class IndicatorsService extends MyHttp{
   }
 
   b2bTotalDevolution(userType:string):Observable<number|ResponseError>{
-    return this.http.get<number|ResponseError>(this.sys_config.backend_fpr+'/devolution/indicator/',{
+    return this.http.get<number|ResponseError>(this.sys_config.backend_fpr+'/devolution/indicator/0',{
       headers: this.getHeader(),
       params: new HttpParams().set('userType',userType)
     })

@@ -48,14 +48,14 @@
                     <a href="javascript:void(0)" class="text-sm text-800" (click)="checkAll(stage.id)"><span class="material-symbols-outlined vertical-align-text-bottom icon-small" [ngStyle]="{'color': stage.icon_color}">done_all</span> Marcar todos</a>
                     <span class="text-xs ml-1">{{customersOfStage[stage.id].pagination.registers}} clientes</span>
                 </div>
-                <div class="flex flex-row justify-content-start vertical-align-top">
+                <div class="flex flex-row justify-content-start vertical-align-top gap-1">
                     <p-popover #filter>
                         <ng-template pTemplate="content">
                             <p-select styleClass="w-full" [options]="stageSearch[stage.id]" [(ngModel)]="stageSearchCondition[stage.id]" optionValue="type"></p-select>
-                            <div class="p-inputgroup pt-2">
+                            <p-inputGroup>
                                 <input type="text" pInputText placeholder="Procurar..." [(ngModel)]="stageSearchTerm[stage.id]" styleClass="p-inputtext-sm"/>
-                                <button type="button" pButton icon="pi pi-search" (click)="doLocalSearch(stage.id)"></button>
-                            </div>
+                                <button type="button" pButton icon="pi pi-search" (click)="doLocalSearch(stage.id)" size="small"></button>
+                            </p-inputGroup>
                         </ng-template>
                     </p-popover>
                     <a href="javascript:void(0)" (click)="filter.toggle($event)"><i class="pi pi-filter text-900 text-sm"></i></a>
@@ -180,7 +180,7 @@
             <span class="w-full text-center align-baseline">Envio de e-mail para: {{infoCustomer.name}}</span>
         </div>
     </ng-template>
-    <app-customer-email #cstEmail [emailToList]="cstEmail.emailToList" [uploadHeaders]="uploadHeaders" [uploadMax]="sysconfig.max_upload_files" [massiveEmail]="massiveEmail" (messageToShow)="showMessage($event)"></app-customer-email>
+    <app-customer-email *ngIf="thereAreCustomers" #cstEmail [emailToList]="cstEmail.emailToList" [uploadHeaders]="uploadHeaders" [uploadMax]="sysconfig.max_upload_files" [massiveEmail]="massiveEmail" (messageToShow)="showMessage($event)"></app-customer-email>
 </p-dialog>
 
 <p-dialog header="Importação de Registros" [(visible)]="importVisible" [style]="{'width': '70vw'}" [modal]="true" [draggable]="false">

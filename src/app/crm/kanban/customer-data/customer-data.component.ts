@@ -8,14 +8,11 @@ import { ConfirmationService } from 'primeng/api';
 import { LocationService } from 'src/app/services/location.service';
 import { DropdownChangeEvent } from 'primeng/dropdown';
 import { Funnel, FunnelStage } from 'src/app/models/crm.model';
-import { OverlayPanel } from 'primeng/overlaypanel';
 import { Common } from 'src/app/classes/common';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { Router } from '@angular/router';
 import { CrmService } from 'src/app/services/crm.service';
 import { SysService } from 'src/app/services/sys.service';
-
-import { TabViewModule } from 'primeng/tabview';
 import { DividerModule } from 'primeng/divider';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -25,8 +22,11 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { ContactTypePipe } from 'src/app/pipes/contact-type.pipe';
-import { InputMaskModule } from 'primeng/inputmask';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { SelectModule } from 'primeng/select';
+import { Popover } from 'primeng/popover';
+import { TabsModule } from 'primeng/tabs';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-customer-data',
@@ -38,17 +38,18 @@ import { SelectModule } from 'primeng/select';
     CommonModule,
     ButtonModule,
     TableModule,
-    TabViewModule,
+    TabsModule,
     DividerModule,
     IconFieldModule,
     InputIconModule,
     AutoCompleteModule,
     ContactTypePipe,
-    InputMaskModule
+    InputTextModule,
+    NgxMaskDirective
 ],
   templateUrl: './customer-data.component.html',
   styleUrls: ['./customer-data.component.scss'],
-  providers: [ConfirmationService]
+  providers: [ConfirmationService,provideNgxMask()]
 })
 export class CustomerDataComponent extends Common implements OnChanges, AfterViewInit{
   //cliente que serah editado
@@ -62,8 +63,8 @@ export class CustomerDataComponent extends Common implements OnChanges, AfterVie
   customerFunnel!:Funnel|null;
 
 
-  @ViewChild('pnlContact') pnlContact:OverlayPanel|null = null;
-  @ViewChild('pnlWeb') pnlWeb:OverlayPanel|null = null;
+  @ViewChild('pnlContact') pnlContact:Popover|null = null;
+  @ViewChild('pnlWeb') pnlWeb:Popover|null = null;
   @Output() messageToShow = new EventEmitter<ToastMessageOptions>();
   funnels:Funnel[] = [];
   representatives:Entity[] = [];

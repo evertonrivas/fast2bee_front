@@ -37,6 +37,8 @@ import { TableModule } from 'primeng/table';
 import { SelectModule } from 'primeng/select';
 import { Popover, PopoverModule } from 'primeng/popover';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
 export interface filterParams{
   rule:any|undefined
@@ -74,7 +76,9 @@ export interface filterParams{
     DrawerModule,
     DialogModule,
     TableModule,
-    InputTextModule
+    InputTextModule,
+    InputGroupModule,
+    InputGroupAddonModule
 ]
 })
 export class KanbanComponent extends Common implements AfterContentInit{
@@ -103,6 +107,7 @@ export class KanbanComponent extends Common implements AfterContentInit{
   stagesOfFunnel:FunnelStage[] = [];
   stagesToMove:FunnelStage[] = [];
   customersOfStage:RequestResponse[] = [];
+  thereAreCustomers:boolean = false;
   // representativeList:Entity[] = [];
   rows:number[]  = [];
   first:number[] = [];
@@ -341,6 +346,9 @@ export class KanbanComponent extends Common implements AfterContentInit{
     this.svc.getCustomersOfStage(idStage,opts).subscribe({
       next: (data) =>{
         this.customersOfStage[idStage] = data as RequestResponse;
+        if ((data as RequestResponse).pagination.registers > 0){
+          this.thereAreCustomers = true;
+        }
       }
     });
   }
