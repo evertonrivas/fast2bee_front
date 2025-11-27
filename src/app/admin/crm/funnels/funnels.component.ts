@@ -128,10 +128,10 @@ export class FunnelsComponent extends Common implements AfterViewInit{
     let fType:FormField = {
       label: "Tipo",
       name: "type",
-      options: [{ value: 'P', label: 'Prospecção',id:undefined }, { value: 'S', label: 'Vendas',id:undefined }],
-      placeholder: "Selecione...",
-      type: FieldType.COMBO,
-      value: undefined,
+      options: undefined,
+      placeholder: undefined,
+      type: FieldType.HIDDEN,
+      value: 'V',
       required: true,
       case: FieldCase.NONE,
       disabled: false,
@@ -158,7 +158,7 @@ export class FunnelsComponent extends Common implements AfterViewInit{
           if ("name" in data){
             this.localObject = data as Funnel;
             fieldName.value = this.localObject.name;
-            fType.value     = fType.options?.find(v => v.value==this.localObject.type);
+            fType.value     = this.localObject.type;
             fDefault.value  = this.localObject.is_default;
 
             //monta as linhas do forme e exibe o mesmo
@@ -166,7 +166,7 @@ export class FunnelsComponent extends Common implements AfterViewInit{
               fields: [fieldName]
             }
             let row1:FormRow = {
-              fields: [fType, fDefault]
+              fields: [fDefault, fType]
             }
             this.formRows.push(row);
             this.formRows.push(row1);
@@ -188,7 +188,7 @@ export class FunnelsComponent extends Common implements AfterViewInit{
         fields: [fieldName]
       }  
       let row1:FormRow = {
-        fields: [fType, fDefault]
+        fields: [fDefault, fType]
       }
       this.formRows.push(row);
       this.formRows.push(row1);

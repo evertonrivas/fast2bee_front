@@ -37,7 +37,7 @@
                     <th style="width: 100px!important;" class="text-center" pFrozenColumn>Ações</th>
                     <th pSortableColumn="name" pFrozenColumn>Nome <p-sortIcon field="name"></p-sortIcon></th>
                     <th pSortableColumn="is_default">Padrão? <p-sortIcon field="is_default"></p-sortIcon></th>
-                    <th pSortableColumn="type">Tipo <p-sortIcon field="type"></p-sortIcon></th>
+                    <!-- <th pSortableColumn="type">Tipo <p-sortIcon field="type"></p-sortIcon></th> -->
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
@@ -46,12 +46,12 @@
                     <td pFrozenColumn><p-button [text]="true" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" tooltipStyleClass="text-sm" (onClick)="onEditData(item.id)"></p-button></td>
                     <td pFrozenColumn>{{item.name}}</td>
                     <td>{{item.is_default==true?'Sim':'Não'}}</td>
-                    <td>{{item.type=='P'?'Prospecção':'Vendas'}}</td>
+                    <!-- <td>{{item.type=='P'?'Prospecção':'Vendas'}}</td> -->
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="5" class="text-center">Nenhum registro existente!</td>
+                    <td colspan="4" class="text-center">Nenhum registro existente!</td>
                 </tr>
             </ng-template>
         </p-table>
