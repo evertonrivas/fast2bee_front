@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { Common } from 'src/app/classes/common';
@@ -53,7 +53,6 @@ import { PopoverModule } from 'primeng/popover';
       FileUploadModule,
       DialogModule,
       CnpjCpfPipe,
-      EntityTypePipe,
       CommonModule
 ]
 })
@@ -65,13 +64,23 @@ export class EntitiesComponent extends Common implements AfterViewInit{
   uploadHeaders:HttpHeaders = new HttpHeaders()
     .set("Authorization",localStorage.getItem('token_type')+" "+localStorage.getItem('token_access'));
   all_cities:FieldOption[] = [];
+  //type registry
+  type_reg:EntityType = EntityType.C;
+  entity_type = EntityType;
   constructor(route:Router,
     private svc:EntitiesService,
     private cdr:ChangeDetectorRef,
     private msg:MessageService,
     private cnf:ConfirmationService,
-    private lsvc:LocationService){
+    private lsvc:LocationService,
+    private actR:ActivatedRoute){
     super(route);
+
+    this.actR.queryParams.subscribe({
+      next:(data) =>{
+        this.type_reg = data["type"];
+      }
+    });
   }
 
   doFilter(query:string):void{
@@ -97,6 +106,7 @@ export class EntitiesComponent extends Common implements AfterViewInit{
         this.options.query = this.options.query.replace("trash 1||","");
       }
     }
+    this.options.query += "type "+this.type_reg+"||";
 
     this.serviceSub[0] = this.svc.listEntity(this.options).subscribe({
       next: (data) =>{
@@ -291,21 +301,15 @@ export class EntitiesComponent extends Common implements AfterViewInit{
       dependent:[fieldAddress,fieldBairro,fieldCity]
     }
 
-    let levelOpts:FieldOption[] = []
-    levelOpts.push({id:0,label:'Cliente',value:'C'});
-    levelOpts.push({id:0,label:'Fornecedor',value:'F'});
-    levelOpts.push({id:0,label:'Pessoa (física)',value:'P'});
-    levelOpts.push({id:0,label:'Representante',value:'R'});
-
     let fieldType:FormField = {
       label: 'Tipo',
       name: 'type',
-      options: levelOpts,
+      options: undefined,
       placeholder:"Selecione...",
-      type: FieldType.COMBO,
-      value: undefined,
-      required: true,
-      case: FieldCase.NONE,
+      type: FieldType.HIDDEN,
+      value: this.type_reg,
+      required: false,
+      case: FieldCase.UPPER,
       disabled: false,
       lockField: undefined
     }
@@ -323,7 +327,7 @@ export class EntitiesComponent extends Common implements AfterViewInit{
             fieldCEP.value     = this.localObject.postal_code;
             fieldTaxvat.value  = this.localObject.taxvat;
             fieldCity.value    = this.all_cities.find(f => f.id == this.localObject.city.id);
-            fieldType.value    = levelOpts.find(f => f.value == this.localObject.type );
+            fieldType.value    = this.type_reg;
 
             //monta as linhas do forme e exibe o mesmo
             this.formRows.push({ fields: [fieldName]});

@@ -137,6 +137,14 @@ body{
     @include use-md-icon("badge");
 }
 
+.pi-customers{
+    @include use-md-icon("assignment_ind")
+}
+
+.pi-representatives{
+    @include use-md-icon("article_person")
+}
+
 .pi-price-table{
     @include use-md-icon("money")
 }

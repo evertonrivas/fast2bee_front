@@ -6,7 +6,7 @@
     <ng-template pTemplate="header">
         <div class="flex flex-row w-full justify-content-between align-items-center">
             <div class="align-items-baseline">
-                <label class="p-panel-title">Entidades Legais</label>
+                <label class="p-panel-title">{{(type_reg==entity_type.C?"Clientes":(type_reg==entity_type.R?"Representantes":"Fornecedores"))}}</label>
             </div>
             <div class="flex flex-row gap-1">
                 <p-popover #pnlMassive>
@@ -38,7 +38,9 @@
                     <th style="width: 100px!important;" pFrozenColumn>Ações</th>
                     <th pSortableColumn="fantasy_name" pFrozenColumn>Nome Fantasia <p-sortIcon field="fantasy_name"></p-sortIcon></th>
                     <th pSortableColumn="taxvat">CNPJ/CPF <p-sortIcon field="taxvat"></p-sortIcon></th>
-                    <th pSortableColumn="type">Tipo de Cadastro <p-sortIcon field="type"></p-sortIcon></th>
+                    <th pSortableColumn="postal_code">CEP <p-sortIcon field="postal_code"></p-sortIcon></th>
+                    <th pSortableColumn="city.name">Cidade <p-sortIcon field="city.name"></p-sortIcon></th>
+                    <th pSortableColumn="city.state_region.acronym">UF <p-sortIcon field="city.state_region.acronym"></p-sortIcon></th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
@@ -47,12 +49,14 @@
                     <td pFrozenColumn><p-button [text]="true" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" tooltipStyleClass="text-sm" (onClick)="onEditData(item.id)"></p-button></td>
                     <td pFrozenColumn>{{item.fantasy_name}}</td>
                     <td>{{item.taxvat | cnpjCpf }}</td>
-                    <td>{{item.type | entityType }}</td>
+                    <td>{{item.postal_code }}</td>
+                    <td>{{item.city.name }}</td>
+                    <td>{{item.city.state_region.acronym }}</td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="5" class="text-center">Nenhum registro existente!</td>
+                    <td colspan="7" class="text-center">Nenhum registro existente!</td>
                 </tr>
             </ng-template>
         </p-table>

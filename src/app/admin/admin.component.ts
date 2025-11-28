@@ -38,7 +38,10 @@ export class AdminComponent extends Common implements OnInit, AfterViewInit{
                 label: 'Sistema',
                 items: [
                     //{ label: 'Configurações', icon: 'pi pi-fw pi-settings icon-small', routerLink: [this.modulePath+'/configurations']},
-                    { label: 'Entidades', icon: 'pi pi-fw pi-entities icon-small', routerLink: [this.modulePath+'/entities'] },
+                    { label: 'Clientes', icon: 'pi pi-fw pi-customers icon-small', routerLink: [this.modulePath+'/entities/'], queryParams:{ "type": "C" } },
+                    { label: 'Fornecedores', icon: 'pi pi-fw pi-entities icon-small', routerLink: [this.modulePath+'/entities/'], queryParams:{ "type": "S" } },
+                    { label: 'Representantes', icon: 'pi pi-fw pi-representatives icon-small', routerLink: [this.modulePath+'/entities/'], queryParams:{"type":"R"} },
+                    { separator : 'separator' },
                     { label: 'Produtos', icon: 'pi pi-fw pi-products icon-small', routerLink: [this.modulePath+'/products'] },
                     { label: 'Un. Medida', icon:'pi pi-fw pi-unity-measure icon-small', routerLink: [this.modulePath+'/measure-unit']},
                     { label: 'Usuários', icon: 'pi pi-fw pi-users icon-small', routerLink: [this.modulePath+'/users'] },
