@@ -65,3 +65,7 @@ export interface MyPlan{
     istore_licenses: number,
     value: number
 }
+
+export interface CrmConfig{
+    default_funnel:string
+}
