@@ -45,7 +45,7 @@ export class AdminComponent extends Common implements OnInit, AfterViewInit{
                     { label: 'Produtos', icon: 'pi pi-fw pi-products icon-small', routerLink: [this.modulePath+'/products'] },
                     { label: 'Un. Medida', icon:'pi pi-fw pi-unity-measure icon-small', routerLink: [this.modulePath+'/measure-unit']},
                     { label: 'Usuários', icon: 'pi pi-fw pi-users icon-small', routerLink: [this.modulePath+'/users'] },
-                    { label: 'Configurações', icon: 'pi pi-fw pi-settings icon-small', routerLink: [this.modulePath+'/config'] }
+                    { label: 'Configurações', icon: 'pi pi-fw pi-settings icon-small', routerLink: [this.modulePath+'/configurations'], queryParams:{place: this.modules.ADM } }
                 ]
             },
             {
@@ -72,7 +72,7 @@ export class AdminComponent extends Common implements OnInit, AfterViewInit{
             {
                 label: 'CRM - Funis',
                 items: [
-                    //{ label: 'Configurações', icon: 'pi pi-fw pi-settings icon-small', routerLink: [this.modulePath+'/crm/config'], queryParams: { place: this.modules.CRM }  },
+                    { label: 'Configurações', icon: 'pi pi-fw pi-settings icon-small', routerLink: [this.modulePath+'/crm/configurations'], queryParams: { place: this.modules.CRM }  },
                     { label: 'Funis', icon: 'pi pi-fw pi-funnel icon-small', routerLink: [this.modulePath+'/crm/funnels'] },
                     { label: 'Estágios dos Funis', icon: 'pi pi-fw pi-stages icon-small', routerLink: [this.modulePath+'/crm/funnel-stages']},
                     // { label: 'Campos dinâmicos', icon: 'pi pi-fw pi-fields', routerLink: ['/uikit/misc'] }

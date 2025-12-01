@@ -3,11 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { DashboardComponent } from '../common/dashboard/dashboard.component';
 import { ConfigComponent } from '../common/config/config.component';
-import { ConfigComponent as ConfigB2B } from '../common/config/config.component';
-import { ConfigComponent as ConfigFPR } from '../common/config/config.component';
-import { ConfigComponent as ConfigSCM } from '../common/config/config.component';
-import { ConfigComponent as ConfigSYS } from '../common/config/config.component';
-import { ConfigComponent as ConfigCRM } from './crm/config/config.component';
 import { EntitiesComponent } from './entities/entities.component';
 import { ProductsComponent } from './products/products.component';
 import { UsersComponent } from './users/users.component';
@@ -23,7 +18,6 @@ import { TablePricesComponent } from './b2b/table-prices/table-prices.component'
 import { CategoriesComponent } from './b2b/categories/categories.component';
 import { FunnelsComponent } from './crm/funnels/funnels.component';
 import { FunnelStagesComponent } from './crm/funnel-stages/funnel-stages.component';
-import { ConfigComponent as CrmConfigComponent } from './crm/config/config.component';
 import { StepsComponent } from './fpr/steps/steps.component';
 import { ReasonsComponent } from './fpr/reasons/reasons.component';
 import { EventTypesComponent } from './scm/event-types/event-types.component';
@@ -46,12 +40,11 @@ const routes: Routes = [{
     { path: 'measure-unit', component: MeasureUnitComponent },
     { path: 'users', component: UsersComponent },
     { path: 'reports', component: ReportManagerComponent },
-    { path: 'config', component: ConfigSYS },
     { path: 'version/:id', component: VersionComponent },
     {
       path: 'b2b',
       children: [
-        { path: 'configurations', component: ConfigB2B },
+        { path: 'configurations', component: ConfigComponent },
         { path: 'brands', component: BrandsComponent },
         { path: 'categories', component: CategoriesComponent },
         { path: 'moments', component: MomentComponent },
@@ -68,21 +61,21 @@ const routes: Routes = [{
     },{
       path: 'crm',
       children:[
-        { path: 'config', component: ConfigCRM },
+        { path: 'configurations', component: ConfigComponent },
         { path: 'funnels', component: FunnelsComponent },
         { path: 'funnel-stages', component: FunnelStagesComponent }
       ]
     },{
       path:'fpr',
       children:[
-        { path: 'configurations', component: ConfigFPR },
+        { path: 'configurations', component: ConfigComponent },
         { path: 'steps', component: StepsComponent },
         { path: 'reasons', component: ReasonsComponent }
       ]
     },{
       path: 'scm',
       children: [
-        { path: 'configurations', component: ConfigSCM },
+        { path: 'configurations', component: ConfigComponent },
         { path: 'event-types', component: EventTypesComponent }
       ]
     }]
