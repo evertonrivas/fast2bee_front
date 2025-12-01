@@ -4,23 +4,19 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Common } from 'src/app/classes/common';
 
 import { FunnelStage } from 'src/app/models/crm.model';
-import { CrmConfigKeys } from 'src/app/models/system.enum';
+import { CrmConfigKeys, ModuleName } from 'src/app/models/system.enum';
 import { CrmService } from 'src/app/services/crm.service';
 import { ResponseError } from 'src/app/models/paginate.model';
-import { TenantConfig } from 'src/app/models/auth.model';
+import { TenantConfig, CrmConfig } from 'src/app/models/auth.model';
 import { SysService } from 'src/app/services/sys.service';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
-import { NgIf } from '@angular/common';
+import { NgIf, NgClass } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
-
-export interface Config{
-  [index:string]: string
-}
 
 @Component({
   selector: 'app-config',
@@ -33,8 +29,9 @@ export interface Config{
     NgIf,
     InputTextModule,
     FormsModule,
-    DropdownModule
-  ],
+    DropdownModule,
+    NgClass
+],
   providers: [
     MessageService,
     ConfirmationService
@@ -47,8 +44,10 @@ export class ConfigComponent extends Common implements AfterViewInit{
   title:string = "";
   all_funnel_stage:FunnelStage[] = [];
   selected_stages:FunnelStage[] = [];
-  configs:Config = {};
-  tenant_config:TenantConfig = {
+  config_crm:CrmConfig = {
+    default_funnel: ''
+  };
+  config_tenant:TenantConfig = {
     ai_model: '',
     ai_api_key: '',
     company_custom: false,
@@ -62,6 +61,7 @@ export class ConfigComponent extends Common implements AfterViewInit{
     email_from_name: '',
     email_from_value: ''
   }
+  module_used:ModuleName = ModuleName.ADM;
   constructor(route:Router,
     private msg:MessageService,
     private actRoute: ActivatedRoute,
@@ -69,6 +69,12 @@ export class ConfigComponent extends Common implements AfterViewInit{
     private sSys: SysService,
     private cdr:ChangeDetectorRef){
     super(route);
+
+    this.actRoute.queryParams.subscribe({
+      next:(data) =>{
+        this.module_used = data["place"] as ModuleName;
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -76,29 +82,29 @@ export class ConfigComponent extends Common implements AfterViewInit{
       next: (data) =>{
         switch(data['place']){
           case this.modules.CRM.valueOf().toString() : {
-            this.title = " do CRM";
-            this.options.query = "can:list-all 1||is:sales 1||";
-                this.sCrm.listStages(this.options).subscribe({
-                  next:(data) =>{
-                    this.all_funnel_stage = data as FunnelStage[];
-                  }
-                });
+            // this.title = " do CRM";
+            // this.options.query = "can:list-all 1||is:sales 1||";
+            //     this.sCrm.listStages(this.options).subscribe({
+            //       next:(data) =>{
+            //         this.all_funnel_stage = data as FunnelStage[];
+            //       }
+            //     });
             
-                this.sCrm.loadConfig().subscribe({
-                  next: (data) =>{
-                    this.configs = data as Config;
-                    this.loading = false;
-                    Object.keys(this.configs).forEach(k =>{
-                      if(k==CrmConfigKeys.DEFAULT_FUNNEL_STAGES){
-                        let keys = this.configs[k].split(",")
-                        keys.forEach(ix =>{
-                          let fs:FunnelStage = this.all_funnel_stage.find(v => v.id == parseInt(ix)) as FunnelStage;
-                          this.selected_stages.push(fs);
-                        })
-                      }
-                    });
-                  }
-                });
+            //     this.sCrm.loadConfig().subscribe({
+            //       next: (data) =>{
+            //         this.configs = data as Config;
+            //         this.loading = false;
+            //         Object.keys(this.configs).forEach(k =>{
+            //           if(k==CrmConfigKeys.DEFAULT_FUNNEL_STAGES){
+            //             let keys = this.configs[k].split(",")
+            //             keys.forEach(ix =>{
+            //               let fs:FunnelStage = this.all_funnel_stage.find(v => v.id == parseInt(ix)) as FunnelStage;
+            //               this.selected_stages.push(fs);
+            //             })
+            //           }
+            //         });
+            //       }
+            //     });
           }; break;
           case this.modules.B2B.valueOf().toString(): this.title = " do Salesforce"; break;
           case this.modules.SCM.valueOf().toString(): this.title = " do Calendário"; break;
@@ -110,7 +116,7 @@ export class ConfigComponent extends Common implements AfterViewInit{
             this.sSys.getConfig(localStorage.getItem("id_profile") as string).subscribe({
               next: (data) =>{
                 if("company_name" in data){
-                  this.tenant_config = data as TenantConfig;
+                  this.config_tenant = data as TenantConfig;
                 }
               }
             })
@@ -128,29 +134,29 @@ export class ConfigComponent extends Common implements AfterViewInit{
         stages.push(s.id)
       });
   
-      this.configs[CrmConfigKeys.DEFAULT_FUNNEL_STAGES] = stages.join(",");
+      // this.configs[CrmConfigKeys.DEFAULT_FUNNEL_STAGES] = stages.join(",");
   
-      this.sCrm.saveConfig(this.configs).subscribe({
-        next: (data) =>{
-          if(typeof data ==='boolean'){
-            this.msg.add({
-              summary:"Sucesso...",
-              detail: "Configuração salva com sucesso!",
-              severity:"success"
-            });
-          }else{
-            this.msg.add({
-              summary:"Falha...",
-              detail: "Ocorreu o seguinte:"+(data as ResponseError).error_details,
-              severity:"error"
-            });
-          }
-        }
-      });
+      // this.sCrm.saveConfig(this.configs).subscribe({
+      //   next: (data) =>{
+      //     if(typeof data ==='boolean'){
+      //       this.msg.add({
+      //         summary:"Sucesso...",
+      //         detail: "Configuração salva com sucesso!",
+      //         severity:"success"
+      //       });
+      //     }else{
+      //       this.msg.add({
+      //         summary:"Falha...",
+      //         detail: "Ocorreu o seguinte:"+(data as ResponseError).error_details,
+      //         severity:"error"
+      //       });
+      //     }
+      //   }
+      // });
     }
 
     doSaveSysConfig():void{
-      this.sSys.saveConfig(this.tenant_config).subscribe({
+      this.sSys.saveConfig(this.config_tenant).subscribe({
         next: (data) =>{
           if (typeof data === 'boolean'){
             if (data==true){
