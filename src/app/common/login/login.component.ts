@@ -11,10 +11,9 @@ import { PasswordModule } from 'primeng/password';
 import { FormsModule } from '@angular/forms';
 import { ToastModule } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
-import { OverlayPanel, OverlayPanelModule } from 'primeng/overlaypanel';
 import { ResponseError } from 'src/app/models/paginate.model';
 import { SysService } from 'src/app/services/sys.service';
-import { PopoverModule } from 'primeng/popover';
+import { PopoverModule, Popover } from 'primeng/popover';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +32,7 @@ import { PopoverModule } from 'primeng/popover';
   providers: [MessageService]
 })
 export class LoginComponent implements AfterContentInit{
-  @ViewChild('pnlRecovery') pnlRecovery:OverlayPanel|null = null;
+  @ViewChild('pnlRecovery') pnlRecovery:Popover|null = null;
 
   username_value:string = "";
   password_value:string = "";
