@@ -1,12 +1,12 @@
 export enum ModuleName{
-    ADM = 0,
-    CRM = 1,
-    B2B = 2,
-    SCM = 3,
-    FPR = 4,
-    FCM = 5, // futuro modulo financeiro
+    ADM = 'A',
+    CRM = 'C',
+    B2B = 'B',
+    SCM = 'T',
+    FPR = 'D',
+    FCM = 'F', // futuro modulo financeiro
     MPG = 6, // futuro modulo de marketing
-    ORD = 7, // simboliza o modulo do representante, mas eh gestao de pedidos
+    ORD = 'O', // simboliza o modulo do representante, mas eh gestao de pedidos
     NONE = -1
   }
 
